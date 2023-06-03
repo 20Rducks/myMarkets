@@ -2,17 +2,14 @@
   <div class="container-fluid">
     <a class="nav-link active mr-3" aria-current="page" href="/"><%= image_tag "logo-1.png" , class: 'logo' %></a>
     <%# Add to href link %>
-    <%= form_with url: plants_path, method: :get, class: "d-flex" do |form| %>
-      <%= form.text_field :query, value: params[:query], class: "form-control me-2", placeholder: "Find a plant" %>
-      <%= form.submit "Search", class: "button" %>
-    <% end %>
+    <h1><b>B</b>otanical <b>B</b>azaar</h1>
     <img class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <%# Drop down %>
         <div class="btn-group mr-5 p-1">
-          <span id="avatar-drop" class="fa-solid fa-bars fa-2xl mr-5" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"></span>
+          <span id="avatar-drop" class="fa-brands fa-pagelines fa-2xl dropdown-toggle mr-5" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"></span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start mt-3">
             <% if !current_user %>

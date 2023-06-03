@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, :username, :bio, presence: true
-  validates :username, uniqueness: true
+  validates :email, :username, uniqueness: true
   validates :username, length: { in: 6..10 }
-
 end
