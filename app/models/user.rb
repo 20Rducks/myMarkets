@@ -5,7 +5,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, :username, :bio, presence: true
-  validates :email, :username, uniqueness: true
+  has_many :trips, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  # Nullify, code in view
+
+  validates :username, :bio, presence: true
+  validates :username, uniqueness: true
   validates :username, length: { in: 6..10 }
 end
+
+# sanitized params application controller DEVISE NOTES
