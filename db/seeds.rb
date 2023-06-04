@@ -68,3 +68,5 @@ market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jp
 end
 
 market.save!
+
+StallsAtMarket.create(market:, stall:)
