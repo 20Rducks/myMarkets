@@ -13,6 +13,6 @@ class MarketsController < ApplicationController
   end
 
   def create
-
+    @trip = Trip.create()
   end
 end

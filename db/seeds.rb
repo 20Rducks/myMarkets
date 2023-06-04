@@ -9,22 +9,25 @@ require 'open-uri'
 
 puts "Cleaning database..."
 
-User.destroy_all
 Stall.destroy_all
+User.destroy_all
 
 puts "stalls Creating"
 
 # STALLS !!!!!!!!!!!! #
 
-user = User.create!(email: 'test1.com', password: '123123', password_confirmation: '123123', user_id: user.id)
+user = User.create!(email: 'test1@test.com', username: "fred flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+
 stall = Stall.create!(
   name: "Bao Boys",
   category: "Bakery",
   description: "Light fluffy buns, good for the soul",
   website_url: "wwww.baoboys.com",
   instagram_url: "www.instagram.com/baoboys",
-  twitter_url: "www.twitter.com/baoboys"
+  twitter_url: "www.twitter.com/baoboys",
+  user_id: user.id
 )
+
 file = URI.open('https://i.etsystatic.com/20333091/r/il/042895/3016558222/il_1588xN.3016558222_ju7e.jpg')
 stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://i.etsystatic.com/20333091/r/il/a5ecfc/3016558034/il_1588xN.3016558034_32g2.jpg')
@@ -43,7 +46,7 @@ market = Market.create!(
   name: "Borough",
   bio: "A really nice market, full of interesting stalls",
   address: "8 Southwark Street, Southwark, SE1 1TL",
-  website_url: "https://boroughmarket.org.uk/",
+  website: "https://boroughmarket.org.uk/",
   phone_number: "0209 543 8473",
   wheelchair_access: true,
   parking: true,
@@ -60,11 +63,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/3b/f
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/3b/fc/30/caption.jpg?w=500&h=400&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-market.save
+[ true, false, true, false, true, false, true ].each_with_index do |open, d|
+  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+end
 
-
-t.integer "day_of_week"
-t.boolean "open"
-t.time "opening_time"
-t.time "closing_time"
-t.bigint "market_id", null: false
+market.save!

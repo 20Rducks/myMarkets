@@ -4,6 +4,7 @@ class Stall < ApplicationRecord
   has_many :stalls_at_markets, dependent: :destroy
   has_many :markets, through: :stalls_at_markets
   has_many :reviews
+  has_many_attached :photos
 
   CATEGORIES = ["Confectionary", "Bakery", "Cured Meats", "Fish & Seafood", "Dry Goods", "Antipasti", "Butchery", "Dairy", "Vegan", "Hot Street Food", "Cold Street Food", "Sweet", "Savoury", "Fruit & Veg", "Drinks"]
 
