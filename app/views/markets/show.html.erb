@@ -61,10 +61,7 @@
                 <div class="modal-body">
                   <%= trip_form.input :message %>
                   <%= trip_form.input :date, html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-
-                    <%= trip_form.simple_fields_for :trip_buddies do |buddy_form| %>
-                      <%= buddy_form.collection_check_boxes :user_id, User.all, :id, :username, include_hidden: false %>
-                    <% end %>
+                  <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
                 </div>
 
                 <div class="modal-footer">
