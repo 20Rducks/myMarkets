@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   end
 
   def my_profile
-    @user = current_user.user
+    @user = current_user
   end
 end

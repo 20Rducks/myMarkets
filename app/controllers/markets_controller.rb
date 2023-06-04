@@ -4,11 +4,11 @@ class MarketsController < ApplicationController
   end
 
   def show
-    @markets = Market.find(params[:id])
+    @market = Market.find(params[:id])
   end
 
   def new
-    @markets = Market.find(params[:id])
+    @market = Market.find(params[:id])
     @trip = Trip.new
   end
 
