@@ -1,2 +1,2 @@
-class TripbuddiesController < ApplicationController
+class TripBuddiesController < ApplicationController
 end
