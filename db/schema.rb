@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_152725) do
     t.datetime "updated_at", null: false
   end
 
+  # TODO: add market socials #
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"

@@ -1,0 +1,49 @@
+<%# Basic Hero/Jumbo/Header %>
+<div class="container-fluid home-header">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
+      <h1>Traders</h1>
+      <p>Find a stall to suit your wants and needs</p>
+      <div class="btn btn-primary">Become a trader</div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
+      <div class="py-4 pl-4 align-middle">
+        <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
+        <h4> Carousel Of Images?? </h4>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<%# Card Group Layout %>
+<div class="container">
+  <div class="row">
+<%# Card Layout %>
+  <% @stalls.each do |stall| %>
+    <%= link_to stall_path(stall) do %>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="card home-card-img h-100">
+            <%# <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
+            <div class="card-body">
+              <h5 class="card-title"><%= stall.name %></h5>
+              <p class="card-text"><%= stall.description %></p>
+              <p class="card-text"><%= stall.category %></p>
+              <p class="card-text"><%= stall.website_url %></p>
+              <p class="card-text"><%= stall.instagram_url %></p>
+              <p class="card-text"><%= stall.twitter_url %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

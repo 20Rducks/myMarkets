@@ -15,3 +15,4 @@ class Stall < ApplicationRecord
 end
 
 # to access Stall::CATEGORIES
+# Can we remove belongs_to??
