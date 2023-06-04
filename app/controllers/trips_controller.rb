@@ -5,6 +5,13 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.market = Market.find(params[:market_id])
+    @trip.user = current_user
+    if @trip.save
+      redirect_to market_trips_path(@trip)
+    else
+      render :market, status: :unprocessable_entity
+    end
   end
 
   private
