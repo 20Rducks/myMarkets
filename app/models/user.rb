@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :username, :bio, presence: true
   validates :username, uniqueness: true
-  validates :username, length: { in: 6..10 }
+  validates :username, length: { in: 5..20 }
 end
 
 # sanitized params application controller DEVISE NOTES

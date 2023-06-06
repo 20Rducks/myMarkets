@@ -5,14 +5,21 @@
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
       <h1><%= @market.name %></h1>
       <h4><%= @market.bio %></h4>
-      <% if market.wheelchair_access %><%= market.wheelchair_access %>
-      <% if market.parking %><%= market.parking %>
-      <% if market.pet_friendly %><%= market.pet_friendly %>
+
+      <% if @market.wheelchair_access %>
+        <%= @market.wheelchair_access %>
+      <% end %>
+      <% if @market.parking %>
+        <%= @market.parking %>
+      <% end %>
+      <% if @market.pet_friendly %>
+        <%= @market.pet_friendly %>   <%# Add icons to show when true%>
+      <% end %>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
       <div class="py-4 pl-4 align-middle">
-        <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
+        <%= cl_image_tag @market.photos[0], class: "card-img-top card-img" %>
         <h4> MARKET IMAGE </h4>
       </div>
     </div>
@@ -22,46 +29,70 @@
 
 
 <%# Mid-Section %>
-<div class="container-fluid review-section">
+<div class="container-fluid review-section d-flex flex-row text-center">
   <div class="row">
     <%# Left hand review %>
     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-12 d-flex">
-      <div class="show-review">
-
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
-      <div class="show-review">
-
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
-      <div class="show-review">
-
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
     </div>
 
+
     <%# Central Products %>
-    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-12">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-12 mx-auto my-auto show-products">
       <div class="show-products">
         <div class="show-product">
+          <p>Product1</p>
+        </div>
+        <div class="show-product">
+          <p>Product2</p>
+        </div>
+        <div class="show-product">
+          <p>Product3</p>
+        </div>
+        <div class="show-product">
+          <p>Product4</p>
         </div>
       </div>
     </div>
 
     <%# Right hand review %>
-    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-12 d-flex">
-      <div class="show-review">
-
+    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-12 d-flex flex-row">
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
-      <div class="show-review">
-
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
-      <div class="show-review">
-
+      <div class="show-review p-2">
+        <p>Fake review Fake review Fake review Fake review Fake
+        review Fake review Fake review Fake review Fake review Fake
+         review</p>
       </div>
     </div>
   </div>
 </div>
 
+
 <%# Map Section %>
-<div class="container-fluid map-header d-flex">
+<div class="container-fluid map-header">
   <div class="row">
 
     <%# Map %>
@@ -74,7 +105,7 @@
       <div class="py-4 pl-4 align-middle">
         <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
         <h3> Address <%= @market.address %>
-        <h4> Open on days <%= @market.day.day_of_week %></h4>
+        <h4> Open on days</h4>    <%#<%= @market.open%>
         <p>Contact: <%= @market.phone_number %></p>
         <p>Website: <%= @market.website %></small>
 
@@ -108,6 +139,8 @@
         </div>
       </div>
     </div>
+
+
   </div>
 </div>
 
