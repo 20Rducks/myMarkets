@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="nav-link active mr-3" aria-current="page" href="/"><%= image_tag "logo-1.png" , class: 'logo' %></a>
     <%# Add to href link %>
-    <h1><b>B</b>otanical <b>B</b>azaar</h1>
+    <h1>My<i>M</i>arkets</h1>
     <img class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -13,7 +13,7 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start mt-3">
             <% if !current_user %>
-              <li><a class="dropdown-item" href="../users/sign_up">Sign Up</a></li> <%# Need to add proper path %>
+              <li><a class="dropdown-item" href="../users/sign_up">Sign Up</a></li>
               <li><a class="dropdown-item" href='/users/sign_in'>Log In</a></li>
             <% else %>
               <li><%= link_to "My Listings", my_listings_plants_path, class: "dropdown-item"%></li>

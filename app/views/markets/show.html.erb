@@ -1,0 +1,117 @@
+<%# Basic Hero/Jumbo/Header %>
+<div class="container-fluid home-header">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
+      <h1><%= @market.name %></h1>
+      <h4><%= @market.bio %></h4>
+      <% if market.wheelchair_access %><%= market.wheelchair_access %>
+      <% if market.parking %><%= market.parking %>
+      <% if market.pet_friendly %><%= market.pet_friendly %>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
+      <div class="py-4 pl-4 align-middle">
+        <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
+        <h4> MARKET IMAGE </h4>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<%# Mid-Section %>
+<div class="container-fluid review-section">
+  <div class="row">
+    <%# Left hand review %>
+    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-12 d-flex">
+      <div class="show-review">
+
+      </div>
+      <div class="show-review">
+
+      </div>
+      <div class="show-review">
+
+      </div>
+    </div>
+
+    <%# Central Products %>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-12">
+      <div class="show-products">
+        <div class="show-product">
+        </div>
+      </div>
+    </div>
+
+    <%# Right hand review %>
+    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-12 d-flex">
+      <div class="show-review">
+
+      </div>
+      <div class="show-review">
+
+      </div>
+      <div class="show-review">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# Map Section %>
+<div class="container-fluid map-header d-flex">
+  <div class="row">
+
+    <%# Map %>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
+      <h1>Map Section</h1>
+    </div>
+
+    <%# Address %>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill">
+      <div class="py-4 pl-4 align-middle">
+        <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
+        <h3> Address <%= @market.address %>
+        <h4> Open on days <%= @market.day.day_of_week %></h4>
+        <p>Contact: <%= @market.phone_number %></p>
+        <p>Website: <%= @market.website %></small>
+
+        <%# Socials %>
+        <div class="socials">
+          <!-- Facebook -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #3b5998;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #55acee;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <!-- Instagram -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #ac2bac;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <h4>Carousel</h4>
+</div>
+<%# https://codepen.io/hellomev/pen/LYORMQW %>

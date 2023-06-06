@@ -1,0 +1,32 @@
+
+<%# Rendering Navbar %>
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <div class="row">
+    <%= simple_form_for @trip do |f| %>
+      <div class="modal-body">
+        <div class="container">
+          <%# <span><i class="fa-solid fa-leaf fa-2xl" style="color: #3a5a40;"></i></span> %>
+          <%= f.input :market, label: false, placeholder: 'Market Choice' %>
+          <%# <span class="ml-2"><i class="fa-solid fa-quote-left fa-2xl" style="color: #3a5a40;"></i></span>8 %>
+          <%= f.input :description, label: false, placeholder: "" %>
+          <%# <span><i class="fa-solid fa-tag fa-2xl" style="color: #3a5a40;"></i></span> %>
+          <%= f.input :price, label: false, placeholder: '£' %>
+          <%= f.submit "Add listing", class: "button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= simple_form_for [@market, @trip], data: { insert_in_list_target: "form", action: "submit->insert-in-list#send"} do |f| %>
+  <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker", action: "input->insert-in-list#updatePrice" }}%>
+  <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker", action: "input->insert-in-list#updatePrice", :style => 'width: 400px', class: 'd-inline' }}%>
+  <%= f.submit "Confirm", class: "button-modal mb-2" %>
+  <% end %>
+
+
+<%# Rendering Navbar %>
+<%= render "shared/footer" %>
