@@ -10,9 +10,99 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_143431) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_03_152725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer "day_of_week"
+    t.boolean "open"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.bigint "market_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_days_on_market_id"
+  end
+
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "website"
+    t.string "phone_number"
+    t.text "bio"
+    t.boolean "wheelchair_access", default: false, null: false
+    t.boolean "parking", default: false, null: false
+    t.boolean "pet_friendly", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price_pence"
+    t.bigint "stall_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stall_id"], name: "index_products_on_stall_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.bigint "stall_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stall_id"], name: "index_reviews_on_stall_id"
+    t.index ["trip_id"], name: "index_reviews_on_trip_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "stalls", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.text "description"
+    t.string "website_url"
+    t.string "instagram_url"
+    t.string "twitter_url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stalls_on_user_id"
+  end
+
+  create_table "stalls_at_markets", force: :cascade do |t|
+    t.bigint "market_id", null: false
+    t.bigint "stall_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_stalls_at_markets_on_market_id"
+    t.index ["stall_id"], name: "index_stalls_at_markets_on_stall_id"
+  end
+
+  create_table "tripbuddies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.boolean "accepted", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_tripbuddies_on_trip_id"
+    t.index ["user_id"], name: "index_tripbuddies_on_user_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.text "message"
+    t.datetime "date"
+    t.bigint "user_id", null: false
+    t.bigint "market_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_trips_on_market_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +112,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_143431) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.text "bio"
+    t.boolean "trader", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "days", "markets"
+  add_foreign_key "products", "stalls"
+  add_foreign_key "reviews", "stalls"
+  add_foreign_key "reviews", "trips"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "stalls", "users"
+  add_foreign_key "stalls_at_markets", "markets"
+  add_foreign_key "stalls_at_markets", "stalls"
+  add_foreign_key "tripbuddies", "trips"
+  add_foreign_key "tripbuddies", "users"
+  add_foreign_key "trips", "markets"
+  add_foreign_key "trips", "users"
 end
