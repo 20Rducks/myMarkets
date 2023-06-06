@@ -4,7 +4,7 @@ class StallsController < ApplicationController
   def index
     search_query = params[:query]
     if search_query.present?
-      sql_query = "name ILIKE :query OR category ILIKE :query OR "
+      sql_query = "name ILIKE :query OR category ILIKE :query"
       @stalls = Stall.where(sql_query, query: "%#{params[:query]}%")
     else
       # @stalls = @market.stalls
