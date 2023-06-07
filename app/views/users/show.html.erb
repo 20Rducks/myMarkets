@@ -1,8 +1,48 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
+<div class="container my-5">
+  <div class="row">
+    <h2> Welcome back, <%= @user.username %> !</h2>
+  </div>
+</div>
 
-<%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+<div class="container-fluid home-tabs">
+  <div class="row">
+    <nav>
+      <div class="nav nav-tabs" id="myTab" role="tablist">
+        <button class="nav-link active" id="favourites-tab" data-bs-toggle="tab" data-bs-target="#favourites-tab-pane" type="button" role="tab" aria-controls="favourites-tab-pane" aria-selected="true">favourites</button>
+        <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming-tab-pane" type="button" role="tab" aria-controls="upcoming-tab-pane" aria-selected="false">upcoming</button>
+        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past-tab-pane" type="button" role="tab" aria-controls="past-tab-pane" aria-selected="false">past</button>
+        <button class="nav-link" id="invitations-tab" data-bs-toggle="tab" data-bs-target="#invitations-tab-pane" type="button" role="tab" aria-controls="invitations-tab-pane" aria-selected="false" invitations>invitations</button>
+      </div>
+
+      <div class="tab-content inline-flex" id="myTabContent">
+
+      <div class="tab-pane fade show active d-flex justify-content-center" id="favourites-tab-pane" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
+          <h2>Favourites!</h2>
+          <%= @user.trips %>
+      </div>
+
+      <div class="tab-pane fade d-flex justify-content-center" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
+          <h2>Upcoming Trips!</h2>
+          <%= @user.trips %>
+      </div>
+
+      <div class="tab-pane fade d-flex justify-content-center" id="past-tab-pane" role="tabpanel" aria-labelledby="past-tab" tabindex="0">
+          <h2>Past Trips!</h2>
+          <%= @user.trips %>
+      </div>
+
+      <div class="tab-pane fade d-flex justify-content-center" id="invitations-tab-pane" role="tabpanel" aria-labelledby="invitations-tab" tabindex="0">
+          <h2>Invitations!</h2>
+          <%= @user.trips %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="m-5">
+  <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
   <%= date %>
 
   <% trips.each do |trip| %>
@@ -11,5 +51,7 @@
     </div>
   <% end %>
 <% end %>
+</div>
 
-<%= render "shared/footer" %>
+
+<%= render "shared/footer-index" %>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="nav-link active mr-3" aria-current="page" href="/"><%= image_tag "logo-1.png" , class: 'logo' %></a>
+    <a class="nav-link active mr-3" aria-current="page" href="/"><%= image_tag "logo-no-background.png" , class: 'logo' %></a>
     <%# Add to href link %>
     <%= form_with url: markets_path, method: :get, class: "d-flex" do |form| %>
       <%= form.text_field :query, value: params[:query], class: "form-control me-2", placeholder: "Find a market" %>
