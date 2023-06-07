@@ -44,9 +44,10 @@
 <%# Card Group Layout %>
 <div class="container">
   <div class="row">
-<%# Card Layout %>
-  <% @stalls.each do |stall| %>
-    <%= link_to stall_path(stall) do %>
+    <%# <div class="card-group"> %>
+  <%# Card Layout %>
+      <% @stalls.each do |stall| %>
+      <%= link_to stall_path(stall) do %>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card home-card-img h-100">
             <%# <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
@@ -65,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<%= render "shared/footer-index" %>
