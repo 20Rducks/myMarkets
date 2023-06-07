@@ -26,6 +26,7 @@ class MarketsController < ApplicationController
   def show
     # The `geocoded` scope filters only flats with coordinates
     @markets = Market.all
+    @trip = Trip.new
     @markers = @markets.geocoded.map do |market|
       {
         lat: market.latitude,
@@ -37,8 +38,7 @@ class MarketsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
-    @trip.trip_buddies.build
+
   end
 
   private

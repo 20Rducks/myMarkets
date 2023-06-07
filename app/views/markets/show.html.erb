@@ -42,25 +42,33 @@
         </ul> <%#<%= @market.open%>
 
 
+        <% if @trip.errors.any?  %>
+`             <script defer>
+            function showModal() {
+              new bootstrap.Modal('#tripModal').show();
+            }
+            showModal();
+          </script>
+        <% end %>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
           Pin To Calendar
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="insert-in-list">
+        <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
           <div class="modal-dialog">
 
-            <%= simple_form_for [@market, @trip], data: { insert_in_list_target: "form", action: "submit->insert-in-list#send"} do |trip_form|%>
-
+            <%= simple_form_for [@market, @trip] do |trip_form| %>
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <h1 class="modal-title fs-5" id="tripModalLabel">Modal title</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
+                  <%# trip_form.label "" %>
                   <%= trip_form.input :message %>
                   <%= trip_form.input :date, html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
                   <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
