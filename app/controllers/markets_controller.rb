@@ -38,17 +38,7 @@ class MarketsController < ApplicationController
 
   def new
     @trip = Trip.new
-  end
-
-  def create
-    @trip = Trip.new(trip_params)
-    @trip.market = Market.find(params[:market_id])
-    @trip.user = current_user
-      if @trip.save
-        redirect_to market_trips_path(@trip)
-      else
-        render :market, status: :unprocessable_entity
-      end
+    @trip.trip_buddies.build
   end
 
   private
@@ -58,7 +48,7 @@ class MarketsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:message, :date, :tripbuddies)
+    params.require(:trip).permit(:message, :date, :trip_buddies)
   end
 
 end
