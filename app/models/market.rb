@@ -1,4 +1,7 @@
 class Market < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   has_many :stalls_at_markets, dependent: :destroy
   has_many :stalls, through: :stalls_at_markets
   has_many :days, dependent: :destroy

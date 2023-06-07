@@ -40,6 +40,30 @@ file = URI.open('https://i.etsystatic.com/20333091/r/il/161a69/4925017031/il_158
 stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 stall.save
 
+user = User.create!(email: 'test2@test.com', username: "wilma flintstone", password: '123123', bio: "Ban Mhi for life!")
+
+stall = Stall.create!(
+  name: "Sushi Mania",
+  category: "Cold Street Food",
+  description: "Perfectly crafted Maki",
+  website_url: "wwww.sushimania.com",
+  instagram_url: "www.instagram.com/sushimania",
+  twitter_url: "www.twitter.com/sushimania",
+  user_id: user.id
+)
+
+file = URI.open('https://i.etsystatic.com/20333091/r/il/042895/3016558222/il_1588xN.3016558222_ju7e.jpg')
+stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
+file = URI.open('https://i.etsystatic.com/20333091/r/il/a5ecfc/3016558034/il_1588xN.3016558034_32g2.jpg')
+stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
+file = URI.open('https://i.etsystatic.com/20333091/r/il/aed8fa/3016557888/il_1588xN.3016557888_ehdg.jpg')
+stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
+file = URI.open('https://i.etsystatic.com/20333091/r/il/87c237/3064266571/il_1588xN.3064266571_fmk6.jpg')
+stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
+file = URI.open('https://i.etsystatic.com/20333091/r/il/161a69/4925017031/il_1588xN.4925017031_1nzg.jpg')
+stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
+stall.save
+
 # MARKETS !!!!!!!!!!! #
 
 market = Market.create!(

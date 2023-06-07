@@ -10,7 +10,7 @@
 
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
       <div class="py-4 pl-4 align-middle">
-        <%= cl_image_tag @market.photos[0], class: "card-img-top card-img" %>
+        <%# cl_image_tag @market.photos[0], class: "card-img-top card-img" %>
         <h4> MARKET IMAGE </h4>
       </div>
     </div>
@@ -46,6 +46,10 @@
     <%# Map %>
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
       <h1>Map Section</h1>
+          <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
   </div>
