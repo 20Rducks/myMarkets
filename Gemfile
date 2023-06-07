@@ -13,6 +13,10 @@ gem "devise"
 
 gem "pg_search"
 
+gem "geocoder"
+
+gem "simple_calendar", "~> 2.4"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

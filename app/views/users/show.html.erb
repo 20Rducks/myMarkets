@@ -1,2 +1,13 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+
+<%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+  <%= date %>
+
+  <% trips.each do |trip| %>
+    <div class="trip">
+      <p><%= trip.message %></p>
+    </div>
+  <% end %>
+<% end %>

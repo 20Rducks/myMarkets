@@ -24,7 +24,6 @@
                 <p class="card-text"><%= market.bio %></p>
                 <p class="card-text"><%= market.address %></p>
                 <p class="card-text"><%= market.phone_number %></p>
-                <p class="card-text"><%= market.bio %></p>
               </div>
               <div class="card-footer">
                 <small class="text-white"><%= market.website %></small>
@@ -42,3 +41,8 @@
     </div>
   </div>
 </div>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

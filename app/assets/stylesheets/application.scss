@@ -6,10 +6,12 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import "simple_calendar";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+// @import "flatpickr/dist/flatpickr.css"
 
 :root {
   --bs-blue: #0d6efd;

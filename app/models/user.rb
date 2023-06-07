@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   # Nullify, code in view
 
-  validates :username, :bio, presence: true
-  validates :username, uniqueness: true
-  validates :username, length: { in: 5..20 }
+  # # validates :username, :bio, presence: true
+  # validates :username, uniqueness: true
+  # validates :username, length: { in: 5..20 }
 end
 
 # sanitized params application controller DEVISE NOTES
