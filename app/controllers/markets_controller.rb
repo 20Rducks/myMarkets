@@ -15,6 +15,7 @@ class MarketsController < ApplicationController
 
   def show
     @trip = Trip.new
+    @trip.trip_buddies.build
   end
 
   private
@@ -24,7 +25,7 @@ class MarketsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:message, :date, :tripbuddies)
+    params.require(:trip).permit(:message, :date, :trip_buddies)
   end
 
 end

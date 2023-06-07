@@ -10,7 +10,7 @@
 
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
       <div class="py-4 pl-4 align-middle">
-        <%= cl_image_tag @market.photos[0], class: "card-img-top card-img" %>
+        <%= cl_image_tag @market.photos[0].key %>
         <h4> MARKET IMAGE </h4>
       </div>
     </div>
@@ -38,7 +38,42 @@
           <li class="list-group-item d-flex justify-content-between align-items-center">Sat<span>date</span></li>
           <li class="list-group-item d-flex justify-content-between align-items-center">Sun<span>date</span></li>
         </ul> <%#<%= @market.open%>
-        <div class="btn btn-primary d-block px-5 mx-5">Pin to Calendar</div>
+
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Pin To Calendar
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="insert-in-list">
+          <div class="modal-dialog">
+
+            <%= simple_form_for [@market, @trip], data: { insert_in_list_target: "form", action: "submit->insert-in-list#send"} do |trip_form|%>
+
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                  <%= trip_form.input :message %>
+                  <%= trip_form.input :date, html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                  <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <%= trip_form.submit class: "btn btn-primary" %>
+                </div>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+
       </div>
     </div>
 

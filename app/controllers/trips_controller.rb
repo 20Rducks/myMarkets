@@ -1,16 +1,27 @@
 class TripsController < ApplicationController
+  def index
+    @trips = current_user.trips
+  end
+
   def new
     @trip = Trip.new
   end
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.market = Market.find(params[:market_id])
+    @market = Market.find(params[:market_id])
+    @trip.market = @market
     @trip.user = current_user
+
+    if params[:trip].has_key?(:user_ids)
+      @trip.users = User.find(params[:trip][:user_ids])
+    end
+
     if @trip.save
-      redirect_to market_trips_path(@trip)
+      flash[:notice] = "You've booked a trip"
+      redirect_to my_profile_path
     else
-      render :market, status: :unprocessable_entity
+      render "markets/show", status: :unprocessable_entity
     end
   end
 
@@ -21,7 +32,7 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:message, :date)
+    params.require(:trip).permit(:message, :date, user_ids: [])
   end
 end
 

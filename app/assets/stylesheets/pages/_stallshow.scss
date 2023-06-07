@@ -15,8 +15,16 @@
 
 // Review Section
 .review-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: normal;
+  justify-content: center;
+  align-items: normal;
   border: 1px solid black;
-}
+  }
+
+
 
 .show-review {
   border: 1px solid black;
@@ -24,6 +32,15 @@
 
 // .show-products {
 //   border: 1px solid black;
+// }
+
+// .show_products {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   align-content: normal;
+//   justify-content: space-evenly !important;
+//   align-items: normal;
 // }
 
 .show-product {

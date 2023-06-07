@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :stalls, only: %i[index]
   end
 
-  resources :trips, only: %i[show destroy] do
-    resources :tripbuddies, only: %i[new create update]
+  resources :trips, only: %i[show index destroy] do
+    resources :trip_buddies, only: %i[new create update]
   end
 
   resources :stalls, only: %i[index show] do
