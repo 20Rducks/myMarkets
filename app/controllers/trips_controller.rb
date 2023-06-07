@@ -21,6 +21,13 @@ class TripsController < ApplicationController
       flash[:notice] = "You've booked a trip"
       redirect_to my_profile_path
     else
+      @markers =
+        [{
+          lat: @market.latitude,
+          lng: @market.longitude,
+          map_info_window_html: render_to_string(partial: "/markets/map_info_window", locals: {market: @market}),
+          map_marker_html: render_to_string(partial: "/markets/map_marker", locals: {market: @market})
+        }]
       render "markets/show", status: :unprocessable_entity
     end
   end
