@@ -94,3 +94,5 @@ end
 market.save!
 
 StallsAtMarket.create(market:, stall:)
+
+# TRIPS !!!!!!!!!!! #

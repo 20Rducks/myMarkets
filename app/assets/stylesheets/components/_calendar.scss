@@ -1,21 +1,23 @@
 .simple-calendar {
   table {
     min-height: 80vh;
+    background-color: #e1f5e1;
   }
+
   .today {
-    background-color: #FAF3DD;
+    background-color: #3dc53d;
   }
-}
 
-.meeting {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #1EDD88;
-  transition: background 0.3s ease;
-}
+  .trip {
+    background-color: #c4e6c4;
+    color: #000000; /* Text color for trip.message */
+    padding: 8px 24px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
 
-.meeting:hover {
-  background: #1BCB7F;
-  color: white;
+  .trip:hover {
+    background-color: #a2d8a2; /* Hovered shade of green for date boxes with trip.message */
+    color: #000000; /* Text color for trip.message on hover */
+  }
 }
