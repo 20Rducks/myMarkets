@@ -1,15 +1,15 @@
 
 // Head Section
 .split-header {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .home-review {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .products {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .review-section {
@@ -19,31 +19,48 @@
   align-content: normal;
   justify-content: center;
   align-items: normal;
-  border: 1px solid black;
+  // border: 1px solid black;
   }
 
 .show-review {
-  border: 1px solid black;
+  background-color: lightgoldenrodyellow;
+  border-radius: 10px;
+  transition: 0.2s;
+  padding: 0;
+    &:hover {
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+      transform: scale(1.02);
+      cursor: pointer;
+  }
 }
 
+
 .show-product {
-  border: 1px solid black;
+  background-color: lightgrey;
+  border-radius: 10px;
+  transition: 0.2s;
+  padding: 0;
+    &:hover {
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+      transform: scale(1.02);
+      cursor: pointer;
+  }
 }
 
 
 // Map Section
 .map-header {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .split-map-header {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .split-address-header {
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .social {
-  border: 1px solid black;
+  // border: 1px solid black;
 }

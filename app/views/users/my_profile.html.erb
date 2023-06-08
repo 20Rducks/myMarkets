@@ -1,9 +1,14 @@
-
-<div class="container my-5">
+<%# Basic Hero/Jumbo/Header %>
+<div class="container-fluid">
   <div class="row">
-    <h2> Welcome back, <%= @user.username %> !</h2>
+    <div class="page-header mt-3 d-flex">
+      <div class="my-auto">
+        <h2> Welcome back, <%= @user.username %> !</h2>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <div class="container-fluid home-tabs">
   <div class="row">
@@ -30,11 +35,11 @@
               <div class="home-card home-card-img m-2">
               <%= link_to market_path(trip.market) do %>
               <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
-                <div class="card-body">
+                <div class="card-body" id="myprofile">
                   <h5 class="card-title">Get ready for your trip to <%= trip.market.name %></h5>
                     <%= trip.date %></h5>
                     <% trip.users.each do |t| %>
-                    <%= link_to user_path(@user) do %>
+                    <%= link_to user_path(t) do %>
                       <div> You're going with <%= t.username %></div>
                       <% end %>
                     <% end %>
@@ -66,7 +71,7 @@
                   <h5 class="card-title">How was your trip to <%= trip.market.name %>
                   <h5> on <%= trip.date %></h5>
                     <% trip.users.each do |t| %>
-                    <%= link_to user_path(@user) do %>
+                    <%= link_to user_path(t) do %>
                       <div> You went with <%= t.username %></div>
                       <% end %>
                     <% end %>
@@ -86,8 +91,11 @@
 
     <%# TRIP-BUDDDDDDDIES %>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-      <% @user.trips.each do |trip| %>
-        <%= trip.user.friendships_as_receiver.map { |f| f.asker.username } %>
+      <% @user.friendships_as_receiver.each do |friend| %>
+        <%= friend.asker.username %>
+        <%= friend.asker.username %>
+        <%= friend.asker.username %>
+        <%= friend.asker.username %>
       <% end %>
     </div>
 
