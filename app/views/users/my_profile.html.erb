@@ -7,64 +7,98 @@
 
 <div class="container-fluid home-tabs">
   <div class="row">
-    <nav>
-      <div class="nav nav-tabs" id="myTab" role="tablist">
-        <button class="nav-link active" id="favourites-tab" data-bs-toggle="tab" data-bs-target="#favourites-tab-pane" type="button" role="tab" aria-controls="favourites-tab-pane" aria-selected="true">favourites</button>
-        <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming-tab-pane" type="button" role="tab" aria-controls="upcoming-tab-pane" aria-selected="false">upcoming</button>
-        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past-tab-pane" type="button" role="tab" aria-controls="past-tab-pane" aria-selected="false">past</button>
-        <button class="nav-link" id="invitations-tab" data-bs-toggle="tab" data-bs-target="#invitations-tab-pane" type="button" role="tab" aria-controls="invitations-tab-pane" aria-selected="false" invitations>invitations</button>
-      </div>
-
-      <div class="tab-content" id="myTabContent">
-
-      <div class="tab-pane fade show active justify-content-center" id="favourites-tab-pane" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
-          <h2 class="mt-2">Favourite Trips</h2>
-      </div>
-
-      <div class="trip-tabs d-flex">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upcoming Trips</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Past Trips</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Your Friends</button>
+      <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Invitations</button>
+    </div>
+  </nav>
+  <div class="tab-content mb-5 d-flex text-center mt-5" id="nav-tabContent">
 
 
+    <%# UPCOMING TRIPS %>
+    <div class="tab-pane fade show active justify-content-center" id="nav-home" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
+          <div class="trip-tabs d-flex">
 
-        <%# Card Layout %>
-        <div class="card-group d-flex ">
-          <%= @user.trips.each do |trip| %>
-          <div class="home-card home-card-img m-2">
-            <%= link_to market_path(trip.market) do %>
+            <div class="card-group flex-fill justify-content-center ">
+              <% @user.trips.each do |trip| %>
 
-                  <%# <%= cl_image_tag market.photos.first.key, class: "card-img-top" %>
+              <% if trip.date > Time.now %>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Trip to <%= trip.market.name %> on <%= trip.date %></h5>
-                      <% trip.users.each do |t| %>
-                      <%= link_to user_path(@user) do %>
-                        <div> You went with <%= t.username %></div>
-                        <% end %>
+              <div class="home-card home-card-img m-2">
+              <%= link_to market_path(trip.market) do %>
+              <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
+                <div class="card-body">
+                  <h5 class="card-title">Get ready for your trip to <%= trip.market.name %></h5>
+                    <%= trip.date %></h5>
+                    <% trip.users.each do |t| %>
+                    <%= link_to user_path(@user) do %>
+                      <div> You're going with <%= t.username %></div>
                       <% end %>
-                  </div>
-
-                  <div class="card-footer">
-                    <small class="text-dark"><%= trip.message %></small>
-                  </div>
+                    <% end %>
                 </div>
-            <% end %>
-          <% end %>
-      </div>
+                <% end %>
+                <div class="card-footer">
+                  <small class="text-dark"><%= trip.message %></small>
+                </div>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+    <%# PAST TRIPS %>
+    <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+          <div class="trip-tabs flex-fill">
+
+            <div class="card-group flex-column justify-content-center ">
+              <% @user.trips.each do |trip| %>
+
+              <% if trip.date < Time.now %>
+
+              <div class="upcoming-home-card home-card-img">
+              <%= link_to market_path(trip.market) do %>
+              <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
+                <div class="card-body">
+                  <h5 class="card-title">How was your trip to <%= trip.market.name %>
+                  <h5> on <%= trip.date %></h5>
+                    <% trip.users.each do |t| %>
+                    <%= link_to user_path(@user) do %>
+                      <div> You went with <%= t.username %></div>
+                      <% end %>
+                    <% end %>
+                </div>
+                <% end %>
+                <div class="card-footer">
+                  <small class="text-dark"><%= trip.message %></small>
+                </div>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <%# TRIP-BUDDDDDDDIES %>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+      <% @user.trips.each do |trip| %>
+        <%= trip.user.friendships_as_receiver.map { |f| f.asker.username } %>
+      <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
 
     </div>
   </div>
 </div>
 
 
-
-<%= @user.friendships_as_receiver.map { |f| f.asker.username } %>
-
-
-
-
-
-
-
-<div class="m-5">
+<div class="profile-calendar m-5">
   <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
   <%= date %>
 
