@@ -122,14 +122,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_014949) do
     t.index ["stall_id"], name: "index_stalls_at_markets_on_stall_id"
   end
 
-  create_table "trip_buddies", force: :cascade do |t|
+  create_table "tripbuddies", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "trip_id", null: false
     t.boolean "accepted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_trip_buddies_on_trip_id"
-    t.index ["user_id"], name: "index_trip_buddies_on_user_id"
+    t.index ["trip_id"], name: "index_tripbuddies_on_trip_id"
+    t.index ["user_id"], name: "index_tripbuddies_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -170,8 +170,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_014949) do
   add_foreign_key "stalls", "users"
   add_foreign_key "stalls_at_markets", "markets"
   add_foreign_key "stalls_at_markets", "stalls"
-  add_foreign_key "trip_buddies", "trips"
-  add_foreign_key "trip_buddies", "users"
+  add_foreign_key "tripbuddies", "trips"
+  add_foreign_key "tripbuddies", "users"
   add_foreign_key "trips", "markets"
   add_foreign_key "trips", "users"
 end
