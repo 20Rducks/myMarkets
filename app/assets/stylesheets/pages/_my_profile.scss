@@ -14,14 +14,39 @@
 // }
 
 .home-card {
-  width: 30%;
+  min-width: 30%;
   border: 1px solid black;
 }
 
+#nav-profile {
+  min-width: 30%;
+  border: 1px solid black;
+  flex-flow: column !important;
+}
+
 .card-footer {
-  margin-bottom: 0%;
+  // position: absolute;
+  // margin-bottom: 0%;
+  // vertical-align: bottom;
+  // bottom: 0px;
+  // margin-top: 20%;
+  // margin-bottom: 0%;
+
 }
 
 .card-body {
-  min-height: 50px !important;
+  position: relative;
+  min-height: 100px !important;
+}
+
+.profile-calendar {
+  margin-top: 150px;
+}
+
+.simple-calendar {
+  margin-top: 200px;
+}
+
+.tab-content {
+  justify-content: center;
 }
