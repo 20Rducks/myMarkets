@@ -6,8 +6,14 @@ class MarketsController < ApplicationController
     if search_query.present?
       sql_query = "name ILIKE :query OR address ILIKE :query"
       @markets = Market.where(sql_query, query: "%#{params[:query]}%")
+      if @markets.empty?
+        flash.now[:alert] = "No markets found for '#{search_query}'. Please search again."
+        render "pages/home"
+        return
+      end
     else
       @markets = Market.all
+    end
       @markers = @markets.geocoded.map do |market|
         {
           lat: market.latitude,
@@ -15,10 +21,9 @@ class MarketsController < ApplicationController
           map_info_window_html: render_to_string(partial: "map_info_window", locals: {market: market}),
           map_marker_html: render_to_string(partial: "map_marker", locals: {market: market})
         }
-      end
         # @market = Market.find(params[:id])
         # @stalls = @market.stalls
-    end
+      end
     @markets = @markets.sort_by(&:created_at).reverse
     @market = Market.new
     # @markets.days = days
