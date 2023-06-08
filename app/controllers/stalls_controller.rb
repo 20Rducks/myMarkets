@@ -10,6 +10,24 @@ class StallsController < ApplicationController
       # @stalls = @market.stalls
       @stalls = Stall.all
     end
+    @markets = []
+    @stalls.each do |stall|
+      stall.markets.each do |market|
+        @markets << market
+      end
+    end
+    @markets.uniq!
+    @markers = []
+    @markets.each do |market|
+      if market.geocoded?
+        @markers << {
+        lat: market.latitude,
+        lng: market.longitude,
+        map_info_window_html: render_to_string(partial: "markets/map_info_window", locals: {market: market}),
+        map_marker_html: render_to_string(partial: "markets/map_marker", locals: {market: market})
+      }
+      end
+    end
     @stalls = @stalls.sort_by(&:created_at).reverse
     @stall = Stall.new
   end
