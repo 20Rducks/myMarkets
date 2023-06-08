@@ -41,29 +41,29 @@
 
 
 
-<%# Card Group Layout %>
+
+<%# Main Card %>
 <div class="container">
-  <div class="row">
-    <%# <div class="card-group"> %>
-  <%# Card Layout %>
-      <% @stalls.each do |stall| %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 rails-lg-3 row-cols-xl-4 g-4">
+    <% @stalls.each do |stall| %>
       <%= link_to stall_path(stall) do %>
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card home-card-img h-100">
-            <%# <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
+        <div class="col">
+          <div class="card home-card-img mb-4">
+            <span><img class="card-img-top" alt="..." src="<%# cl_stall_path stall.photos.first.key%>"></span>
             <div class="card-body">
-              <h5 class="card-title"><%= stall.name %></h5>
+              <h5 class="card-title"><%= stall.name  %></h5>
               <p class="card-text"><%= stall.description %></p>
-              <p class="card-text"><%= stall.category %></p>
-              <p class="card-text"><%= stall.website_url %></p>
-              <p class="card-text"><%= stall.instagram_url %></p>
-              <p class="card-text"><%= stall.twitter_url %></p>
+            </div>
+            <div class="card-footer">
+             <small class="text-white"><%= stall.category %></small>
+             <small class="text-white"><%= stall.website_url %></small>
+             <small class="text-white"><%= stall.instagram_url %></small>
+             <small class="text-white"><%= stall.twitter_url %></small>
             </div>
           </div>
         </div>
       <% end %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
@@ -73,3 +73,57 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%= render "shared/footer-index" %>
+
+
+<%# Card Group Layout %>
+<div class="container">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
+
+
+  <%# Card Layout %>
+    <% @stalls.each do |stall| %>
+      <%= link_to stall_path(stall) do %>
+          <div class="col">
+            <div class="card home-card-img h-100">
+              <%# <%= cl_image_tag stall.photos.first.key, class: "card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= stall.name %></h5>
+                <p class="card-text"><%= stall.bio %></p>
+                <p class="card-text"><%= stall.address %></p>
+                <p class="card-text"><%= stall.phone_number %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-dark"><%= stall.website %></small>
+              </div>
+              <div class="card-footer d-inline-flex">
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 stall-icon text-center">
+                  <i class="fa-solid fa-wheelchair"></i>
+                  <%# <p>Wheelchair Access</p> %>
+                  <% if @stall.website_url %>
+                    <%= @stall.website_url %>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 stall-icon text-center">
+                  <i class="fa-solid fa-paw"></i>
+                  <%# <p>Pet Friendly</p> %>
+                  <% if stall.instagram_url %>
+                    <%= stall.instagram_url %>
+                  <% end %>
+                </div>
+
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 stall-icon text-center">
+                  <i class="fa-solid fa-square-parking"></i>
+                  <%# <p>Parking</p> %>
+                  <% if @stall.parking %>
+                    <%= @stall.parking %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

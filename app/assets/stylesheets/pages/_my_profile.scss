@@ -1,0 +1,14 @@
+.list-group-item {
+  max-height: 250px;
+  width: 250px;
+
+}
+
+.list-group {
+  display: flex!important;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
+  flex-direction: row !important;
+  align-items: center;
+}

@@ -10,6 +10,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @market = Market.find(params[:market_id])
+    @markets = Market.all
     @trip.market = @market
     @trip.user = current_user
 

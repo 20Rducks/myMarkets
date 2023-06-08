@@ -7,11 +7,8 @@ class User < ApplicationRecord
 
   has_many :trips, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  # Nullify, code in view
-
-  # # validates :username, :bio, presence: true
-  # validates :username, uniqueness: true
-  # validates :username, length: { in: 5..20 }
+  has_many :friendships_as_asker, class_name: "Friendship", foreign_key: "asker_id"
+  has_many :friendships_as_receiver, class_name: "Friendship", foreign_key: "receiver_id"
 end
 
 # sanitized params application controller DEVISE NOTES
