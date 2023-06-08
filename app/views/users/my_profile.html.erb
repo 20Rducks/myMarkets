@@ -1,57 +1,83 @@
 
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <h2> Welcome back, <%= @user.username %> !</h2>
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid home-tabs">
   <div class="row">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
+    <nav>
+      <div class="nav nav-tabs" id="myTab" role="tablist">
         <button class="nav-link active" id="favourites-tab" data-bs-toggle="tab" data-bs-target="#favourites-tab-pane" type="button" role="tab" aria-controls="favourites-tab-pane" aria-selected="true">favourites</button>
-      </li>
-      <li class="nav-item" role="presentation">
         <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming-tab-pane" type="button" role="tab" aria-controls="upcoming-tab-pane" aria-selected="false">upcoming</button>
-      </li>
-      <li class="nav-item" role="presentation">
         <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past-tab-pane" type="button" role="tab" aria-controls="past-tab-pane" aria-selected="false">past</button>
-      </li>
-      <li class="nav-item" role="presentation">
         <button class="nav-link" id="invitations-tab" data-bs-toggle="tab" data-bs-target="#invitations-tab-pane" type="button" role="tab" aria-controls="invitations-tab-pane" aria-selected="false" invitations>invitations</button>
-      </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="favourites-tab-pane" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
-        <ul class="list-group list-group-flush d-flex px-5">Favourites!
-
-        </ul>
       </div>
 
-      <div class="tab-pane fade" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
-        <ul class="list-group list-group-flush d-flex px-5">Upcoming Trips!
+      <div class="tab-content" id="myTabContent">
 
-        </ul>
+      <div class="tab-pane fade show active justify-content-center" id="favourites-tab-pane" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
+          <h2 class="mt-2">Favourite Trips</h2>
+      </div>
+      <div class="trip-tabs">
+
+          <ol class="list-group list-group-numbered d-flex">
+
+            <%= @user.trips.each do |trip| %>
+            <li class="list-group-item">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Your trip on <%= trip.date %></div>
+                  <div> Message: <%= trip.message %></div>
+                  <% trip.users.each do |t| %>
+                    <div> Friends: </div>
+                    <div><%= t.username %></div>
+                  <% end %>
+                <div> Market: <%= trip.market.name %></div>
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <% end %>
+
+          </ol>
+
+
+<div class="container">
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+      <div class="tab-pane fade d-flex justify-content-center" id="upcoming-tab-pane" role="tabpanel" aria-labelledby="upcoming-tab" tabindex="0">
+          <h2>Upcoming Trips!</h2>
+          <%= @user.trips %>
       </div>
 
-      <div class="tab-pane fade" id="past-tab-pane" role="tabpanel" aria-labelledby="past-tab" tabindex="0">
-        <ul class="list-group list-group-flush d-flex px-5">Past Trips!
-
-        </ul>
+      <div class="tab-pane fade d-flex justify-content-center" id="past-tab-pane" role="tabpanel" aria-labelledby="past-tab" tabindex="0">
+          <h2>Past Trips!</h2>
+          <%= @user.trips %>
       </div>
 
-      <div class="tab-pane fade" id="invitations-tab-pane" role="tabpanel" aria-labelledby="invitations-tab" tabindex="0">
-        <ul class="list-group list-group-flush d-flex px-5">Invitations!
-
-        </ul>
+      <div class="tab-pane fade d-flex justify-content-center" id="invitations-tab-pane" role="tabpanel" aria-labelledby="invitations-tab" tabindex="0">
+          <h2>Invitations!</h2>
+          <%= @user.trips %>
       </div>
 
     </div>
   </div>
 </div>
 
-<%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+<div class="m-5">
+  <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
   <%= date %>
 
   <% trips.each do |trip| %>
@@ -60,5 +86,7 @@
     </div>
   <% end %>
 <% end %>
+</div>
 
-<%= render "shared/footer" %>
+
+<%= render "shared/footer-index" %>
