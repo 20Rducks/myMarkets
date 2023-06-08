@@ -1,14 +1,27 @@
-.list-group-item {
-  max-height: 250px;
-  width: 250px;
+// .list-group-item {
+//   max-height: 250px;
+//   width: 250px;
 
+// }
+
+// .list-group {
+//   display: flex!important;
+//   flex-wrap: wrap;
+//   align-content: space-between;
+//   justify-content: center;
+//   flex-direction: column !important;
+//   align-items: center;
+// }
+
+.home-card {
+  width: 30%;
+  border: 1px solid black;
 }
 
-.list-group {
-  display: flex!important;
-  flex-wrap: wrap;
-  align-content: space-between;
-  justify-content: center;
-  flex-direction: row !important;
-  align-items: center;
+.card-footer {
+  margin-bottom: 0%;
+}
+
+.card-body {
+  min-height: 50px !important;
 }
