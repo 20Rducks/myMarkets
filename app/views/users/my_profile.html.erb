@@ -1,8 +1,4 @@
 
-<h1>Users#my_profile</h1>
-<p>Find me in app/views/users/my_profile.html.erb</p>
-<%= @user.username %>
-
 <div class="container">
   <div class="row">
     <h2> Welcome back, <%= @user.username %> !</h2>
@@ -55,10 +51,14 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <h2>Calendar Area</h2>
+<%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+  <%= date %>
+
+  <% trips.each do |trip| %>
+    <div class="trip">
+      <p><%= trip.message %></p>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
+
+<%= render "shared/footer" %>

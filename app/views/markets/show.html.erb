@@ -27,18 +27,19 @@
 
 
     <%# Address %>
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill justify-content-center">
       <div class="py-4 pl-4 text-center">
         <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
         <h4>Market Opening Times</h4>
+
+        <% days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"] %>
+
         <ul class="list-group list-group-flush d-flex px-5">
-          <li class="list-group-item d-flex justify-content-between align-items-center">Mon<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Tue<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Wed<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Thur<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Fri<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Sat<span>date</span></li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">Sun<span>date</span></li>
+          <% @markets.each_with_index do |market, d| %>
+            <% days.each do |day| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span><%= market.days[d][:opening_time] %></span><%= market.days[d][:closing_time] %></span></li>
+            <% end %>
+          <% end %>
         </ul> <%#<%= @market.open%>
 
 
@@ -63,20 +64,21 @@
             <%= simple_form_for [@market, @trip] do |trip_form| %>
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="tripModalLabel">Modal title</h1>
+                  <h1 class="modal-title fs-5" id="tripModalLabel">Book Your Trip</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                   <%# trip_form.label "" %>
-                  <%= trip_form.input :message %>
-                  <%= trip_form.input :date, html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                  <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
+                  <%= trip_form.input :message, label: "Send a message"%>
+                  <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                  <div class="check-inputs">
+                    <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
+                  </div>
                 </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <%= trip_form.submit class: "btn btn-primary" %>
+                <div class="modal-footer d-flex justify-content-center">
+                  <%= trip_form.submit class: "btn btn-primary w-80" %>
                 </div>
               </div>
 
@@ -90,11 +92,10 @@
 
     <%# Map %>
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
-      <h1>Map Section</h1>
-          <div style="width: 100%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
   </div>
@@ -111,51 +112,54 @@
 
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row text-center my-5 icon-header">
     <h5> Things to know! </h5>
   </div>
 
-  <div class="row d-flex">
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
+  <div class="row d-flex justify-content-center market-icons">
+    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
       <i class="fa-solid fa-phone"></i>
-      <p>Phone Contact</p>
-      <p><%= @market.phone_number %></p>
+      <%# <p>Phone Contact</p> %>
+      <% if @market.phone_number %>
+        <%= @market.phone_number %>
+      <% end %>
+
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <i class="fa-solid fa-phone"></i>
-      <p>Website</p>
-      <p><%= @market.website %></p>
+    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+      <%# <i class="fa-solid fa-laptop"></i> %>
+      <% if @market.website %>
+        <a class="fa-solid fa-laptop" href="<%= @market.website %>">Website</a>
+      <% end %>
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <i class="fa-solid fa-phone"></i>
-      <p>Wheelchair Access</p>
+    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+      <i class="fa-solid fa-wheelchair"></i>
+      <%# <p>Wheelchair Access</p> %>
       <% if @market.wheelchair_access %>
         <%= @market.wheelchair_access %>
       <% end %>
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <i class="fa-solid fa-phone"></i>
-      <p>Pet Friendly</p>
+    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+      <i class="fa-solid fa-paw"></i>
+      <%# <p>Pet Friendly</p> %>
       <% if @market.pet_friendly %>
         <%= @market.pet_friendly %>
       <% end %>
     </div>
 
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <i class="fa-solid fa-phone"></i>
-      <p>Local Transport</p>
-      <p><%= @market.phone_number %></p>
-    </div>
-
-    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
-      <i class="fa-solid fa-phone"></i>
-      <p>Parking</p>
+    <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+      <i class="fa-solid fa-square-parking"></i>
+      <%# <p>Parking</p> %>
       <% if @market.parking %>
         <%= @market.parking %>
       <% end %>
     </div>
   </div>
-<div>
+  <div>
+</div>
+</div>
+
+
+<%= render "shared/footer" %>

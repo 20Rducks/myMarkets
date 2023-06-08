@@ -21,6 +21,7 @@ class MarketsController < ApplicationController
     end
     @markets = @markets.sort_by(&:created_at).reverse
     @market = Market.new
+    # @markets.days = days
   end
 
   def show

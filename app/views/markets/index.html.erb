@@ -10,7 +10,7 @@
 
 <%# Card Group Layout %>
 <div class="container">
-  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-4">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
 
 
   <%# Card Layout %>
@@ -46,3 +46,5 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<%= render "shared/footer-index" %>
