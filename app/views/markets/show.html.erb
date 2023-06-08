@@ -72,6 +72,9 @@
                   <%# trip_form.label "" %>
                   <%= trip_form.input :message, label: "Send a message"%>
                   <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+
+
+                  
                   <div class="check-inputs">
                     <%= trip_form.collection_check_boxes :user_ids, User.all, :id, :username, include_hidden: false %>
                   </div>
