@@ -19,13 +19,11 @@
     <% @markets.each do |market| %>
       <%= link_to market_path(market) do %>
           <div class="col">
-            <div class="card home-card-img h-100">
+            <div class="index-card card home-card-img h-100">
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5>
                 <p class="card-text"><%= market.bio %></p>
-                <p class="card-text"><%= market.address %></p>
-                <p class="card-text"><%= market.phone_number %></p>
               </div>
               <div class="card-footer">
                 <small class="text-dark"><%= market.website %></small>

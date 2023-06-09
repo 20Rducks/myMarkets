@@ -1,13 +1,14 @@
 <%# Basic Hero/Jumbo/Header %>
-<div class="headcontainer pb-4">
-  <img class="img-fluid mx-auto" id="market" src="https://media.cntraveller.com/photos/634d634df774a8ab1b881107/16:9/w_5472,h_3078,c_limit/Borough%20MarketE6BC30.jpeg" alt="Botanical Bazaar BG">
-  <div class="centered text-center px-5 py-4 d-flex justify-content-center align-center">
-      <h2 class="py-1">Welcome to myMarkets</h2>
-      <p>myMarkets, Our Markets, Your Market!</p>
-          <%# Add to href link %>
+<div class="headcontainer head-banner">
+  <%# <img class="img-fluid mx-auto" id="market" src="https://media.cntraveller.com/photos/634d634df774a8ab1b881107/16:9/w_5472,h_3078,c_limit/Borough%20MarketE6BC30.jpeg" alt="Botanical Bazaar BG"> %>
+  <div class=" centered text-center px-5 py-4 d-flex justify-content-center align-center">
+      <div class="banner-text">
+        <h2 class="py-1">Welcome to myMarkets</h2>
+        <p>myMarkets, Our Markets<br>Your Market!</p>
+      </div>  <%# Add to href link %>
       <%= form_with url: markets_path, method: :get, class: "text-center pt-2" do |form| %>
         <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
-        <%= form.submit "Search", class: "btn btn-btn btn-home" %>
+        <%= form.submit "Search", class: "btn btn-primary btn-home" %>
       <% end %>
   </div>
 </div>
@@ -16,10 +17,12 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
-      <h4>We at myMarkets love all markets, Some just a little bit more</h4>
-      <small><em>Mrs Butterworth</em></small>
-      <p>Beautiful food, I'd definitely come back!</p>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center my-auto px-5 split-header">
+      <div class="split-header mt-3">
+        <h4>We at myMarkets love all markets, Some just a little bit more</h4>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>
+      </div>
     </div>
 
 
@@ -47,24 +50,26 @@
         </div>
       </div>
 
-
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
-      <h4>We at myMarkets love all traders, Some just a little bit more</h4>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center my-auto px-5 split-header">
+      <div class="split-header mt-3">
+      <h4>We at myMarkets love all traders,<br> Some just a little bit more</h4>
       <small><em>Lord ShepherdsPie</em></small>
       <p>Exquisite, mouth watering!</p>
     </div>
 
   </div>
 </div>
-
+</div>
 
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
-      <h4>We at myMarkets love all our users! Join Us!</h4>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center my-auto px-5 split-header">
+      <div class="split-header mt-3">
+      <h4>We at myMarkets love all our users!<br> Join Us!</h4>
       <small><em>Quincey Adams</em></small>
       <p>myMarkets are the best, saved my marriage</p>
+    </div>
     </div>
 
       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
