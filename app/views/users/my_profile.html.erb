@@ -90,20 +90,28 @@
     </div>
 
     <%# TRIP-BUDDDDDDDIES %>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-      <% @user.friendships_as_receiver.each do |friend| %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
-      <% end %>
-    </div>
+    <%# <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+      <%  User.where(id: friend.asker_id) || User.where(id: friend.receiver_id) %>
+    <%# </div>
 
     <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
 
     </div>
   </div>
+</div> %>
+
+<%# TRIP-BUDDDDDDDIES %>
+<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+  <% @friendships.each do |friendship| %>
+    <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
+    <% friend = User.find(friend_id) %>
+    <h5><%= friend.username %></h5>
+  <% end %>
 </div>
+
+<div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
+</div>
+
 
 
 <div class="profile-calendar m-5">
