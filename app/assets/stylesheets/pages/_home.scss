@@ -6,6 +6,39 @@ a {
   }
 }
 
+.btn {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-content: normal;
+  justify-content: space-evenly !important;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px;
+  text-decoration: none !important;
+  width: 114px;
+  border-color: rgb(43, 6, 30) !important;
+  text-decoration: none !important;
+  color: white !important;
+  border-radius: 10px;
+  background-color: rgb(58, 90, 64) !important;
+  transition: 0.3s;
+  border: 1px solid black;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 5px 2px rgb(103, 153, 100);
+  }
+  a {
+    text-decoration: none !important;
+    color: black;
+  }
+}
+
+body {
+  background-color: rgba(245, 245, 245, 1);
+}
+
 .head-banner {
   background: rgb(0,61,30);
   background: radial-gradient(circle, rgba(0,61,30,1) 0%, rgba(0,61,30,1) 50%, rgba(0,0,0,0.5327380952380952) 100%);
@@ -112,12 +145,28 @@ a {
   }
 }
 
+.card-body {
+  background-color: rgba(189, 217, 191, 0.5)
+}
+
+
+
+.card-footer-icon {
+  background-color: rgba(0,61,30, 0.7) !important;
+  color:rgba(245, 245, 245, 1);
+}
+
 .card-img-top {
   max-height: 270px;
 }
 
-.btn-btn {
-  .btn-btn {
+.index-card {
+  height: 300px !important;
+  width: 225px;
+}
+
+.btn {
+  .btn {
     display: flex;
     flex-direction: row !important;
     flex-wrap: nowrap;
