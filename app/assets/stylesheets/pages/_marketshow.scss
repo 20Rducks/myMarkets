@@ -8,9 +8,19 @@
 }
 
 .cover {
-  object-fit: cover;
+  // object-fit: cover;
   width: 100%
 
+}
+
+.contain {
+  object-fit: contain;
+  max-height: 350px;
+  min-width: 250px;
+}
+
+.market-image {
+  max-height: 300px;
 }
 
 .home-review {
@@ -60,11 +70,14 @@
   // border: 1px solid black;
 }
 
-.traders-carousel {
-  height: 300px;
-  // border: 1px solid black;
+.index-card {
+  height: 300px !important;
 }
 
+.carousel-img {
+  width: 19%;
+  max-height: 200px;
+}
 .check-inputs {
   display: flex;
   flex-direction: column;
