@@ -1,11 +1,11 @@
 .simple-calendar {
   table {
     min-height: 80vh;
-    background-color: #e1f5e1;
+    background-color: #F5F5F5
   }
 
   .today {
-    background-color: #3dc53d;
+    background-color: #BDD9BF
   }
 
   .trip {
@@ -17,7 +17,7 @@
   }
 
   .trip:hover {
-    background-color: #a2d8a2; /* Hovered shade of green for date boxes with trip.message */
-    color: #000000; /* Text color for trip.message on hover */
+    background-color: #003E1F; /* Hovered shade of green for date boxes with trip.message */
+    color: #F5F5F5; /* Text color for trip.message on hover */
   }
 }

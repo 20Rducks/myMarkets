@@ -332,7 +332,6 @@ market.save!
 StallsAtMarket.create(market:, stall:)
 
 
-
 market = Market.create!(
   name: "Spitalfields Market",
   bio: "A lively market with a mix of food, fashion, and art stalls",

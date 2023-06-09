@@ -10,7 +10,7 @@ class StallsController < ApplicationController
       # @stalls = @market.stalls
       @stalls = Stall.all
     end
-    
+
     @markets = []
     @stalls.each do |stall|
       stall.markets.each do |market|
@@ -35,7 +35,14 @@ class StallsController < ApplicationController
   end
 
   def show
-    # @market = Market.find(params[:id])
+    @stall = Stall.find(params[:id])
+    @market = @stall.markets.first # a stall can belong to multiple markets, so retrieving the first associated market
+    @marker = {
+      lat: @market.latitude,
+      lng: @market.longitude,
+      map_info_window_html: render_to_string(partial: "markets/map_info_window", locals: { market: @market }),
+      map_marker_html: render_to_string(partial: "markets/map_marker", locals: { market: @market })
+    } if @market.present? && @market.geocoded?
   end
 
   def new
