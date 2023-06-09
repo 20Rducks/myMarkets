@@ -29,6 +29,10 @@ class TripsController < ApplicationController
           map_info_window_html: render_to_string(partial: "/markets/map_info_window", locals: {market: @market}),
           map_marker_html: render_to_string(partial: "/markets/map_marker", locals: {market: @market})
         }]
+        @friendships_asker = Friendship.where(asker_id: current_user.id)
+        @friendships_receiver = Friendship.where(receiver_id: current_user.id)
+        @friendships = @friendships_asker + @friendships_receiver
+        @friendships.each { |friend| User.find(friend.asker_id) }
       render "markets/show", status: :unprocessable_entity
     end
   end
