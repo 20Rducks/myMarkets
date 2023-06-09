@@ -33,15 +33,19 @@
       <div class="py-4 pl-4 text-center">
         <h4>Market Opening Times</h4>
 
-        <% days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"] %>
+        <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
 
         <ul class="list-group list-group-flush d-flex px-5">
-          <% @markets.each_with_index do |market, d| %>
-            <% days.each do |day| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span><%= market.days[d][:opening_time] %></span><%= market.days[d][:closing_time] %></span></li>
-            <% end %>
+          <% days.each do |int, day| %>
+              <%if @market.days[int].open == true %>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span><%= @market.days[int].opening_time%></span><%= @market.days[int].closing_time %></span></li>
+              <% else %>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span>Closed</span></li>
+              <% end %>
           <% end %>
         </ul> <%#<%= @market.open%>
+
+
 
 
         <% if @trip.errors.any?  %>

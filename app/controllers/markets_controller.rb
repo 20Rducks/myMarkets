@@ -32,6 +32,7 @@ class MarketsController < ApplicationController
   def show
     # The `geocoded` scope filters only flats with coordinates
     @markets = Market.all
+    @market = Market.find(params[:id])
     @stalls = Stall.all
     # @stall = Stall.find(params[:id])
     @trip = Trip.new

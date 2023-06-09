@@ -16,7 +16,7 @@ puts "Creating stalls within markets..."
 
 # STALLS WITHIN MARKETS !!!!!!!!!!!! #
 
-user = User.create!(email: 'test1@test.com', username: "Fred Flintstone", password: '123123', bio: "Fucking love bao!")
+user = User.create!(email: 'test1@test.com', username: "Fred Flintstone", password: '123123', bio: "Fucking love me some bao!")
 
 stall = Stall.create!(
   name: "Bao Boys",
@@ -68,7 +68,7 @@ stall.save
 
 
 
-user = User.create!(email: 'test3@test.com', username: "George Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test3@test.com', username: "George Flintstone", password: '123123', bio: "Happy to be here, love food and fun")
 
 stall = Stall.create!(
   name: "Tasty Tacos",
@@ -93,7 +93,7 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test4@test.com', username: "Sarah Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test4@test.com', username: "Sarah Flintstone", password: '123123', bio: "I like big bao and i cannot lie")
 
 stall = Stall.create!(
   name: "Crispy Crepes",
@@ -118,7 +118,7 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test5@test.com', username: "Barry Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test5@test.com', username: "Barry Flintstone", password: '123123', bio: "New to this app, join me for a culinary adventure")
 
 stall = Stall.create!(
   name: "Heavenly Hotdogs",
@@ -143,11 +143,11 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test6@test.com', username: "Dave Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test6@test.com', username: "Dave Flintstone", password: '123123', bio: "fish and chippies ftw")
 
 stall = Stall.create!(
   name: "Gourmet Grilled Cheese",
-  category: "Savory",
+  category: "Savoury",
   description: "Artisanal grilled cheese sandwiches.",
   website_url: "wwww.GourmetGrilledCheese.com",
   instagram_url: "www.instagram.com/gourmetgrilledcheese",
@@ -168,7 +168,7 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test7@test.com', username: "Craig Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test7@test.com', username: "Craig Flintstone", password: '123123', bio: "I like sushi I like sushi I like sushi")
 
 stall = Stall.create!(
   name: "Zesty Zoodles",
@@ -193,7 +193,7 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test8@test.com', username: "Andre Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test8@test.com', username: "Andre Flintstone", password: '123123', bio: "Love me some fresh organic veg")
 
 stall = Stall.create!(
   name: "Spicy Samosas",
@@ -218,11 +218,11 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test9@test.com', username: "Bobby Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test9@test.com', username: "Bobby Flintstone", password: '123123', bio: "I like turtles please")
 
 stall = Stall.create!(
   name: "Savory Skewers",
-  category: "Savory",
+  category: "Savoury",
   description: "Flavorful grilled skewers.",
   website_url: "wwww.SavorySkewers.com",
   instagram_url: "www.instagram.com/savoryskewers",
@@ -243,7 +243,7 @@ stall.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg
 stall.save
 
 
-user = User.create!(email: 'test10@test.com', username: "Mary Flintstone", password: '123123', bio: "I like bao I like bao I like bao")
+user = User.create!(email: 'test10@test.com', username: "Mary Flintstone", password: '123123', bio: "Fruit vendors are my friends")
 
 stall = Stall.create!(
   name: "Divine Donuts",
@@ -292,8 +292,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/2c/3
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/2c/3a/1c/broadway-market-vendor.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -323,8 +323,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/3b/f
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/3b/fc/30/caption.jpg?w=500&h=400&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -354,8 +354,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/5d/1
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/5d/18/7e/caption.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -385,8 +385,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/85/9
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/85/98/a4/caption.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -416,8 +416,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/c0/7
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/c0/71/6e/brixton-village.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -447,8 +447,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/2e/2
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/2e/21/df/brick-lane-market.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -478,8 +478,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/f3/5
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/a3/d1/18/photo5jpg.jpg?w=200&h=-1&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -494,7 +494,7 @@ market = Market.create!(
   address: "Ropewalk, Bermondsey, London, SE1 3PA",
   website: "www.maltbystreet.co.uk",
   phone_number: "07896 432571",
-  wheelchair_access: partial,
+  wheelchair_access: true,
   parking: false,
   pet_friendly: true
 )
@@ -509,8 +509,8 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/66/b
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/89/8e/bf/caption.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
@@ -540,14 +540,13 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/d7/9
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/8d/ca/22/caption.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
 
 StallsAtMarket.create(market:, stall:)
-
 
 
 market = Market.create!(
@@ -571,35 +570,21 @@ file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/2d/0
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
 file = URI.open('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/d7/5d/e0/caption.jpg?w=200&h=200&s=1')
 market.photos.attach(io: file, filename: "baoboys.jpg", content_type: 'images/jpg')
-[ true, false, true, false, true, false, true ].each_with_index do |open, d|
-  market.days << Day.new(day_of_week: d, open:, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
+[ true, false, true, false, true, false, true ].each_with_index do |openn, d|
+  market.days << Day.new(day_of_week: d, open: openn, opening_time: Time.now.beginning_of_day + 8.hours, closing_time: Time.now.beginning_of_day + 17.hours  )
 end
 
 market.save!
 
 StallsAtMarket.create(market:, stall:)
 
+# users = User.all
 
-
-
-
-
-
-
-
-
-
-
-
-
-# TRIPS !!!!!!!!!!! #
-
-
-
-# USERS !!!!!!!!!!!!!
-
-
-
-# FRIENDSHIPS !!!!!!!!!!!!!
-
-Friendship.create!(asker_id: 6, receiver_id: 7)
+# users.length.times do |t|
+#   t += 1
+#   user1 = User.find(t)
+#   user2 = users.filter { |u| u.id != user1.id }.sample
+#   user3 = users.filter { |u| u.id != user1.id }.sample
+#   Friendship.create!(asker_id: user1, receiver_id: user2)
+#   Friendship.create!(asker_id: user1, receiver_id: user3)
+# end

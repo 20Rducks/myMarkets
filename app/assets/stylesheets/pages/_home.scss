@@ -89,12 +89,6 @@ a {
   }
 }
 
-// .card-img {
-//   transition: 0.2s;
-//   padding: 0;
-//     &:hover {
-//       box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
-//       transform: scale(1.02);
-//       cursor: pointer;
-//   }
-// }
+.card-img-top {
+  max-height: 270px;
+}

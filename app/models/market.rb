@@ -9,7 +9,7 @@ class Market < ApplicationRecord
 
   validates :name, :address, :bio, presence: true
   validates :bio, length: { in: 20..100 }
-  validates :name, length: { in: 5..20 }
+  validates :name, length: { in: 5..30 }
 end
 
 # TODO regex for website if present
