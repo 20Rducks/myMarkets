@@ -1,10 +1,14 @@
-
 <%# Basic Hero/Jumbo/Header %>
 <div class="headcontainer pb-4">
   <img class="img-fluid mx-auto" id="market" src="https://media.cntraveller.com/photos/634d634df774a8ab1b881107/16:9/w_5472,h_3078,c_limit/Borough%20MarketE6BC30.jpeg" alt="Botanical Bazaar BG">
-  <div class="centered text-center px-5 py-4 d-flex">
-      <h2>Welcome to myMarket</h2>
-      <p>Plenty of markets to suit your needs</p>
+  <div class="centered text-center px-5 py-4 d-flex justify-content-center align-center">
+      <h2 class="py-1">Welcome to myMarkets</h2>
+      <p>myMarkets, Our Markets, Your Market!</p>
+          <%# Add to href link %>
+      <%= form_with url: markets_path, method: :get, class: "text-center pt-2" do |form| %>
+        <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
+        <%= form.submit "Search", class: "btn btn-primary btn-home" %>
+      <% end %>
   </div>
 </div>
 
@@ -12,37 +16,20 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
-      <h1>Some Reviews</h1>
-      <p>More Info More Info More Info More Info More Info More Info</p>
-      <div class="btn btn-primary">Become a trader</div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
+      <h4>We at myMarkets love all markets, Some just a little bit more</h4>
+      <small><em>Mrs Butterworth</em></small>
+      <p>Beautiful food, I'd definitely come back!</p>
     </div>
+
 
       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
-        <div class="headcontainer pb-4"></div>
-          <img class="img-fluid mx-auto" id="market" src="https://a.cdn-hotels.com/gdcs/production62/d1286/6b53ad20-e42c-11e8-a16b-0242ac110006.jpg" alt="Botanical Bazaar BG">
-        <div class="centered text-center px-5 py-4 d-flex"></div>
-    </div>
-
-  </div>
-</div>
-
-
-<div class="container-fluid home-header">
-  <div class="row">
-
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
-        <div class="headcontainer pb-4"></div>
-          <img class="img-fluid mx-auto" id="market" src="https://www.holidify.com/images/cmsuploads/compressed/Borough_Market_cake_stall2C_London2C_England_-_Oct_2008_20200929181545.jpg" alt="Botanical Bazaar BG">
-        <div class="centered text-center px-5 py-4 d-flex"></div>
-    </div>
-
-
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
-      <h1>Some Reviews</h1>
-      <p>More Info More Info More Info More Info More Info More Info</p>
-      <div class="btn btn-primary">Become a trader</div>
-    </div>
+        <div class="headcontainer"></div>
+          <img class="img-fluid mx-auto cover " id="market" src="https://a.cdn-hotels.com/gdcs/production62/d1286/6b53ad20-e42c-11e8-a16b-0242ac110006.jpg" alt="Botanical Bazaar BG">
+        <div class="centered d-flex justify-content-center ">
+          <div class="btn btn-primary mx-auto">Top Markets</div>
+        </div>
+      </div>
 
   </div>
 </div>
@@ -51,17 +38,43 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
-      <h1>Some Reviews</h1>
-      <p>More Info More Info More Info More Info More Info More Info</p>
-      <div class="btn btn-primary">Become a trader</div>
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
+        <div class="headcontainer"></div>
+          <img class="img-fluid mx-auto cover " id="market" src="https://www.holidify.com/images/cmsuploads/compressed/Borough_Market_cake_stall2C_London2C_England_-_Oct_2008_20200929181545.jpg" alt="Botanical Bazaar BG">
+
+        <div class="centered d-flex justify-content-center ">
+          <div class="btn btn-primary mx-auto">Top Traders</div>
+        </div>
+      </div>
+
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
+      <h4>We at myMarkets love all traders, Some just a little bit more</h4>
+      <small><em>Lord ShepherdsPie</em></small>
+      <p>Exquisite, mouth watering!</p>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container-fluid home-header">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header text-center my-auto">
+      <h4>We at myMarkets love all our users! Join Us!</h4>
+      <small><em>Quincey Adams</em></small>
+      <p>myMarkets are the best, saved my marriage</p>
     </div>
 
       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
-        <div class="headcontainer pb-4"></div>
-          <img class="img-fluid mx-auto" id="market" src="https://www.cktravels.com/wp-content/uploads/2020/09/DSC00868.jpg" alt="Botanical Bazaar BG">
-        <div class="centered text-center px-5 py-4 d-flex"></div>
-    </div>
+        <div class="headcontainer"></div>
+          <img class="img-fluid mx-auto cover " id="market" src="https://www.cktravels.com/wp-content/uploads/2020/09/DSC00868.jpg" alt="Botanical Bazaar BG">
+
+        <div class="centered d-flex justify-content-center ">
+          <div class="btn btn-primary mx-auto">Join Us</div>
+        </div>
+      </div>
 
   </div>
 </div>

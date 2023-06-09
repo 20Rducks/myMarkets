@@ -1,19 +1,16 @@
 <%# Basic Hero/Jumbo/Header %>
-<div class="container-fluid home-header">
+<div class="container-fluid home-header mt-2">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header justify-content-center text-center my-auto">
       <h1><%= @market.name %></h1>
       <h4><%= @market.bio %></h4>
       <p> Address <%= @market.address %></p>
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
-      <div class="py-4 pl-4 align-middle">
-
-        <%# <%= cl_image_tag @market.photos[0].key %>
-
-        <h4> MARKET IMAGE </h4>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header">
+      <div class="mx-auto">
+      <%= cl_image_tag @market.photos[0].key, class: "cover"%>
       </div>
     </div>
 
@@ -24,12 +21,16 @@
 <%# Map Section %>
 <div class="container-fluid map-header">
   <div class="row">
-
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
+    <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
 
     <%# Address %>
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill justify-content-center">
       <div class="py-4 pl-4 text-center">
-        <%# <%= cl_image_tag @market.photos[0].key, class: "card-img-top card-img" %>
         <h4>Market Opening Times</h4>
 
         <% days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"] %>
@@ -70,7 +71,7 @@
                   <%# trip_form.label "" %>
                   <%= trip_form.input :message, label: "Send a message"%>
                   <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                <%= @friendships.each do |friend| %>
+                <% @friendships.each do |friend| %>
                   <div class="check-inputs">
                     <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.asker_id) || User.where(id: friend.receiver_id), :id, :username, include_hidden: false %>
                   </div>
@@ -85,26 +86,100 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+  <%# Map %>
 
 
-    <%# Map %>
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
-      <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<%# Card Group Layout %>
+<div class="container pt-5">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
+
+
+  <%# Card Layout %>
+    <% @stalls.each do |stall| %>
+      <%= link_to stall_path(stall) do %>
+          <div class="col">
+            <div class="card home-card-img">
+              <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
+              <div class="card-body">
+                <h5 class="card-title"><%= stall.name %></h5>
+                <p class="card-text"><%= stall.description %></p>
+                <p class="card-text"><%= stall.category %></p>
+              </div>
+              <div class="card-footer">
+                <div class=" text-center">
+                  <i class="fa-solid fa-wheelchair"></i>
+                  <%# <p>Wheelchair Access</p> %>
+                  <% if stall.website_url %>
+                    <%= stall.website_url %>
+                  <% end %>
+                </div>
+                <div class=" text-center">
+                  <i class="fa-solid fa-paw"></i>
+                  <%# <p>Pet Friendly</p> %>
+                  <% if stall.instagram_url %>
+                    <%= stall.instagram_url %>
+                  <% end %>
+                </div>
+
+                <div class=" text-center">
+                  <i class="fa-solid fa-square-parking"></i>
+                  <%# <p>Parking</p> %>
+                  <% if stall.twitter_url %>
+                    <%= stall.twitter_url %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+      </div>
     </div>
-
   </div>
 </div>
 
-<div class="container-fluid traders-carousel" >
-  <div class="row">
-    <h5>Explore Traders</h5>
-    <p>Traders Carousel</p>
-
+<%#<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <%= cl_image_tag stall.photos.first[0]key, class: "d-block w-25"
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+      <img src="..." class="d-block w-25" alt="...">
+    </div>
   </div>
-</div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>%>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,6 +232,6 @@
   <div>
 </div>
 </div>
-
+</div>
 
 <%= render "shared/footer" %>

@@ -24,19 +24,10 @@
   flex-flow: column !important;
 }
 
-.card-footer {
-  // position: absolute;
-  // margin-bottom: 0%;
-  // vertical-align: bottom;
-  // bottom: 0px;
-  // margin-top: 20%;
-  // margin-bottom: 0%;
 
-}
-
-.card-body {
+.card-body#myprofile {
   position: relative;
-  min-height: 100px !important;
+  min-height: 150px !important;
 }
 
 .profile-calendar {

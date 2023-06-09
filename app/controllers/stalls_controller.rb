@@ -10,12 +10,14 @@ class StallsController < ApplicationController
       # @stalls = @market.stalls
       @stalls = Stall.all
     end
+    
     @markets = []
     @stalls.each do |stall|
       stall.markets.each do |market|
         @markets << market
       end
     end
+
     @markets.uniq!
     @markers = []
     @markets.each do |market|
@@ -33,6 +35,7 @@ class StallsController < ApplicationController
   end
 
   def show
+    # @market = Market.find(params[:id])
   end
 
   def new

@@ -2,7 +2,7 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 p-4 split-header">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 p-4 split-header justify-content-center text-center my-auto">
       <h1><%= @stall.name %></h1>
       <h5><%= @stall.description %></h5>
       <h5><%= @stall.category %></h5>
@@ -11,7 +11,6 @@
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
       <div class="py-4 pl-4 align-middle">
         <%= cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
-        <h4> STALL IMAGE </h4>
       </div>
     </div>
 
@@ -26,17 +25,15 @@
     <%# Left hand review %>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 d-flex justify-content-center">
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>
       </div>
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
-      </div>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>      </div>
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
-      </div>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>      </div>
     </div>
 
 
@@ -44,25 +41,25 @@
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
       <div class="show-products d-flex">
         <div class="show-product p-4 m-2">
-          <h5>Product1<h5>
-          <p>Some Information</p>
+          <h5>Fine appalacian llama<h5>
+          <p>Grown in the wilds of borneo</p>
         </div>
 
         <div class="show-product p-4 m-2">
-          <h5>Product2<h5>
-          <p>Some Information</p>
+          <h5>Sensation sardinian salmon<h5>
+          <p>Grown in the wilds of borneo</p>
         </div>
       </div>
 
       <div class="show-products d-flex">
         <div class="show-product p-4 m-2">
-          <h5>Product3<h5>
-          <p>Some Information</p>
+          <h5>Sensation sardinian salmon<h5>
+          <p>Fine appalacian llama</p>
         </div>
 
         <div class="show-product p-4 m-2">
-          <h5>Product4<h5>
-          <p>Some Information</p>
+          <h5>Sensation sardinian salmon<h5>
+          <p>Grown in the wilds of borneo</p>
         </div>
       </div>
     </div>
@@ -70,17 +67,14 @@
     <%# Right hand review %>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 d-flex justify-content-center">
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
-      </div>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>      </div>
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
-      </div>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>      </div>
       <div class="show-review p-4 m-2">
-        <p>Fake review Fake review Fake review Fake review Fake
-        review Fake review Fake review Fake review</p>
-      </div>
+        <small><em>Mrs Butterworth</em></small>
+        <p>Beautiful food, I'd definitely come back!</p>      </div>
     </div>
   </div>
 </div>
@@ -105,9 +99,9 @@
     <%# @stall.markets.each do |market| %>
       <div class="py-4 pl-4 align-middle">
         <%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
-        <h2> Trading at <%= @stall.markets[0] %> </h2>
-        <h3> Address <%= @stall.markets[0]%> </h3>
-        <h4> Trades on days </h4>
+        <%# <%= cl_image_tag @market.photos.first.key, class: "card-img-top"%>
+        <h2> Trading at <%= @stall.markets[0].name %> </h2>
+        <h3> <%= @stall.markets[0].address%> </h3>
         <%# end %>
 
         <%# Socials %>
@@ -144,7 +138,7 @@
 
   </div>
 </div>
-
+<%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
 <div class="container-fluid">
   <h4 style="height:200px">Carousel</h4>
 
