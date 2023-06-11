@@ -84,16 +84,6 @@
 <div class="container-fluid map-header">
   <div class="row">
 
-    <%# Map %>
-
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
-      <div style="width: 100%; height: 400px;"
-          data-controller="map"
-          data-map-markers-value="<%= @marker.to_json if @marker %>"  # Add this line to pass the marker data
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    </div>
-
-
 
     <%# Address %>
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill">

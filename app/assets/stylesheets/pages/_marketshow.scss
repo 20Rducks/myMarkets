@@ -10,7 +10,6 @@
 .cover {
   // object-fit: cover;
   width: 100%
-
 }
 
 .contain {
@@ -114,4 +113,29 @@
 
 .icon-header {
   font-size: 20px;
+}
+
+.market-index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.head-banner-market {
+  background: rgb(0,61,30);
+  background: radial-gradient(circle, rgba(0,61,30,1) 0%, rgba(0,61,30,1) 50%, rgba(0,0,0,0.5327380952380952) 100%);
+  height: 200px !important;
+  p {
+    color: rgba(245, 245, 245, 1);
+  }
+  h2 {
+    color: rgba(245, 245, 245, 1);
+  }
+  // color: rgba(0, 61, 30, 0.1);
+}
+
+.mapboxgl-map .mapboxgl-map-markets {
+  overflow: hidden;
+  position: fixed !important;
+  left: 40px !important;
+  width: 45% !important;
 }
