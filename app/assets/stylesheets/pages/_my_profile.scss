@@ -23,7 +23,6 @@
   h2 {
     color: rgba(245, 245, 245, 1);
   }
-  // color: rgba(0, 61, 30, 0.1);
 }
 
 .split-header {
@@ -32,16 +31,17 @@
 
 .home-card {
   min-width: 30%;
+  border-radius: 10px;
+  border: 0.5px solid rgba(0,61,30,0.3);
 }
 
-.card-img-top {
-  height: 200px;
+.show-card.card-img-top {
+  min-height: 225px;
 }
 
 .show-card {
-  height: 400px;
+  max-height: 400px;
 }
-
 
 #nav-profile {
   min-width: 30%;
@@ -54,14 +54,14 @@
   min-height: 150px !important;
 }
 
-.profile-calendar {
-  margin-top: 60% !important;
-}
-
 .simple-calendar {
-  margin-top: 15%;
+  margin-top: 20%;
 }
 
 .tab-content {
   justify-content: center;
+}
+
+.friends {
+  display: flex;
 }

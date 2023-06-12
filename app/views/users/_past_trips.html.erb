@@ -1,26 +1,23 @@
 <%# PAST TRIPS %>
 <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-  <div class="trip-tabs flex-fill">
-
-    <div class="card-group flex-column justify-content-center ">
+  <div class="trip-tabs d-flex">
+    <div class="card-group flex-fill justify-content-center ">
       <% @user.trips.each do |trip| %>
-
         <% if trip.date < Time.now %>
-
-          <div class="upcoming-home-card home-card-img">
+          <div class="home-card home-card-img m-2">
             <%= link_to market_path(trip.market) do %>
               <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
-              <div class="card-body">
-                <h5 class="card-title">How was your trip to <%= trip.market.name %>
-                <h5> on <%= trip.date %></h5>
+              <div class="card-body" >
+                <h5 class="card-title"><small>How was</small> <b><%= trip.market.name %>?</b></h5>
+                <p><%= trip.date %></p>
                 <% trip.users.each do |t| %>
                   <%= link_to user_path(t) do %>
-                    <div> You went with <%= t.username %></div>
+                    <div><small>Get ready to join</small> <em><%= t.username %></em></div>
                   <% end %>
                 <% end %>
               </div>
               <div class="card-footer">
-                <small class="text-dark"><%= trip.message %></small>
+                <small class="text-dark">Group Message : <%= trip.message %></small>
               </div>
             <% end %>
           </div>

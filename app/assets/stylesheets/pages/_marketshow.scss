@@ -21,28 +21,6 @@
   max-height: 300px;
 }
 
-.home-review {
-}
-
-.products {
-}
-
-
-// Review Section
-.review-section {
-}
-
-.show-review {
-}
-
-.show-product {
-}
-
-
-// Map Section
-.map-header {
-}
-
 .split-map-header {
   width: 50%;
 }
@@ -58,14 +36,6 @@
 
 button, input, optgroup, select, textarea {
   margin-left: 8px !important;
-}
-
-.market-opening {
-  // max-width: 100%
-}
-
-
-.social {
 }
 
 .carousel-img {
@@ -84,6 +54,11 @@ button, input, optgroup, select, textarea {
   align-items: center;
 }
 
+.modal-check-inputs{
+  display: inline;
+  // flex-direction: row;
+}
+
 .modal {
   border-radius: 15px;
   border: 2px solid rbgb(43, 6, 30);
@@ -96,10 +71,13 @@ button, input, optgroup, select, textarea {
 
 .modal-body {
   background-color: rgba(189, 217, 191, 0.5);
-  display: flex !important;
-  flex-wrap: wrap !important;
-  flex-direction: row !important;
-  justify-content: center !important;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: flex-start;
+  align-items: center;
+
 }
 
 .collection_check_boxes {

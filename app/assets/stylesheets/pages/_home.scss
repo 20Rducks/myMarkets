@@ -35,6 +35,35 @@ a {
   }
 }
 
+.btn-small {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-content: normal;
+  justify-content: space-evenly !important;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px;
+  text-decoration: none !important;
+  width: 100px;
+  border-color: rgb(43, 6, 30) !important;
+  text-decoration: none !important;
+  color: white !important;
+  border-radius: 10px;
+  background-color: rgb(90, 153, 102) !important;
+  transition: 0.3s;
+  border: 1px solid black;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 5px 2px rgb(103, 153, 100);
+  }
+  a {
+    text-decoration: none !important;
+    color: black;
+  }
+}
+
 body {
   background-color: rgba(245, 245, 245, 1);
 }
@@ -49,7 +78,6 @@ body {
   h2 {
     color: rgba(245, 245, 245, 1);
   }
-  // color: rgba(0, 61, 30, 0.1);
 }
 
 .split-header {
@@ -74,10 +102,6 @@ body {
   }
 }
 
-// .home-header {
-//   background-color: rgba(0, 61, 30, 0.6);
-// }
-
 #market {
   min-width: 100%;
   opacity: 0.7;
@@ -97,7 +121,6 @@ body {
   font-size: 20px;
   font-weight: bold;
   background-color: rgba(0, 62, 31, 0.2);
-  // background-color: rgba(231, 238, 231, 0.4);
 
   h2 {
     font-size: 50px;
@@ -152,20 +175,37 @@ body {
   background-color: rgba(189, 217, 191, 0.5)
 }
 
-
-
 .card-footer-icon {
   background-color: rgba(0,61,30, 0.7) !important;
   color:rgba(245, 245, 245, 1);
 }
 
-.card-img-top {
-  max-height: 270px;
+.index-card.card-img-top {
+  min-height: 270px;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
 }
+
+.index-card .card-body {
+  height: 130px;
+}
+
+.index-card .footer {
+  border-bottom-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
 
 .index-card {
   height: 300px !important;
   width: 225px;
+
+  h5 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 10px;
+  }
 }
 
 .btn {
