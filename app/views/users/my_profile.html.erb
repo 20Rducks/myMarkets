@@ -1,17 +1,18 @@
 <%# Basic Hero/Jumbo/Header %>
 <div class="container-fluid">
   <div class="row">
-    <div class="page-header mt-3 d-flex">
-      <div class="my-auto">
-        <h2> Welcome back, <%= @user.username %> !</h2>
+    <div class="head-banner mt-3 d-flex text-center">
+      <div class="my-auto text-center">
+        <h2 class="ml-5"> Welcome back, <%= @user.username %> !</h2>
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="container-fluid home-tabs">
-  <div class="row">
+<div class="container-fluid pt-5 px-5" style="height: 400px;">
+
+  <div class="row home-tabs">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upcoming Trips</button>
@@ -55,8 +56,8 @@
           </div>
         </div>
 
-    <%# PAST TRIPS %>
-    <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+       <%# PAST TRIPS %>
+        <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
           <div class="trip-tabs flex-fill">
 
             <div class="card-group flex-column justify-content-center ">
@@ -86,37 +87,34 @@
             </div>
           </div>
         </div>
-    </div>
-    </div>
+      </div>
 
-    <%# TRIP-BUDDDDDDDIES %>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-      <% @user.friendships_as_receiver.each do |friend| %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
-        <%= friend.asker.username %>
+<%# TRIP-BUDDDDDDDIES %>
+<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+  <% @friendships.each do |friendship| %>
+    <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
+    <% friend = User.find(friend_id) %>
+    <h5><%= friend.username %></h5>
+  <% end %>
+</div>
+
+<div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
+</div>
+
+
+
+
+    <div class="profile-calendar m-5">
+      <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+      <%= date %>
+
+      <% trips.each do |trip| %>
+        <div class="trip">
+          <p><%= trip.message %></p>
+        </div>
       <% end %>
-    </div>
-
-    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-
-    </div>
+    <% end %>
   </div>
 </div>
-
-
-<div class="profile-calendar m-5">
-  <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
-  <%= date %>
-
-  <% trips.each do |trip| %>
-    <div class="trip">
-      <p><%= trip.message %></p>
-    </div>
-  <% end %>
-<% end %>
-</div>
-
 
 <%= render "shared/footer-index" %>

@@ -8,9 +8,9 @@
       <h5><%= @stall.category %></h5>
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-header flex-fill">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 flex-fill">
       <div class="py-4 pl-4 align-middle">
-        <%= cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
+        <%= cl_image_tag @stall.photos[0].key, class: "contain card-img" %>
       </div>
     </div>
 
@@ -84,15 +84,6 @@
 <div class="container-fluid map-header">
   <div class="row">
 
-    <%# Map %>
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header">
-      <div style="width: 100%; height: 400px;"
-          data-controller="map"
-          data-map-markers-value="<%= @marker.to_json if @marker %>"  # Add this line to pass the marker data
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    </div>
-
 
     <%# Address %>
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill">
@@ -100,8 +91,10 @@
       <div class="py-4 pl-4 align-middle">
         <%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
         <%# <%= cl_image_tag @market.photos.first.key, class: "card-img-top"%>
-        <h2> Trading at <%= @stall.markets[0].name %> </h2>
-        <h3> <%= @stall.markets[0].address%> </h3>
+        <% @stall.markets.each do |market| %>
+          <h1>hello</h1><h2> Trading at <%= market.name %> </h2>
+          <h2> Trading at <%= market.address %> </h2>
+        <% end %>
         <%# end %>
 
         <%# Socials %>

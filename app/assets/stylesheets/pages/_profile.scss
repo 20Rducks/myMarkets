@@ -1,3 +1,31 @@
 .home-tabs {
-  height: 400px;
+  background-color: rgba(189, 217, 191, 0.5);
+  height: 550px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: rgba(245, 245, 245, 1);
+}
+
+#navContact {
+  background-color: rgba(0,61,30,1);
+
+  color: rgba(43, 6, 30, 1);
+}
+
+// .tab-pane {
+//   background-color: rgba(189, 217, 191, 0.5);
+// }
+
+.nav-tabs .nav-link {
+  background-color: rgba(0,61,30,1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.nav-link {
+  text-decoration: none !important;
+  color: white;
+  &:hover {
+    color: rgba(189, 217, 191, 0.5);
+  }
 }

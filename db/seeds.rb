@@ -577,13 +577,14 @@ market.save!
 
 StallsAtMarket.create(market:, stall:)
 
-# users = User.all
+users = User.all
 
-# users.length.times do |t|
-#   t += 1
-#   user1 = User.find(t)
-#   user2 = users.filter { |u| u.id != user1.id }.sample
-#   user3 = users.filter { |u| u.id != user1.id }.sample
-#   Friendship.create!(asker_id: user1, receiver_id: user2)
-#   Friendship.create!(asker_id: user1, receiver_id: user3)
-# end
+users.length.times do |t|
+  first_index = User.first.id
+  next_index = first_index + t
+  user1 = User.find(next_index)
+  user2 = users.filter { |u| u.id != user1.id }.sample
+  user3 = users.filter { |u| u.id != user1.id }.sample
+  Friendship.create!(asker_id: user1.id, receiver_id: user2.id)
+  Friendship.create!(asker_id: user1.id, receiver_id: user3.id)
+end
