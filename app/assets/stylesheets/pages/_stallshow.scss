@@ -11,13 +11,11 @@
   align-content: normal;
   justify-content: center;
   align-items: normal;
-  // border: 1px solid black;
   }
 
 .show-review {
   background-color: #BDD9BF;
   color: #2B061E;
-//   background-color: rgba(189, 217, 191, 0.5);
   border-radius: 10px;
   transition: 0.2s;
   padding: 0;
@@ -27,7 +25,6 @@
       cursor: pointer;
   }
 }
-
 
 .show-product {
   background-color: #F5F5F5;
@@ -41,28 +38,24 @@
   }
 }
 
-
 .stall-carousel {
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(189, 217, 191, 0.5);
 }
 
-// Map Section
-.map-header {
-  // border: 1px solid black;
-}
-
-.split-map-header {
-  // border: 1px solid black;
-}
 
 .split-address-header {
   display: flex;
   align-items: center;
   align-content: center;
-  flex-wrap: wrap;  // border: 1px solid black;
+  flex-wrap: wrap;
 }
 
-.social {
-  // border: 1px solid black;
+.show-card .card-img-top {
+  max-height: 225px;
+  object-fit: cover;
+}
+
+.index-card .card-img-top {
+  min-height: 225px;
 }

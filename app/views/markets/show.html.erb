@@ -3,30 +3,33 @@
   <div class="row">
 
     <div class="head-banner-market text-white justify-content-center my-3 pt-3 pl-5">
-      <h1><%= @market.name %> <span class="pl-4"><%= @market.average_rating / @market.reviews.count %><i class="fa-regular fa-star"></i></span></h1>
+      <h1><%= @market.name %> <span class="pl-4">
+        <% if @market.reviews.exists? %>
+        <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
+        <% end %>
       <h4><%= @market.bio %></h4>
       <p> <%= @market.address %></p>
 
       <div class="socials">
         <% if @market.phone_number %>
-        <i class="fa-solid fa-phone"></i>
+        <i class="fa-solid fa-phone pb-3"></i>
           <%= @market.phone_number %>
         <% end %>
         <br>
-        <% if @market.website%>
-          <a class="fa-solid fa-laptop text-white" href="<%= @market.website %>"></a>
+        <% if @market.website %>
+          <a class="fa-solid fa-laptop text-white m-1 mb-2" href="<%= @market.website %>"></a>
         <% end %>
 
         <% if @market.wheelchair_access == true %>
-        <i class="fa-solid fa-wheelchair"></i>
+        <i class="fa-solid fa-wheelchair m-1"></i>
         <% end %>
 
         <% if @market.pet_friendly == true  %>
-        <i class="fa-solid fa-paw"></i>
+        <i class="fa-solid fa-paw m-1"></i>
         <% end %>
 
         <% if @market.parking == true %>
-        <i class="fa-solid fa-square-parking"></i>
+        <i class="fa-solid fa-square-parking m-1"></i>
         <% end %>
       </div>
 
@@ -37,7 +40,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid mt-4">
   <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header px-5">
     <div style="width: 100%; height: 600px;"
@@ -47,8 +50,8 @@
   </div>
 
     <%# Address %>
-  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill justify-content-center px-5">
-    <div class="text-center">
+  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header">
+    <div class="text-center" style="width:80%">
       <h4>Market Opening Times</h4>
 
       <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
@@ -75,31 +78,29 @@
         </script>
       <% end %>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
-          Pin To Calendar
-        </button>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
+        Pin To Calendar
+      </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <%= simple_form_for [@market, @trip] do |trip_form| %>
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <%# trip_form.label "" %>
-                      <%= trip_form.input :message, label: "Send a message"%>
-                      <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                    <div class="d-flex">
-                      <% current_user.friends.each do |friend| %>
-                        <div class="check-inputs">
-                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.id), :id, :username, include_hidden: false %>
-
-                          <div class="modal-footer justify-content-center">
-                          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <%= simple_form_for [@market, @trip] do |trip_form| %>
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%# trip_form.label "" %>
+                    <%= trip_form.input :message, label: "Send a message"%>
+                    <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                  <div class="d-flex">
+                    <% @friendships.each do |friend| %>
+                      <div class="check-inputs">
+                        <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
+                        <div class="modal-footer justify-content-center">
                         </div>
                       </div>
                     <% end %>
@@ -149,10 +150,10 @@
   </div>
 </div>
 
-<div class="inline-flex justify-content-center mx-auto text-center mb-2">
-<h2 class="my-2"> Discover more of <%= @market.name %>
+<div class="inline-flex justify-content-center mx-auto text-center mb-2 head-banner-market pb-4">
+<h2 class="my-2 pt-3 pb-3"> Discover more of <%= @market.name %>
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
+  <div class="carousel-inner pt-4">
     <div class="carousel-item active" data-bs-interval="10000">
       <%= cl_image_tag @market.photos[0].key, class: "carousel-img w-20"%>
       <%= cl_image_tag @market.photos[1].key, class: "carousel-img w-20"%>

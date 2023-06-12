@@ -1,24 +1,28 @@
 <%# INVITATIONS TAB %>
 <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-  <% current_user.pending_invitations.each do |invitation| %>
-    <div class="home-card home-card-img m-2">
-      <%= link_to market_path(invitation.trip.market) do %>
-        <%= cl_image_tag invitation.trip.market.photos.first.key, class: "card-img-top" %>
-        <div class="card-body" id="myprofile">
-          <h5 class="card-title">Get ready for your trip to <%= invitation.trip.market.name %></h5>
-          <h5><%= invitation.trip.date %></h5>
-          <% invitation.trip.users.each do |t| %>
-            <%= link_to user_path(t) do %>
-              <div> You're going with <%= t.username %></div>
+  <div class="trip-tabs d-flex">
+    <div class="card-group flex-fill justify-content-center ">
+    <% current_user.pending_invitations.each do |invitation| %>
+      <div class="home-card home-card-img m-2">
+        <%= link_to market_path(invitation.trip.market) do %>
+          <%= cl_image_tag invitation.trip.market.photos.first.key, class: "card-img-top" %>
+          <div class="card-body" id="myprofile">
+            <h5 class="card-title"><small>Going to</small><b> <%= invitation.trip.market.name %></b>?</h5>
+            <h5><%= invitation.trip.date %></h5>
+            <% invitation.trip.users.each do |t| %>
+              <%= link_to user_path(t) do %>
+                <div><small>Join</small> <em><%= t.username %></em></div>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
       <div class="card-footer">
-        <small class="text-dark"><%= invitation.trip.message %></small>
-        <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"} %>
-        <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch} %>
+        <small class="text-dark">Group Message : <%= invitation.trip.message %></small><br>
+        <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch}, class: "btn btn-btn" %>
+        <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"}, class: "btn btn-small" %>
       </div>
     </div>
   <% end %>
+  </div>
+</div>
 </div>
