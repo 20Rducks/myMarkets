@@ -1,8 +1,8 @@
 a {
   text-decoration: none !important;
-  color: black !important;
+  color: #2B061E !important;
   &:hover {
-    color: black;
+    color: #2B061E;
   }
 }
 
@@ -59,7 +59,7 @@ body {
 .headcontainer {
   position: relative;
   text-align: center;
-  color: white;
+  color: #F5F5F5;
   img {
     max-height: 590px;
   }
@@ -68,7 +68,7 @@ body {
 .headcontainer {
   position: relative;
   text-align: center;
-  color: white;
+  color: #F5F5F5;
   img {
     max-height: 590px;
   }
@@ -92,10 +92,13 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: #002914;
+  opacity: 100%;
   font-size: 20px;
   font-weight: bold;
+  background-color: rgba(0, 62, 31, 0.2);
   // background-color: rgba(231, 238, 231, 0.4);
+
   h2 {
     font-size: 50px;
   }

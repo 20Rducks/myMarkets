@@ -1,16 +1,16 @@
 .simple-calendar {
   table {
     min-height: 80vh;
-    background-color: #F5F5F5
+    background-color: #BDD9BF;
   }
 
   .today {
-    background-color: #BDD9BF
+    background-color: #F5F5F5;
   }
 
   .trip {
     background-color: #c4e6c4;
-    color: #000000; /* Text color for trip.message */
+    color: #2B061E; /* Text color for trip.message */
     padding: 8px 24px;
     border-radius: 4px;
     transition: background 0.3s ease;
