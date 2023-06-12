@@ -1,0 +1,7 @@
+    <% if @stall.reviews %>
+      <% @stall.reviews.each do |r| %>
+        <small><%= r.rating %></small>
+        <p><%= r.description %></p>
+        <%= link_to "Delete", review_path(r), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
+    <% end %>

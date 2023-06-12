@@ -2,15 +2,37 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 p-4 split-header justify-content-center text-center my-auto">
+    <div class="head-banner-market justify-content-center  my-auto">
       <h1><%= @stall.name %></h1>
       <h5><%= @stall.description %></h5>
       <h5><%= @stall.category %></h5>
-    </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 flex-fill">
-      <div class="py-4 pl-4 align-middle">
-        <%= cl_image_tag @stall.photos[0].key, class: "contain card-img" %>
+            <div class="socials">
+        <!-- Facebook -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #3b5998;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+
+        <!-- Twitter -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #55acee;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <!-- Instagram -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #ac2bac;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
       </div>
     </div>
 
@@ -19,23 +41,20 @@
 
 
 <%# Mid-Section %>
-<div class="container-fluid review-section text-center">
+<div class="container-fluid review-section text-center d-flex justify-content-center">
   <div class="row">
-
+    <% if @stall.reviews %>
     <%# Left hand review %>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 d-flex justify-content-center">
-      <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>
-      </div>
-      <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>      </div>
-      <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>      </div>
-    </div>
-
+    <% @stall.reviews.each do |r| %>
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 ">
+        <div class="show-review p-4 m-2">
+            <small><%= r.rating %></small>
+            <p><%= r.description %></p>
+            <%= link_to "Delete", review_path(r), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
     <%# Central Products %>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
@@ -67,74 +86,48 @@
     <%# Right hand review %>
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 d-flex justify-content-center">
       <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>      </div>
-      <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>      </div>
-      <div class="show-review p-4 m-2">
-        <small><em>Mrs Butterworth</em></small>
-        <p>Beautiful food, I'd definitely come back!</p>      </div>
+
+      <%# render "shared/reviews" %>
+
     </div>
   </div>
 </div>
-
-
+</div>
 <%# Map Section %>
 <div class="container-fluid map-header">
   <div class="row">
 
 
     <%# Address %>
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header flex-fill">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header flex-fill">
     <%# @stall.markets.each do |market| %>
       <div class="py-4 pl-4 align-middle">
         <%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
         <%# <%= cl_image_tag @market.photos.first.key, class: "card-img-top"%>
+      <ul class="list-group list-group-flush d-flex px-5">
         <% @stall.markets.each do |market| %>
-          <h1>hello</h1><h2> Trading at <%= market.name %> </h2>
-          <h2> Trading at <%= market.address %> </h2>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Trading <%= market.name %> <%= link_to market_path(market), class: "btn, btn-primary" %></li>
         <% end %>
-        <%# end %>
-
-        <%# Socials %>
-        <div class="socials">
-          <!-- Facebook -->
-          <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #3b5998;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-
-          <!-- Twitter -->
-          <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #55acee;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <!-- Instagram -->
-          <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #ac2bac;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
+      </ul>
       </div>
     </div>
 
 
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header flex-fill">
+      <div class="py-4 pl-4 align-middle">
+      <% if current_user.stalls.include?(@stall) %>
+      <h2> Leave a review! </h2>
+      <%= render "shared/reviewsform" %>
+      <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
-<%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
+
+
 <div class="container-fluid">
   <h4 style="height:200px">Carousel</h4>
-
 </div>
 
 <%= render "shared/footer" %>
