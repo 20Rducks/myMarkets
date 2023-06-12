@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
   get "/my_profile", to: "users#my_profile"
 
+  patch "/users/:id", to: "users#create_friend"
+  # resources :friendship, only: %i[create]
+
   resources :markets, only: %i[index show] do
     resources :trips, only: %i[new create]
     resources :stalls, only: %i[index]

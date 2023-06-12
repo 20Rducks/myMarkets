@@ -1,13 +1,5 @@
 <%# Basic Hero/Jumbo/Header %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="page-header mt-3 d-flex">
-      <div class="my-auto">
-        <h2> <%= @user.username %> </h2>
-        <p> <%= @user.bio %> </p>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= render "users/create_friend" %>
 
 <%= render "shared/footer-index" %>
