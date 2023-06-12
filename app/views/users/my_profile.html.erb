@@ -22,95 +22,16 @@
     </div>
   </nav>
   <div class="tab-content mb-5 d-flex text-center mt-5" id="nav-tabContent">
+    <%= render 'upcoming_trips' %>
 
+    <%= render 'past_trips' %>
+    <%= render 'trip_buddies' %>
+    <%= render 'invitations' %>
+  </div>
 
-    <%# UPCOMING TRIPS %>
-    <div class="tab-pane fade show active justify-content-center" id="nav-home" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
-          <div class="trip-tabs d-flex">
-
-            <div class="card-group flex-fill justify-content-center ">
-              <% @user.trips.each do |trip| %>
-
-              <% if trip.date > Time.now %>
-
-              <div class="home-card home-card-img m-2">
-              <%= link_to market_path(trip.market) do %>
-              <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
-                <div class="card-body" id="myprofile">
-                  <h5 class="card-title">Get ready for your trip to <%= trip.market.name %></h5>
-                    <%= trip.date %></h5>
-                    <% trip.users.each do |t| %>
-                    <%= link_to user_path(t) do %>
-                      <div> You're going with <%= t.username %></div>
-                      <% end %>
-                    <% end %>
-                </div>
-                <% end %>
-                <div class="card-footer">
-                  <small class="text-dark"><%= trip.message %></small>
-                </div>
-              </div>
-              <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-       <%# PAST TRIPS %>
-        <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-          <div class="trip-tabs flex-fill">
-
-            <div class="card-group flex-column justify-content-center ">
-              <% @user.trips.each do |trip| %>
-
-              <% if trip.date < Time.now %>
-
-              <div class="upcoming-home-card home-card-img">
-              <%= link_to market_path(trip.market) do %>
-              <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
-                <div class="card-body">
-                  <h5 class="card-title">How was your trip to <%= trip.market.name %>
-                  <h5> on <%= trip.date %></h5>
-                    <% trip.users.each do |t| %>
-                    <%= link_to user_path(t) do %>
-                      <div> You went with <%= t.username %></div>
-                      <% end %>
-                    <% end %>
-                </div>
-                <% end %>
-                <div class="card-footer">
-                  <small class="text-dark"><%= trip.message %></small>
-                </div>
-              </div>
-              <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<%# TRIP-BUDDDDDDDIES %>
-<%# <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% @friendships.each do |friendship| %>
-    <%# <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
-    <%# <% friend = User.find(friend_id) %>
-    <%# <h5><%= friend.username %></h5>
-  <%# <% end %>
-<%# </div> %>
-
-<%# TRIP-BUDDDDDDDIES %>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% @friendships .each do |friendship| %>
-    <% friend = friendship.receiver_id == current_user.id ? friendship.asker : friendship.receiver %>
-    <h5><%= friend.username %></h5>
-  <% end %>
-</div>
-
-
-<div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-</div>
-
-
+<%# when the current user creates a trip it should be added to their calendar and their 'upcoming trips'.
+Whoever they have invited, the trip should populate the invitees 'invitations' and they should be able to accept / decline. Upon accepting,
+it should populate their upcoming trips and their calendar. Upon declining, the invitation should simply be deleted from the 'invitations' list. %>
 
 
     <div class="profile-calendar m-5">

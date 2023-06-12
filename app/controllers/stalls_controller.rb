@@ -46,7 +46,6 @@ class StallsController < ApplicationController
     } if @market.present? && @market.geocoded?
   end
 
-
   def new
     @stall = Stall.new
   end

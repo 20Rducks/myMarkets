@@ -78,9 +78,10 @@
                       <%= trip_form.input :message, label: "Send a message"%>
                       <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
                     <div class="d-flex">
-                      <% @friendships.each do |friend| %>
+                      <% current_user.friends.each do |friend| %>
                         <div class="check-inputs">
-                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
+                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.id), :id, :username, include_hidden: false %>
+
                           <div class="modal-footer justify-content-center">
                           </div>
                         </div>
