@@ -64,38 +64,38 @@
           Pin To Calendar
         </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-
-            <%= simple_form_for [@market, @trip] do |trip_form| %>
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <%# trip_form.label "" %>
-                  <%= trip_form.input :message, label: "Send a message"%>
-                  <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                <div class="d-flex">
-                  <% @friendships.each do |friend| %>
-                    <div class="check-inputs">
-                      <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
-                      <div class="modal-footer justify-content-center">
-                      </div>
+            <!-- Modal -->
+            <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <%= simple_form_for [@market, @trip] do |trip_form| %>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                      <%# trip_form.label "" %>
+                      <%= trip_form.input :message, label: "Send a message"%>
+                      <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                    <div class="d-flex">
+                      <% @friendships.each do |friend| %>
+                        <div class="check-inputs">
+                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
+                          <div class="modal-footer justify-content-center">
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                    <%= trip_form.submit class: "btn btn-primary w-80" %>
                   <% end %>
                 </div>
-                <%= trip_form.submit class: "btn btn-primary w-80" %>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
 
 <%# Card Group Layout %>
 <div class="container pt-5">

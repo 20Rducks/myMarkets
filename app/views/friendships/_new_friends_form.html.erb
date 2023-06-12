@@ -1,0 +1,6 @@
+<p>Friends form!</p>
+  <%# <%= @friendship.asker_id = current_user.id %>
+  <%# <%= @friendship.receiver_id = @user.id %>
+<%= simple_form_for [@user] do |friend|%>
+  <%= friend.submit class: "btn btn-primary w-80" %>
+<% end %>

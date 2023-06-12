@@ -3,7 +3,7 @@
   <div class="row">
     <div class="head-banner mt-3 d-flex text-center">
       <div class="my-auto text-center">
-        <h2 class="ml-5"> Welcome back, <%= @user.username %> !</h2>
+        <h2 class="ml-5"> Welcome back, <%= current_user.username %> !</h2>
       </div>
     </div>
   </div>
@@ -90,13 +90,22 @@
       </div>
 
 <%# TRIP-BUDDDDDDDIES %>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+<%# <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
   <% @friendships.each do |friendship| %>
-    <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
-    <% friend = User.find(friend_id) %>
+    <%# <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
+    <%# <% friend = User.find(friend_id) %>
+    <%# <h5><%= friend.username %></h5>
+  <%# <% end %>
+<%# </div> %>
+
+<%# TRIP-BUDDDDDDDIES %>
+<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+  <% @friendships .each do |friendship| %>
+    <% friend = friendship.receiver_id == current_user.id ? friendship.asker : friendship.receiver %>
     <h5><%= friend.username %></h5>
   <% end %>
 </div>
+
 
 <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
 </div>
