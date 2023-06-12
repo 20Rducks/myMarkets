@@ -46,10 +46,15 @@ class MarketsController < ApplicationController
         map_info_window_html: render_to_string(partial: "map_info_window", locals: { market: @market }),
         map_marker_html: render_to_string(partial: "map_marker", locals: { market: @market })
       }]
+    # @friendships_asker = Friendship.where(asker_id: current_user.id)
+    # @friendships_receiver = Friendship.where(receiver_id: current_user.id)
+    # @friendships = @friendships_asker + @friendships_receiver
+    # @friendships.each { |friend| User.find(friend.asker_id) }
     @friendships_asker = Friendship.where(asker_id: current_user.id)
     @friendships_receiver = Friendship.where(receiver_id: current_user.id)
     @friendships = @friendships_asker + @friendships_receiver
-    @friendships.each { |friend| User.find(friend.asker_id) }
+    @users = []
+    @friendships.each { |friend| @users << User.find(friend.asker_id) }
   end
 
   def new

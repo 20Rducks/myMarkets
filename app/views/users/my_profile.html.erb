@@ -22,7 +22,12 @@
     </div>
   </nav>
   <div class="tab-content mb-5 d-flex text-center mt-5" id="nav-tabContent">
+    <%= render 'upcoming_trips' %>
 
+    <%= render 'past_trips' %>
+    <%= render 'trip_buddies' %>
+    <%= render 'invitations' %>
+  </div>
 
     <%# UPCOMING TRIPS %>
     <div class="tab-pane fade show active justify-content-center" id="nav-home" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
@@ -99,17 +104,15 @@
   </div>
 </div>
 
-
-
-    <div class="profile-calendar m-5">
-      <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
-      <%= date %>
-        <% trips.each do |trip| %>
-          <div class="trip">
-            <p><%= trip.message %></p>
-          </div>
-        <% end %>
+  <div class="profile-calendar m-5">
+    <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
+    <%= date %>
+      <% trips.each do |trip| %>
+        <div class="trip">
+          <p><%= trip.message %></p>
+        </div>
       <% end %>
+    <% end %>
   </div>
 </div>
 

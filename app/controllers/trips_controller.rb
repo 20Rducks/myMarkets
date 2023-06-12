@@ -41,15 +41,10 @@ class TripsController < ApplicationController
   private
 
   def set_trip
-    @booking = Booking.find(params[:id])
+    @trip = Trip.find(params[:id])
   end
 
   def trip_params
     params.require(:trip).permit(:message, :date, :user_ids)
   end
 end
-
-# t.text "message"
-# t.datetime "date"
-# t.bigint "user_id", null: false
-# t.bigint "market_id", null: false

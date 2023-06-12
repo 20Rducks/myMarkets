@@ -20,12 +20,6 @@ class UsersController < ApplicationController
     @friendships = @friendships_asker + @friendships_receiver
     @users = []
     @friendships.each { |friend| @users << User.find(friend.asker_id) }
-    # @friendships = User.find(@friendships)
-    # @friend = @user.friendships_as_asker.receiver.username
-    # @friendships_asker = Friendship.where(asker_id: current_user.id)
-    # @friendships_receiver = Friendship.where(receiver_id: current_user.id)
-    # @friendships = @friendships_asker + @friendships_receiver
-    # @friendships.each { |friend| User.find(friend.asker_id) }
   end
 
   def create_friend
