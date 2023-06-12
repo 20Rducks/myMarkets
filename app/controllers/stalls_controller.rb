@@ -36,6 +36,7 @@ class StallsController < ApplicationController
 
   def show
     @stall = Stall.find(params[:id])
+    @review = Review.new
     @market = @stall.markets.first # a stall can belong to multiple markets, so retrieving the first associated market
     @marker = {
       lat: @market.latitude,
@@ -44,6 +45,7 @@ class StallsController < ApplicationController
       map_marker_html: render_to_string(partial: "markets/map_marker", locals: { market: @market })
     } if @market.present? && @market.geocoded?
   end
+
 
   def new
     @stall = Stall.new

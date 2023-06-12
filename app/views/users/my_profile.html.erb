@@ -10,7 +10,7 @@
 </div>
 
 
-<div class="container-fluid pt-5 px-5" style="height: 400px;">
+<div class="container-fluid py-5 px-5" style="height: 400px;">
 
   <div class="row home-tabs">
   <nav>
@@ -90,30 +90,30 @@
       </div>
 
 <%# TRIP-BUDDDDDDDIES %>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% @friendships.each do |friendship| %>
-    <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
-    <% friend = User.find(friend_id) %>
-    <h5><%= friend.username %></h5>
-  <% end %>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+        <% @friendships.each do |friendship| %>
+          <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
+          <% friend = User.find(friend_id) %>
+          <h5><%= friend.username %></h5>
+        <% end %>
+      </div>
+
+    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
+    <h2>Invitations</h2>
+    </div>
+  </div>
 </div>
-
-<div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-</div>
-
-
 
 
     <div class="profile-calendar m-5">
       <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
       <%= date %>
-
-      <% trips.each do |trip| %>
-        <div class="trip">
-          <p><%= trip.message %></p>
-        </div>
+        <% trips.each do |trip| %>
+          <div class="trip">
+            <p><%= trip.message %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
   </div>
 </div>
 

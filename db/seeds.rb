@@ -298,9 +298,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
-
-
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 market = Market.create!(
   name: "Borough",
@@ -329,7 +329,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 market = Market.create!(
@@ -359,7 +361,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -390,7 +394,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -421,7 +427,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -452,7 +460,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -483,7 +493,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -514,7 +526,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 
@@ -545,7 +559,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 
 market = Market.create!(
@@ -575,7 +591,9 @@ end
 
 market.save!
 
-StallsAtMarket.create(market:, stall:)
+5.times do
+  StallsAtMarket.create(market:, stall: Stall.all.sample)
+end
 
 users = User.all
 

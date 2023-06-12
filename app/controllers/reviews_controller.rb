@@ -10,22 +10,27 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.stall = Stall.find(params[:stall_id])
+    @stall = Stall.find(params[:stall_id])
+    @trip = current_user.trips.where(market_id: @stall.markets.pluck(:id)).first
+
+    @review.stall = @stall
     @review.user = current_user
-    respond_to do |format|
-      if @review.save
-        format.html
-        format.json
-      else
-        format.html { render "reviews", status: :unprocessable_entity }
-        format.json
-      end
+    @review.trip = @trip
+
+    if @review.save
+      flash[:notice] = "You left a review"
+      redirect_to stall_path(@stall)
+    else
+      render 'stalls/show', status: :unprocessable_entity
+      # render "shared/reviewsform", status: :unprocessable_entity
     end
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @stall = @review.stall
     @review.destroy
-    redirect_to stall_reviews_path, status: :see_other
+    redirect_to stall_path(@stall), status: :see_other
   end
 
   private
@@ -34,3 +39,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:rating, :description)
   end
 end
+
+# t.bigint "user_id", null: false
+# t.bigint "stall_id", null: false
+# t.bigint "trip_id", null: false

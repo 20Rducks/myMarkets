@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :stalls, only: %i[index show] do
     resources :reviews, only: %i[index new create]
   end
-  resources :reviews, only: %i[destroy]
+  resources :reviews, only: %i[edit update destroy]
 end
 
 # Stalls CREATE nested within if users.trader?
