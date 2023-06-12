@@ -45,7 +45,7 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:message, :date)
+    params.require(:trip).permit(:message, :date, :user_ids)
   end
 end
 
