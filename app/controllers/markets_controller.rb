@@ -14,16 +14,18 @@ class MarketsController < ApplicationController
     else
       @markets = Market.all
     end
-      @markers = @markets.geocoded.map do |market|
-        {
-          lat: market.latitude,
-          lng: market.longitude,
-          map_info_window_html: render_to_string(partial: "map_info_window", locals: {market: market}),
-          map_marker_html: render_to_string(partial: "map_marker", locals: {market: market})
-        }
-        # @market = Market.find(params[:id])
-        # @stalls = @market.stalls
-      end
+
+    @markers = @markets.geocoded.map do |market|
+      {
+        lat: market.latitude,
+        lng: market.longitude,
+        map_info_window_html: render_to_string(partial: "map_info_window", locals: {market: market}),
+        map_marker_html: render_to_string(partial: "map_marker", locals: {market: market})
+      }
+      # @market = Market.find(params[:id])
+      # @stalls = @market.stalls
+    end
+
     @markets = @markets.sort_by(&:created_at).reverse
     @market = Market.new
     # @markets.days = days
@@ -34,6 +36,7 @@ class MarketsController < ApplicationController
     @markets = Market.all
     @market = Market.find(params[:id])
     @stalls = @market.stalls
+    @reviews = Review.all
     # @stall = Stall.find(params[:id])
     @trip = Trip.new
       @market = Market.find(params[:id])

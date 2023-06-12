@@ -1,7 +1,6 @@
 
 // Head Section
 .split-header {
-  // border: 1px solid black;
   display: -ms-inline-flexbox;
   flex-flow: wrap;
   padding: 0;
@@ -23,35 +22,25 @@
 }
 
 .home-review {
-  // border: 1px solid black;
 }
 
 .products {
-  // border: 1px solid black;
 }
 
 
 // Review Section
 .review-section {
-  // border: 1px solid black;
 }
 
 .show-review {
-  // border: 1px solid black;
 }
 
-// .show-products {
-//   max-width: 150px;
-// }
-
 .show-product {
-  // border: 1px solid black;
 }
 
 
 // Map Section
 .map-header {
-  // border: 1px solid black;
 }
 
 .split-map-header {
@@ -59,22 +48,36 @@
 }
 
 .split-address-header {
-  width: 50% !important;
   display: flex;
   flex-flow: column;
   justify-content: center!important;
+  flex-wrap: wrap;
+  width: 150%;
 }
+
+
+button, input, optgroup, select, textarea {
+  margin-left: 8px !important;
+}
+
+.market-opening {
+  // max-width: 100%
+}
+
 
 .social {
-  // border: 1px solid black;
 }
-
-
 
 .carousel-img {
   width: 19%;
   max-height: 200px;
 }
+
+.carousel-img.stall-img {
+  width: 60%;
+  max-height: 75%;
+}
+
 .check-inputs {
   display: flex;
   flex-direction: column;
@@ -123,7 +126,7 @@
 .head-banner-market {
   background: rgb(0,61,30);
   background: radial-gradient(circle, rgba(0,61,30,1) 0%, rgba(0,61,30,1) 50%, rgba(0,0,0,0.5327380952380952) 100%);
-  height: 200px !important;
+  min-height: 200px !important;
   p {
     color: rgba(245, 245, 245, 1);
   }
@@ -135,7 +138,9 @@
 
 .mapboxgl-map .mapboxgl-map-markets {
   overflow: hidden;
-  position: fixed !important;
+  position: sticky !important;
+  position:-webkit-sticky;
+  top: 20%;
   left: 40px !important;
   width: 45% !important;
 }
