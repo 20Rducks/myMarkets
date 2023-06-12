@@ -1,15 +1,7 @@
 
-// Head Section
-.split-header {
-  // border: 1px solid black;
-}
-
-.home-review {
-  // border: 1px solid black;
-}
-
-.products {
-  // border: 1px solid black;
+.simple_form.new_review {
+  display: table-caption;
+  width: 180%;
 }
 
 .review-section {
@@ -50,6 +42,11 @@
 }
 
 
+.stall-carousel {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(189, 217, 191, 0.5);
+}
+
 // Map Section
 .map-header {
   // border: 1px solid black;
@@ -60,7 +57,10 @@
 }
 
 .split-address-header {
-  // border: 1px solid black;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;  // border: 1px solid black;
 }
 
 .social {

@@ -1,7 +1,7 @@
 <%# Basic Hero/Jumbo/Header %>
 <div class="container-fluid">
   <div class="row">
-    <div class="head-banner mt-3 d-flex text-center">
+    <div class="head-banner-market mt-3 d-flex text-center">
       <div class="my-auto text-center">
         <h2 class="ml-5"> Welcome back, <%= current_user.username %> !</h2>
       </div>
@@ -27,12 +27,9 @@
     <%# UPCOMING TRIPS %>
     <div class="tab-pane fade show active justify-content-center" id="nav-home" role="tabpanel" aria-labelledby="favourites-tab" tabindex="0">
           <div class="trip-tabs d-flex">
-
             <div class="card-group flex-fill justify-content-center ">
               <% @user.trips.each do |trip| %>
-
               <% if trip.date > Time.now %>
-
               <div class="home-card home-card-img m-2">
               <%= link_to market_path(trip.market) do %>
               <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
@@ -56,16 +53,14 @@
           </div>
         </div>
 
+
        <%# PAST TRIPS %>
         <div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-          <div class="trip-tabs flex-fill">
-
-            <div class="card-group flex-column justify-content-center ">
+          <div class="trip-tabs d-flex">
+            <div class="card-group flex-fill justify-content-center ">
               <% @user.trips.each do |trip| %>
-
               <% if trip.date < Time.now %>
-
-              <div class="upcoming-home-card home-card-img">
+              <div class="home-card home-card-img m-2">
               <%= link_to market_path(trip.market) do %>
               <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
                 <div class="card-body">
@@ -89,27 +84,20 @@
         </div>
       </div>
 
-<%# TRIP-BUDDDDDDDIES %>
-<%# <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% @friendships.each do |friendship| %>
-    <%# <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id%>
-    <%# <% friend = User.find(friend_id) %>
-    <%# <h5><%= friend.username %></h5>
-  <%# <% end %>
-<%# </div> %>
+    <%# TRIP-BUDDDDDDDIES %>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+        <% @friendships.each do |friendship| %>
+          <% friend_id = friendship.receiver_id == current_user.id ? friendship.asker_id : friendship.receiver_id %>
+          <% friend = User.find(friend_id) %>
+          <h5><%= friend.username %></h5>
+        <% end %>
+      </div>
 
-<%# TRIP-BUDDDDDDDIES %>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% @friendships .each do |friendship| %>
-    <% friend = friendship.receiver_id == current_user.id ? friendship.asker : friendship.receiver %>
-    <h5><%= friend.username %></h5>
-  <% end %>
+    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
+
+    </div>
+  </div>
 </div>
-
-
-<div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-</div>
-
 
 
 

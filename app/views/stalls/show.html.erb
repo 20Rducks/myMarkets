@@ -2,7 +2,7 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="head-banner-market justify-content-center  my-auto">
+    <div class="head-banner-market text-white justify-content-center my-3 pt-3 pl-5">
       <h1><%= @stall.name %></h1>
       <h5><%= @stall.description %></h5>
       <h5><%= @stall.category %></h5>
@@ -41,22 +41,26 @@
 
 
 <%# Mid-Section %>
-<div class="container-fluid review-section text-center d-flex justify-content-center">
-  <div class="row">
-    <% if @stall.reviews %>
-    <%# Left hand review %>
-    <% @stall.reviews.each do |r| %>
-      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 ">
-        <div class="show-review p-4 m-2">
-            <small><%= r.rating %></small>
+<div class="container-fluid text-center d-flex justify-content-center">
+  <% if @stall.reviews %>
+  <%# Left hand review %>
+  <% @stall.reviews.each do |r| %>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 ">
+      <div class="show-review p-2 m-2">
+          <p><em><%= r.user.username %></em></p>
+          <div class="review-footer d-inline-flex">
+            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
             <p><%= r.description %></p>
-            <%= link_to "Delete", review_path(r), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          </div>
+          </div><br>
+          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
-      <% end %>
+      </div>
     <% end %>
+  <% end %>
+</div>
 
     <%# Central Products %>
+<div class="container-fluid review-section text-center d-flex justify-content-center">
     <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
       <div class="show-products d-flex">
         <div class="show-product p-4 m-2">
@@ -82,52 +86,90 @@
         </div>
       </div>
     </div>
-
-    <%# Right hand review %>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 d-flex justify-content-center">
-      <div class="show-review p-4 m-2">
-
-      <%# render "shared/reviews" %>
-
-    </div>
   </div>
+
+<div class="container-fluid text-center d-flex justify-content-center">
+  <% if @stall.reviews %>
+  <%# Right hand review %>
+  <% @stall.reviews.each do |r| %>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 ">
+      <div class="show-review p-2 m-2">
+          <p><em><%= r.user.username %></em></p>
+          <div class="review-footer d-inline-flex">
+            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
+            <p><%= r.description %></p>
+          </div><br>
+          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-</div>
+
+
 <%# Map Section %>
-<div class="container-fluid map-header">
-  <div class="row">
+<div class="container map-header mt-5">
+  <div class="row text-center">
+
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header text-center">
+      <div class="py-4 pl-4 text-center">
+      <% if current_user.stalls.include?(@stall) %>
+      <h2 class="text-center"> Leave a review! </h2>
+      <%= render "shared/reviewsform" %>
+      <% end %>
+      </div>
+    </div>
 
 
     <%# Address %>
     <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header flex-fill">
     <%# @stall.markets.each do |market| %>
       <div class="py-4 pl-4 align-middle">
+      <h3> Trading at </h3>
         <%# cl_image_tag @stall.photos[0].key, class: "card-img-top card-img" %>
         <%# <%= cl_image_tag @market.photos.first.key, class: "card-img-top"%>
-      <ul class="list-group list-group-flush d-flex px-5">
-        <% @stall.markets.each do |market| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">Trading <%= market.name %> <%= link_to market_path(market), class: "btn, btn-primary" %></li>
-        <% end %>
-      </ul>
+        <ul class="list-group list-group-flush d-flex px-5">
+          <% @stall.markets.each do |market| %>
+          <% link_to market_path(market), class: "btn"%>
+          <li class="list-group-item d-flex justify-content-between align-items-center"> Trading <%= market.name %> </li>
+          <% end %>
+
+        </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center">
+        <div class="stall-carousel">
+          <h4>Some of our amazing produce</h4>
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <%= cl_image_tag @stall.photos[0].key, class: "carousel-img stall-img"%>
+                </div>
+
+                <% @stall.photos.each do |photo| %>
+                  <div class="carousel-item">
+                    <%= cl_image_tag photo.key, class: "carousel-img stall-img"%>
+                  </div>
+                <% end %>
+              </div>
+
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header flex-fill">
-      <div class="py-4 pl-4 align-middle">
-      <% if current_user.stalls.include?(@stall) %>
-      <h2> Leave a review! </h2>
-      <%= render "shared/reviewsform" %>
-      <% end %>
-      </div>
-    </div>
-
   </div>
-</div>
-
-
-<div class="container-fluid">
-  <h4 style="height:200px">Carousel</h4>
 </div>
 
 <%= render "shared/footer" %>
