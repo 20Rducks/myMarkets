@@ -6,7 +6,7 @@
         <% if trip.date > Time.now %>
           <div class="home-card home-card-img m-2">
             <%= link_to market_path(trip.market) do %>
-              <%= cl_image_tag trip.market.photos.first.key, class: "card-img-top" %>
+              <%= cl_image_tag trip.market.photos.first.key, class: " home-card-img"%>
               <div class="card-body" >
                 <h5 class="card-title"><small>Your trip to</small> <b><%= trip.market.name %></b></h5>
                 <p><%= trip.date %></p>
@@ -17,7 +17,7 @@
                 <% end %>
               </div>
               <div class="card-footer">
-                <small class="text-dark">Group Message : <%= trip.message %></small>
+                <small class="text-dark text-center"><%= trip.message %></small>
               </div>
             <% end %>
           </div>

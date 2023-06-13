@@ -5,7 +5,7 @@
     <% current_user.pending_invitations.each do |invitation| %>
       <div class="home-card home-card-img m-2">
         <%= link_to market_path(invitation.trip.market) do %>
-          <%= cl_image_tag invitation.trip.market.photos.first.key, class: "card-img-top" %>
+          <%= cl_image_tag invitation.trip.market.photos.first.key, class: " home-card-img"%>
           <div class="card-body" id="myprofile">
             <h5 class="card-title"><small>Going to</small><b> <%= invitation.trip.market.name %></b>?</h5>
             <h5><%= invitation.trip.date %></h5>
@@ -17,7 +17,7 @@
           </div>
         <% end %>
       <div class="card-footer">
-        <small class="text-dark">Group Message : <%= invitation.trip.message %></small><br>
+        <small class="text-dark text-center"><%= invitation.trip.message %></small><br>
         <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch}, class: "btn btn-btn" %>
         <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"}, class: "btn btn-small" %>
       </div>

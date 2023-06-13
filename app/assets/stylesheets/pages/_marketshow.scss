@@ -38,14 +38,15 @@ button, input, optgroup, select, textarea {
   margin-left: 8px !important;
 }
 
-.carousel-img {
-  width: 19%;
-  max-height: 200px;
-}
+// .carousel-img {
+//   width: 19%;
+//   max-height: 200px;
+// }
 
 .carousel-img.stall-img {
   width: 60%;
-  max-height: 75%;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .check-inputs {
