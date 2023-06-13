@@ -104,7 +104,7 @@ body {
 
 #market {
   min-width: 100%;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .centered {
@@ -120,20 +120,11 @@ body {
   opacity: 100%;
   font-size: 20px;
   font-weight: bold;
-  background-color: rgba(0, 62, 31, 0.2);
+  background-color: rgba(103, 153, 100, 0.7);
 
   h2 {
     font-size: 50px;
   }
-}
-
-.logo {
-  max-width: 60px;
-}
-
-.logo-text {
-  align-self: center;
-  max-width: 250px;
 }
 
 .form-control {
@@ -172,7 +163,7 @@ body {
 }
 
 .card-body {
-  background-color: rgba(189, 217, 191, 0.5)
+  background-color: whitesmoke;
 }
 
 .card-footer-icon {
@@ -180,25 +171,19 @@ body {
   color:rgba(245, 245, 245, 1);
 }
 
-.index-card.card-img-top {
-  min-height: 270px;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
-}
-
-.index-card .card-body {
-  height: 130px;
-}
-
-.index-card .footer {
-  border-bottom-right-radius: 10%;
-  border-bottom-right-radius: 10%;
-}
 
 
 .index-card {
   height: 300px !important;
   width: 225px;
+  transition: 0.2s;
+  padding: 0;
+
+  &:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    cursor: pointer;
+  }
 
   h5 {
     font-size: 16px;
@@ -207,6 +192,19 @@ body {
     font-size: 10px;
   }
 }
+
+.index-card .card-img-top {
+  height: 250px;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+
+.index-card .card-body {
+  height: 130px;
+}
+
+
+
 
 .btn {
   .btn {

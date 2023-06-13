@@ -1,10 +1,12 @@
-.navbar {
+.navbar-home {
   justify-content: space-between;
   background: #F5F5F5;
-  height: fit-content;
+  z-index: 1;
+  position: inherit !important;
+  background-color: white;
 }
 
-.navbar .navbar-collapse {
+.navbar-home .navbar-collapse {
   flex-grow: 0;
 }
 
@@ -34,8 +36,4 @@
 .logo-text {
   align-self: center;
   max-width: 200px;
-}
-
-.navbar .nav-link {
-  padding: 0;
 }

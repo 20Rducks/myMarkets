@@ -2,7 +2,7 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="head-banner-market text-white justify-content-center my-3 pt-3 pl-5">
+    <div class="head-banner-market text-white justify-content-center py-3 pl-5">
       <h1><%= @market.name %> <span class="pl-4">
         <% if @market.reviews.exists? %>
         <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
@@ -32,120 +32,113 @@
         <i class="fa-solid fa-square-parking m-1"></i>
         <% end %>
       </div>
-
     </div>
   </div>
 </div>
 
 
 
-
-<div class="container-fluid mt-4">
-  <div class="row">
-  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-map-header px-5">
-    <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  </div>
-
-    <%# Address %>
-  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 split-address-header">
-    <div class="text-center" style="width:80%">
-      <h4>Market Opening Times</h4>
-
-      <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
-
-      <ul class="list-group list-group-flush d-flex">
-        <% days.each do |int, day| %>
-            <%if @market.days[int].open == true %>
-              <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span><%= @market.days[int].opening_time.hour %>am</span> - <%= @market.days[int].closing_time.hour %>pm </span></li>
-            <% else %>
-              <li class="list-group-item d-flex justify-content-between align-items-center"><%= day  %><span>Closed</span></li>
-            <% end %>
-        <% end %>
-      </ul> <%#<%= @market.open%>
-
-
-
-
-      <% if @trip.errors.any?  %>
-`             <script defer>
-          function showModal() {
-            new bootstrap.Modal('#tripModal').show();
-          }
-          showModal();
-        </script>
-      <% end %>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
-        Pin To Calendar
-      </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <%= simple_form_for [@market, @trip] do |trip_form| %>
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%# trip_form.label "" %>
-                    <%= trip_form.input :message, label: "Send a message"%>
-                    <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                  <div class="d-flex">
-                    <% @friendships.each do |friend| %>
-                      <div class="check-inputs">
-                        <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
-                        <div class="modal-footer justify-content-center">
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                  <%= trip_form.submit class: "btn btn-primary w-80" %>
+<%# MAPBOX WITH FILTERS %>
+<div class="container-fluid pt-3">
+  <div class="row mx-auto">
+    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 text-center market-index mx-auto">
+      <% @stalls.each do |stall|7%>
+      <%= link_to stall_path(stall) do %>
+        <div class="col">
+          <div class="index-card home-card-img h-100 mx-2 my-2">
+            <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
+            <div class="card-body">
+              <h5 class="card-title"><%= stall.name %></h5>
+              <p class="card-text"><%= stall.description %></p>
+              <p class="card-text"><%= stall.category %></p>
+            </div>
+            <div class="card-footer-icon">
+              <div class=" text-center">
+                <i class="fa-solid fa-laptop"></i><br>
+                <%# <p>Wheelchair Access</p> %>
+                <% if stall.website_url %>
+                  <%= stall.website_url %>
                 <% end %>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+      <% end %>
     </div>
-  </div>
 
 
-<%# Card Group Layout %>
-<div class="container pt-5">
-  <div class="row row-cols-3 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
+    <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 split-address-header" >
+
+      <%# <div class="opening-times d-flex justify-content-center"> %>
+        <div class="text-center my-2" style="width:80%">
+        <h2>Market Opening Times</h2>
+
+        <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
+
+        <ul class="list-group list-group-flush d-flex justify-content-center">
+          <% days.each do |int, day| %>
+              <%if @market.days[int].open == true %>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><span><%= day.capitalize %></span> <span><%= @market.days[int].opening_time.hour %>:00 - <%= @market.days[int].closing_time.hour %>:00 </span></li>
+              <% else %>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><%= day.capitalize  %><span>Closed</span></li>
+              <% end %>
+          <% end %>
+        </ul> <%#<%= @market.open%>
+
+        <% if @trip.errors.any?  %>
+  `             <script defer>
+            function showModal() {
+              new bootstrap.Modal('#tripModal').show();
+            }
+            showModal();
+          </script>
+        <% end %>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
+          Pin To Calendar
+        </button>
 
 
-  <%# Card Layout %>
-    <% @stalls.each do |stall| %>
-      <%= link_to stall_path(stall) do %>
-          <div class="col">
-            <div class="card home-card-img show-card">
-              <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
-              <div class="card-body">
-                <h5 class="card-title"><%= stall.name %></h5>
-                <p class="card-text"><%= stall.description %></p>
-                <p class="card-text"><%= stall.category %></p>
-              </div>
-              <div class="card-footer">
-                <div class=" text-center">
-                  <i class="fa-solid fa-laptop"></i>
-                  <%# <p>Wheelchair Access</p> %>
-                  <% if stall.website_url %>
-                    <%= stall.website_url %>
+            <!-- Modal -->
+            <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <%= simple_form_for [@market, @trip] do |trip_form| %>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <%# trip_form.label "" %>
+                      <%= trip_form.input :message, label: "Send a message"%>
+                      <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                    <div class="d-flex">
+                      <% @friendships.each do |friend| %>
+                        <div class="check-inputs">
+                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
+                          <div class="modal-footer justify-content-center">
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                    <%= trip_form.submit class: "btn btn-primary w-80" %>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
-        <% end %>
-        <% end %>
+        </div>
+
+      <div style="width: 80%; height: 400px; padding-top: 0%; margin-top: 0%"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
+
+
+
     </div>
   </div>
 </div>
@@ -188,5 +181,4 @@
 </div>
 
 
-
-<%= render "shared/footer" %>
+<%= render "shared/footer-index" %>

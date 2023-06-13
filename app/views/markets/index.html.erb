@@ -1,7 +1,7 @@
 <%# Basic Hero/Jumbo/Header %>
 <div class="container-fluid">
   <div class="row">
-    <div class="head-banner-market my-3 d-flex">
+    <div class="head-banner-market d-flex">
       <div class="my-auto">
         <h2>myMarkets, Our Markets, Your Market</h2>
         <h4>Your Choice!</h4>
@@ -10,16 +10,15 @@
   </div>
 </div>
 
-
+<%# MAPBOX WITH FILTERS %>
 <div class="container-fluid pt-3">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
       <div class="btn-group" role="group" aria-label="Filter by">
         <button type="button" class="btn btn-secondary" data-filter-type="wheelchair_access">Wheelchair Access</button>
         <button type="button" class="btn btn-secondary" data-filter-type="parking">Parking</button>
       </div>
-    </div>
-    <div class="col-sm-2">
+
       <div class="dropdown" id="wheelchair-access-filter" style="display: none;">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="wheelchair-access-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
           Wheelchair Access
@@ -38,19 +37,9 @@
           <li><a class="dropdown-item" href="#" data-filter-value="no">No</a></li>
         </ul>
       </div>
-    </div>
-    <div class="col-sm-2">
       <button type="button" class="btn btn-secondary" id="clear-filters">Clear all filters</button>
-    </div>
-  </div>
-</div>
 
-
-<div class="container-fluid pt-3">
-  <div class="row">
-
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-      <div class="d-flex mx-auto" style="width: 45%; height: 500px; position: fixed; left: 50px;"
+      <div class="d-flex mx-auto" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -64,6 +53,7 @@
     <%# Card Group Layout %>
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 market-index">
     <%# Card Layout %>
+
     <% @markets.each do |market| %>
       <%= link_to market_path(market) do %>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -71,10 +61,6 @@
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5><span>
-
-
-
-
 
                 <p class="card-text"><%= market.bio %></p>
               </div>

@@ -1,5 +1,7 @@
-<p>Add as friend/favourite form!</p>
 
-<%= simple_form_for [@user] do |friend|%>
-  <%= friend.submit "Add as Friend", class: "btn btn-primary w-80" %>
-<% end %>
+<div class="flex-inline mt-5 p-3 buddy-form">
+  <h3 class="align-center">Trip Buddy</h3>
+  <%= simple_form_for [@user] do |friend|%>
+    <%= friend.submit "Invite", class: "btn btn-stall w-80 bold mt-0" %>
+  <% end %>
+</div>
