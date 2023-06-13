@@ -5,4 +5,26 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  padding: 0 !important;
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+  .card-head {
+    background-color: rgba(0,61,30, 0.7) !important;
+    color:rgba(245, 245, 245, 1);
+  }
+}
+
+.card-footer-popup {
+  background-color: rgba(0,61,30, 0.7) !important;
+  color:rgba(245, 245, 245, 1);
+  // border-bottom-right-radius: 10px !important;
+  // border-bottom-left-radius: 10px !important;
+}
+
+.mapboxgl-popup-close-button {
+  color: white;
+}
+
+.pop-body {
+  background-color: white;
 }

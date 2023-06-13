@@ -1,6 +1,6 @@
 .simple-calendar {
   table {
-    min-height: 80vh;
+    min-height: 60vh;
     background-color: #BDD9BF;
   }
 
@@ -20,4 +20,14 @@
     background-color: #003E1F; /* Hovered shade of green for date boxes with trip.message */
     color: #F5F5F5; /* Text color for trip.message on hover */
   }
+
+  .profile-calendar {
+    margin: 4rem;
+  }
+
+  .simple-calendar {
+    // position: fixed;
+    margin-top: 100px;
+  }
+
 }

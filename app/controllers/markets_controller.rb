@@ -46,13 +46,12 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     @stalls = @market.stalls
     @reviews = Review.all
-
-    if params[:clear_filters].present?
-      redirect_to market_path
+    if params[:commit].present? && params[:commit] == "Clear filters"
+      redirect_to market_path(@market)
     else
-      [:categories].each do |filter|
-        if params[filter].present? && params[filter] == "1"
-          @markets.stalls = @markets.stalls.where(filter.to_s => true)
+      if params[:categories].present? && params[:categories] != [""]
+        params[:categories].each do |filter|
+          @stalls = @stalls.where(category: filter) unless filter == ""
         end
       end
     end

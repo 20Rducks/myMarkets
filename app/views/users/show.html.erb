@@ -1,5 +1,43 @@
 <%# Basic Hero/Jumbo/Header %>
+<div class="container-fluid home-header">
+  <div class="row">
+    <div class="head-banner-stall text-white align-center">
+      <div class="my-auto pt-4">
+        <h2 class="">Welcome to <%= current_user.username %>'s Profile</h2>
 
-<%= render "users/create_friend" %>
+            <div class="socials pl-4">
+        <!-- Facebook -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #3b5998;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
 
-<%= render "shared/footer-index" %>
+        <!-- Twitter -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #55acee;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <!-- Instagram -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #ac2bac;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+    <%= render "users/create_friend" %>
+  </div>
+</div>
+
+
+
+
+<%= render "shared/footer" %>

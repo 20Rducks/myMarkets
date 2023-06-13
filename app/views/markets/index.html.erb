@@ -41,7 +41,7 @@
   <div class="row">
 
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-      <div class="d-flex mx-auto" style="width: 45%; height: 500px; position: fixed; left: 50px;"
+      <div class="d-flex mx-auto" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -55,6 +55,7 @@
     <%# Card Group Layout %>
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 market-index">
     <%# Card Layout %>
+
     <% @markets.each do |market| %>
       <%= link_to market_path(market) do %>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -62,10 +63,6 @@
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5><span>
-
-
-
-
 
                 <p class="card-text"><%= market.bio %></p>
               </div>

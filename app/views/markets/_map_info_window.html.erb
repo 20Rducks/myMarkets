@@ -1,4 +1,29 @@
-<h3><%= market.name %></h3>
-<p><%# link_to "Plan a trip", market_trip_path, class: "btn btn-flat text-dark" %></p>
-
+  <div class="card">
+      <div class="card-head">
+        <h5 class="card-title text-white"><%= market.name %></h5><span>
+      </div>
+    <div class="card-body pop-body">
+      <p class="card-text"><%= market.bio %></p>
+    </div>
+    <div class="card-footer-popup d-inline-flex">
+      <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+        <%# <p>Wheelchair Access</p> %>
+        <% if market.wheelchair_access == true %>
+          <i class="fa-solid fa-wheelchair"></i>
+        <% end %>
+      </div>
+      <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+        <%# <p>Pet Friendly</p> %>
+        <% if market.pet_friendly == true %>
+        <i class="fa-solid fa-paw"></i>
+        <% end %>
+      </div>
+      <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+        <%# <p>Parking</p> %>
+        <% if market.parking == true %>
+          <i class="fa-solid fa-square-parking"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <%# TO DO - create a link_to button taking you to new trip form  %>
