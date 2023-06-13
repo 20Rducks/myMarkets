@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_014949) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_133449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_014949) do
     t.text "bio"
     t.float "latitude"
     t.float "longitude"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "stall_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stall_id"], name: "index_messages_on_stall_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -163,6 +171,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_014949) do
   add_foreign_key "days", "markets"
   add_foreign_key "friendships", "users", column: "asker_id"
   add_foreign_key "friendships", "users", column: "receiver_id"
+  add_foreign_key "messages", "stalls"
   add_foreign_key "products", "stalls"
   add_foreign_key "reviews", "stalls"
   add_foreign_key "reviews", "trips"
