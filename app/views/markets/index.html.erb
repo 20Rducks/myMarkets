@@ -1,50 +1,41 @@
-<%# Basic Hero/Jumbo/Header %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="head-banner-market my-3 d-flex">
-      <div class="my-auto">
-        <h2>myMarkets, Our Markets, Your Market</h2>
-        <h4>Your Choice!</h4>
+<%= form_with url: markets_path, method: :get do |form| %>
+  <%# Basic Hero/Jumbo/Header %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="head-banner-market my-3 d-flex">
+        <div class="my-auto">
+          <h2>myMarkets, Our Markets, Your Market</h2>
+          <h4>Your Choice!</h4>
+          <div class="text-center pt-2">
+              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
+              <%= form.submit "Search", class: "btn btn-primary btn-home" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-
-<div class="container-fluid pt-3">
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="btn-group" role="group" aria-label="Filter by">
-        <button type="button" class="btn btn-secondary" data-filter-type="wheelchair_access">Wheelchair Access</button>
-        <button type="button" class="btn btn-secondary" data-filter-type="parking">Parking</button>
+  <div class="container-fluid pt-3">
+    <div class="row">
+      <div class="col-sm-2">
+          <%= form.label :wheelchair_access do %>
+            <i class="fa-solid fa-wheelchair"></i>
+          <% end %>
+          <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
+          <%= form.label :parking do %>
+            <i class="fa-solid fa-square-parking"></i>
+          <% end %>
+          <%= form.check_box :parking, checked: params[:parking] == "1" %>
+          <%= form.label :pet_friendly do %>
+            <i class="fa-solid fa-paw"></i>
+          <% end %>
+          <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
+          <%= form.submit "Filter" %>
+          <%= form.submit "Clear filters" %>
       </div>
-    </div>
-    <div class="col-sm-2">
-      <div class="dropdown" id="wheelchair-access-filter" style="display: none;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="wheelchair-access-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Wheelchair Access
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="wheelchair-access-dropdown">
-          <li><a class="dropdown-item" href="#" data-filter-value="yes">Yes</a></li>
-          <li><a class="dropdown-item" href="#" data-filter-value="no">No</a></li>
-        </ul>
-      </div>
-      <div class="dropdown" id="parking-filter" style="display: none;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="parking-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Parking
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="parking-dropdown">
-          <li><a class="dropdown-item" href="#" data-filter-value="yes">Yes</a></li>
-          <li><a class="dropdown-item" href="#" data-filter-value="no">No</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-sm-2">
-      <button type="button" class="btn btn-secondary" id="clear-filters">Clear all filters</button>
     </div>
   </div>
-</div>
-
+<% end %>
 
 <div class="container-fluid pt-3">
   <div class="row">

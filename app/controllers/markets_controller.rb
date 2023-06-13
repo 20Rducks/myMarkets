@@ -9,20 +9,18 @@ class MarketsController < ApplicationController
       if @markets.empty?
         flash.now[:alert] = "No markets found for '#{search_query}'. Please search again."
         render "pages/home"
-        return
       end
     else
       @markets = Market.all
     end
 
-    filter_type = params[:filter_type]
-    filter_value = params[:filter_value]
-    if filter_type.present? && filter_value.present?
-      case filter_type
-      when "wheelchair_access"
-        @markets = @markets.where(wheelchair_access: filter_value == true)
-      when "parking"
-        @markets = @markets.where(parking: filter_value == true)
+    if params[:clear_filters].present?
+      redirect_to markets_path
+    else
+      [:wheelchair_access, :parking, :pet_friendly].each do |filter|
+        if params[filter].present? && params[filter] == "1"
+          @markets = @markets.where(filter.to_s => true)
+        end
       end
     end
 
@@ -48,6 +46,17 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     @stalls = @market.stalls
     @reviews = Review.all
+
+    if params[:clear_filters].present?
+      redirect_to market_path
+    else
+      [:categories].each do |filter|
+        if params[filter].present? && params[filter] == "1"
+          @markets.stalls = @markets.stalls.where(filter.to_s => true)
+        end
+      end
+    end
+
     # @stall = Stall.find(params[:id])
     @trip = Trip.new
       @market = Market.find(params[:id])
@@ -57,10 +66,6 @@ class MarketsController < ApplicationController
         map_info_window_html: render_to_string(partial: "map_info_window", locals: { market: @market }),
         map_marker_html: render_to_string(partial: "map_marker", locals: { market: @market })
       }]
-    # @friendships_asker = Friendship.where(asker_id: current_user.id)
-    # @friendships_receiver = Friendship.where(receiver_id: current_user.id)
-    # @friendships = @friendships_asker + @friendships_receiver
-    # @friendships.each { |friend| User.find(friend.asker_id) }
     @friendships_asker = Friendship.where(asker_id: current_user.id)
     @friendships_receiver = Friendship.where(receiver_id: current_user.id)
     @friendships = @friendships_asker + @friendships_receiver
