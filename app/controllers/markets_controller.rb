@@ -15,6 +15,17 @@ class MarketsController < ApplicationController
       @markets = Market.all
     end
 
+    filter_type = params[:filter_type]
+    filter_value = params[:filter_value]
+    if filter_type.present? && filter_value.present?
+      case filter_type
+      when "wheelchair_access"
+        @markets = @markets.where(wheelchair_access: filter_value == true)
+      when "parking"
+        @markets = @markets.where(parking: filter_value == true)
+      end
+    end
+
     @markers = @markets.geocoded.map do |market|
       {
         lat: market.latitude,
