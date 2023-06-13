@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   resources :stalls, only: %i[index show] do
     resources :reviews, only: %i[index new create]
+    resources :chatrooms, only: :show do
+      resources :messages, only: :create
+    end
   end
   resources :reviews, only: %i[edit update destroy]
 end

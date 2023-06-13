@@ -2,6 +2,7 @@ class Stall < ApplicationRecord
   belongs_to :user
   has_many :products, dependent: :destroy
   has_many :stalls_at_markets, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :markets, through: :stalls_at_markets
   has_many :reviews
   has_many_attached :photos
