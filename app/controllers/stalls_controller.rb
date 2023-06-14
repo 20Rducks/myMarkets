@@ -7,7 +7,6 @@ class StallsController < ApplicationController
       sql_query = "name ILIKE :query OR category ILIKE :query"
       @stalls = Stall.where(sql_query, query: "%#{params[:query]}%")
     else
-      # @stalls = @market.stalls
       @stalls = Stall.all
     end
 
