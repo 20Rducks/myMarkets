@@ -7,7 +7,7 @@
       </div>
       <%= form_with url: markets_path, method: :get, class: "text-center pt-2" do |form| %>
         <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Enter a keyword or location..." %>
-        <%= form.submit "Explore", class: "btn btn-primary btn-home" %>
+        <%= form.submit "Explore", class: "btn btn-dark btn-home" %>
       <% end %>
   </div>
 </div>
