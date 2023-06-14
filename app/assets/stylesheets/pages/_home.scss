@@ -191,9 +191,11 @@ body {
 
 #market {
   background-image: image-url("landing-2.jpg");
+  background-size: cover;
+  background-position: 50% 90%;
   min-width: 100%;
   min-height: calc(100vh - 60px);
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .centered {
@@ -209,7 +211,8 @@ body {
   opacity: 100%;
   font-size: 20px;
   font-weight: bold;
-  background-color: rgba(19, 64, 29, 0.4);
+  background-color: rgba(19, 64, 29, 0.2);
+  backdrop-filter: blur(4px);
 
   h2 {
     font-size: 50px;

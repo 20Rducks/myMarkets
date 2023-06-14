@@ -1,7 +1,7 @@
 <div class="review-form">
   <%= simple_form_for [@stall, @review] do |f| %>
     <%= f.input :description, class: "d-inline" %>
-    <%= f.input :rating, class: "d-inline"  %>
+    <%= f.input :rating, class: "d-inline", input_html: { min: 0, max: 5 } %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
