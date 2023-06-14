@@ -8,7 +8,7 @@
             <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
             <p><%= r.description %></p>
           </div><br>
-          <%= link_to "Delete", review_path(r), class: "btn btn-small", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to "Delete", review_path(r), class: "btn btn-light", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
     <% end %>
   <% end %>

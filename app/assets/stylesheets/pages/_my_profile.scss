@@ -14,7 +14,13 @@
   background-color: rgba(189, 217, 191, 0.5)
 }
 
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: $light-purple !important;
+  font-weight: bold;
+}
+
 .home-card {
+  z-index: 1;
   min-width: 24%;
   border-radius: 10px;
   border: 0.5px solid rgba(0,61,30,0.3);
@@ -65,4 +71,8 @@
 
 .friends {
   display: flex;
+  border-bottom: 1px solid grey;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
 }

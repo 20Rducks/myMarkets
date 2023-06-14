@@ -1,9 +1,10 @@
 <%# TRIP-BUDDDDDDDIES %>
 <div class="tab-pane fade text-dark mt-5" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
   <% current_user.friends.each do |friend| %>
-  <div class="friends">
-    <h5 class="pr-5"><%= friend.username %></h5>
-    <p>Friends for <%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil %> day<%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil == 1 ? "" : "s" %></p>
+  <div class="friends mb-4">
+    <%= image_tag "avatar.png" , class: 'avatar' %>
+    <h5 class="pl-3 pr-5"><%= link_to friend.username, user_path(friend) %></h5>
+    <p class="mt-2">You have been friends for<br> <%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil %> day<%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil == 1 ? "" : "s" %></p>
   </div>
   <% end %>
 </div>

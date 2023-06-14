@@ -15,8 +15,8 @@
 
 .show-review {
   display: flex;
-  background-color: #BDD9BF;
-  color: #2B061E;
+  background-color: $dark-green;
+  color: white;
   border-radius: 10px;
   transition: 0.2s;
   padding: 10%;
@@ -39,7 +39,8 @@
 }
 
 .show-product {
-  background-color: #F5F5F5;
+  background-color: $dark-green;
+  color: white;
   border-radius: 10px;
   transition: 0.2s;
   padding: 0;
@@ -66,35 +67,6 @@
   object-fit: cover;
 }
 
-.btn-stall {
-  display: flex;
-  justify-items: auto;
-  flex-direction: row !important;
-  flex-wrap: nowrap;
-  align-content: normal;
-  justify-content: space-evenly !important;
-  align-items: center;
-  font-size: 10px;
-  margin: 10px;
-  text-decoration: none !important;
-  width: 90px;
-  height: 40px;
-  text-decoration: none !important;
-  color: #BDD9BF !important;
-  border-radius: 10px;
-  background-color: #018141 !important;
-  transition: 0.3s;
-  border: 1px solid black;
-  &:hover {
-    text-decoration: none !important;
-    transform: scale(1.02);
-    box-shadow: 0px 0px 5px 2px rgb(103, 153, 100);
-  }
-  a {
-    text-decoration: none !important;
-    color: black;
-  }
-}
 
 .head-banner-stall {
   display: flex;
@@ -129,4 +101,12 @@
   display: table-caption;
   width: 200%;
   margin-left: 100% !important;
+}
+
+.carousel-control-prev-icon {
+  background-color: $light-purple !important;
+}
+
+.carousel-control-next-icon {
+  background-color: $light-purple !important;
 }
