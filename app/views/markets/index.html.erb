@@ -1,5 +1,5 @@
 <%= form_with url: markets_path, method: :get do |form| %>
-  <%# Basic Hero/Jumbo/Header %>
+
   <div class="container-fluid">
     <div class="row">
       <div class="head-banner-market my-3 d-flex">
@@ -15,42 +15,49 @@
     </div>
   </div>
 
+
   <div class="container-fluid pt-3">
     <div class="row">
-      <div class="col-sm-2">
-          <%= form.label :wheelchair_access do %>
-            <i class="fa-solid fa-wheelchair"></i>
-          <% end %>
-          <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
-          <%= form.label :parking do %>
-            <i class="fa-solid fa-square-parking"></i>
-          <% end %>
-          <%= form.check_box :parking, checked: params[:parking] == "1" %>
-          <%= form.label :pet_friendly do %>
-            <i class="fa-solid fa-paw"></i>
-          <% end %>
-          <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6  text-center ">
+
+        <div class="filter-labels">
+
+          <div class="ml-4 mr-0">
+            <%= form.label :wheelchair_access do %>
+              <i class="fa-solid fa-wheelchair"></i>
+            <% end %>
+            <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
+          </div>
+
+          <div class="ml-4 mr-0">
+            <%= form.label :parking do %>
+              <i class="fa-solid fa-square-parking"></i>
+            <% end %>
+            <%= form.check_box :parking, checked: params[:parking] == "1" %>
+          </div>
+
+          <div class="ml-4 mr-0">
+            <%= form.label :pet_friendly do %>
+              <i class="fa-solid fa-paw"></i>
+            <% end %>
+            <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="filter-buttons"><br>
           <%= form.submit "Filter" %>
           <%= form.submit "Clear filters" %>
+        </div>
+
+
+        <div class="d-flex mx-auto mt-2" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
-    </div>
-  </div>
 <% end %>
-
-<div class="container-fluid pt-3">
-  <div class="row">
-
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-      <div class="d-flex mx-auto" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    </div>
-
-
-<%# Add sticky top to map instead of fixed  %>
-
-
 
     <%# Card Group Layout %>
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 market-index">

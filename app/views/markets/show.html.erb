@@ -2,34 +2,45 @@
 <div class="container-fluid home-header">
   <div class="row">
 
-    <div class="head-banner-market text-white justify-content-center py-3 pl-5">
-      <h1><%= @market.name %> <span class="pl-4">
-        <% if @market.reviews.exists? %>
-        <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
-        <% end %>
-      <h4><%= @market.bio %></h4>
-      <p> <%= @market.address %></p>
+    <div class="head-banner-market market-show text-white py-3 pl-5">
+      <div class="market-show-left">
+        <h1><%= @market.name %> <span class="pl-4">
+          <% if @market.reviews.exists? %>
+          <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
+          <% end %>
+        <h4><%= @market.bio %></h4>
+        <p> <%= @market.address %></p>
 
-      <div class="socials">
-        <% if @market.phone_number %>
-        <i class="fa-solid fa-phone pb-3"></i>
-          <%= @market.phone_number %>
-        <% end %>
-        <br>
-        <% if @market.website %>
-          <a class="fa-solid fa-laptop text-white m-1 mb-2" href="<%= @market.website %>"></a>
-        <% end %>
+        <div class="socials">
+          <% if @market.phone_number %>
+          <i class="fa-solid fa-phone pb-3"></i>
+            <%= @market.phone_number %>
+          <% end %>
+          <br>
+          <% if @market.website %>
+            <a class="fa-solid fa-laptop text-white m-1 mb-2" href="<%= @market.website %>"></a>
+          <% end %>
 
-        <% if @market.wheelchair_access == true %>
-        <i class="fa-solid fa-wheelchair m-1"></i>
-        <% end %>
+          <% if @market.wheelchair_access == true %>
+          <i class="fa-solid fa-wheelchair m-1"></i>
+          <% end %>
 
-        <% if @market.pet_friendly == true  %>
-        <i class="fa-solid fa-paw m-1"></i>
-        <% end %>
+          <% if @market.pet_friendly == true  %>
+          <i class="fa-solid fa-paw m-1"></i>
+          <% end %>
 
-        <% if @market.parking == true %>
-        <i class="fa-solid fa-square-parking m-1"></i>
+          <% if @market.parking == true %>
+          <i class="fa-solid fa-square-parking m-1"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <h2> Filter your search </h2>
+        <%= form_with url: market_path(@market), method: :get do |f| %>
+          <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
+          <%= f.submit "Filter" %>
+          <%= f.submit "Clear filters" %>
         <% end %>
       </div>
     </div>
@@ -39,19 +50,13 @@
 
 <div class="container-fluid pt-3">
   <div class="row">
-    <div class="col-sm-2">
-        <%= form_with url: market_path(@market), method: :get do |f| %>
-          <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }} %>
-          <%= f.submit "Filter" %>
-          <%= f.submit "Clear filters" %>
-        <% end %>
-    </div>
+
   </div>
 </div>
 
 <div class="container-fluid pt-3">
   <div class="row mx-auto">
-    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 text-center market-index mx-auto">
+    <div class="col-sm-8 col-m8d-8 col-lg-8 col-xl-8 text-center market-index mx-auto">
       <% @stalls.each do |stall| %>
         <%= link_to stall_path(stall) do %>
           <div class="col">
@@ -77,10 +82,10 @@
       <% end %>
     </div>
 
-    <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 split-address-header" >
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 split-address-header" >
 
       <%# <div class="opening-times d-flex justify-content-center"> %>
-        <div class="text-center my-2" style="width:80%">
+        <div class="text-center my-3 mb-4" style="width:80%">
         <h2>Market Opening Times</h2>
 
         <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
@@ -145,8 +150,6 @@
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-
-
 
     </div>
   </div>

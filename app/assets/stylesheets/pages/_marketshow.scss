@@ -112,3 +112,25 @@ button, input, optgroup, select, textarea {
     color: rgba(245, 245, 245, 1);
   }
 }
+
+.filter-labels {
+  display: inline-flex;
+  input {
+    margin-left: 0;
+  }
+}
+
+.filter-buttons {
+  display: inline-flex;
+}
+
+.market-show {
+  display: flex!important;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+.market-show-left {
+  margin-left: 0;
+}
