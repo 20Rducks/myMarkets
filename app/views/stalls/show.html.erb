@@ -67,6 +67,20 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%# Mid-Section %>
 <div class="container-fluid text-center d-flex justify-content-center pl-5">
   <% if @stall.reviews %>
@@ -87,50 +101,53 @@
 </div>
 
 <%# Central Products %>
+
+
+
 <div class="container review-section text-center d-flex justify-content-center">
-
-    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 mr-5 split-address-header">
-      <div class="py-4 pl-4 text-center">
-      <% if current_user.stalls.include?(@stall) %>
-      <h2 class="text-center ml-4"> Leave a review! </h2>
-      <%= render "shared/reviewsform" %>
-      <% end %>
-      </div>
-    </div>
-
-
-    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
-      <div class="show-products d-flex">
-        <div class="show-product p-4 m-2">
-          <h5><em>Fine</em> appalacian llama<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
-
-        <div class="show-product p-4 m-2">
-          <h5>Sensational sardinian salmon<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
+  <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
+    <div class="show-products d-flex">
+      <div class="show-product p-4 m-2">
+        <h5><em>Fine</em> appalacian llama<h5>
+        <p>Grown in the wilds of borneo</p>
       </div>
 
-      <div class="show-products d-flex">
-        <div class="show-product p-4 m-2">
-          <h5>Sensational sardinian salmon<h5>
-          <p>Fine appalacian llama</p>
-        </div>
-
-        <div class="show-product p-4 m-2">
-          <h5>Sensational sardinian salmon<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
+      <div class="show-product p-4 m-2">
+        <h5>Sensational sardinian salmon<h5>
+        <p>Grown in the wilds of borneo</p>
       </div>
     </div>
   </div>
+</div>
+<div class="d-flex">
+  <div class="py-4 pl-4 text-center justify-content-center mx-auto">
+    <% if current_user.stalls.include?(@stall) %>
+    <h2 class="text-center ml-4"> Leave a review! </h2>
+    <%= render "shared/reviewsform" %>
+    <% end %>
+  </div>
+</div>
+  <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
+    <div class="show-products d-flex">
+      <div class="show-product p-4 m-2">
+        <h5>Sensational sardinian salmon<h5>
+        <p>Fine appalacian llama</p>
+      </div>
+
+      <div class="show-product p-4 m-2">
+        <h5>Sensational sardinian salmon<h5>
+        <p>Grown in the wilds of borneo</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container-fluid text-center d-flex justify-content-center">
   <% if @stall.reviews %>
   <%# Right hand review %>
   <% @stall.reviews.each do |r| %>
-    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 ml-5">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
       <div class="show-review p-2 m-2">
           <p><em><%= r.user.username %></em></p>
           <div class="review-footer d-inline-flex">

@@ -34,6 +34,8 @@
   <%= date %>
     <% trips.each do |trip| %>
       <div class="trip">
+        <p><%= trip.user.username %></p>
+        <p><%= trip.market.name %></p>
         <p><%= trip.message %></p>
       </div>
     <% end %>
