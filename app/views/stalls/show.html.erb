@@ -49,75 +49,6 @@
   </div>
 </div>
 
-
-
-<%# Mid-Section %>
-<div class="container-fluid text-center d-flex justify-content-center">
-  <% if @stall.reviews %>
-  <%# Left hand review %>
-  <% @stall.reviews.each do |r| %>
-    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 ">
-      <div class="show-review p-2 m-2">
-          <p><em><%= r.user.username %></em></p>
-          <div class="review-footer d-inline-flex">
-            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
-            <p><%= r.description %></p>
-          </div><br>
-          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-    <%# Central Products %>
-<div class="container-fluid review-section text-center d-flex justify-content-center">
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
-      <div class="show-products d-flex">
-        <div class="show-product p-4 m-2">
-          <h5>Fine appalacian llama<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
-
-        <div class="show-product p-4 m-2">
-          <h5>Sensation sardinian salmon<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
-      </div>
-
-      <div class="show-products d-flex">
-        <div class="show-product p-4 m-2">
-          <h5>Sensation sardinian salmon<h5>
-          <p>Fine appalacian llama</p>
-        </div>
-
-        <div class="show-product p-4 m-2">
-          <h5>Sensation sardinian salmon<h5>
-          <p>Grown in the wilds of borneo</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="container-fluid text-center d-flex justify-content-center">
-  <% if @stall.reviews %>
-  <%# Right hand review %>
-  <% @stall.reviews.each do |r| %>
-    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 ">
-      <div class="show-review p-2 m-2">
-          <p><em><%= r.user.username %></em></p>
-          <div class="review-footer d-inline-flex">
-            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
-            <p><%= r.description %></p>
-          </div><br>
-          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-
 <div class="container chatroom">
   <h1>Latest News!</h1>
   <div class="messages" style="background-image: url('https://st.depositphotos.com/1031174/1301/i/600/depositphotos_13012644-stock-photo-blackboard.jpg'); background-size: cover; background-repeat: no-repeat;">
@@ -136,27 +67,81 @@
   </div>
 </div>
 
-<%# Map Section %>
-<div class="container map-header mt-5">
-  <div class="row align-content-center">
+<%# Mid-Section %>
+<div class="container-fluid text-center d-flex justify-content-center pl-5">
+  <% if @stall.reviews %>
+  <%# Left hand review %>
+  <% @stall.reviews.each do |r| %>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 ml-3 ">
+      <div class="show-review p-2 m-2">
+          <p><em><%= r.user.username %></em></p>
+          <div class="review-footer d-inline-flex">
+            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
+            <p><%= r.description %></p>
+          </div><br>
+          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 split-address-header">
-      <div class="py-4 pl-4">
+<%# Central Products %>
+<div class="container review-section text-center d-flex justify-content-center">
+
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 mr-5 split-address-header">
+      <div class="py-4 pl-4 text-center">
       <% if current_user.stalls.include?(@stall) %>
-      <h2> Leave a review! </h2>
+      <h2 class="text-center ml-4"> Leave a review! </h2>
       <%= render "shared/reviewsform" %>
       <% end %>
       </div>
     </div>
 
 
-    <%# Address %>
-    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 flex-fill">
+    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-12 mx-auto center-review my-auto d-flex justify-content-center">
+      <div class="show-products d-flex">
+        <div class="show-product p-4 m-2">
+          <h5><em>Fine</em> appalacian llama<h5>
+          <p>Grown in the wilds of borneo</p>
+        </div>
 
+        <div class="show-product p-4 m-2">
+          <h5>Sensational sardinian salmon<h5>
+          <p>Grown in the wilds of borneo</p>
+        </div>
+      </div>
 
+      <div class="show-products d-flex">
+        <div class="show-product p-4 m-2">
+          <h5>Sensational sardinian salmon<h5>
+          <p>Fine appalacian llama</p>
+        </div>
+
+        <div class="show-product p-4 m-2">
+          <h5>Sensational sardinian salmon<h5>
+          <p>Grown in the wilds of borneo</p>
+        </div>
       </div>
     </div>
   </div>
+
+<div class="container-fluid text-center d-flex justify-content-center">
+  <% if @stall.reviews %>
+  <%# Right hand review %>
+  <% @stall.reviews.each do |r| %>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 ml-5">
+      <div class="show-review p-2 m-2">
+          <p><em><%= r.user.username %></em></p>
+          <div class="review-footer d-inline-flex">
+            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
+            <p><%= r.description %></p>
+          </div><br>
+          <%= link_to "Delete", review_path(r), class: "btn btn-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
 
