@@ -3,46 +3,40 @@
   <div class="container-fluid">
     <div class="row">
       <div class="head-banner-market py-2 ">
-        <div class="my-auto d-flex">
-          <div class="flex-column">
-          <h2>myMarkets, Our Markets, Your Market</h2><br>
-          <h4 class="text-white">Your Choice!</h4>
+        <div class="my-auto d-flex justify-content-around">
+          <div class="mt-4 ml-5">
+            <h2>myMarkets,<br> Our Markets,<br> Your Market</h2><br>
           </div>
+          <div class="market-filters justify-content-center">
 
+            <div class="filter-labels d-flex mr-4">
 
-          <div class="filter-labels d-flex">
-
-            <div class="ml-4 mr-0">
-              <%= form.label :wheelchair_access do %>
-                <i class="fa-solid fa-wheelchair" style= "color: hsl(124, 27%, 80%)"></i>
-              <% end %>
-              <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
+              <div class="ml-4 mr-0">
+                <%= form.label :wheelchair_access do %>
+                  <i class="fa-solid fa-wheelchair mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                <% end %>
+                <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
+              </div>
+              <div class="ml-4 mr-0">
+                <%= form.label :parking do %>
+                  <i class="fa-solid fa-square-parking mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                <% end %>
+                <%= form.check_box :parking, checked: params[:parking] == "1" %>
+              </div>
+              <div class="ml-4 mr-0">
+                <%= form.label :pet_friendly do %>
+                  <i class="fa-solid fa-paw mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                <% end %>
+                <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
+              </div>
             </div>
 
-            <div class="ml-4 mr-0">
-              <%= form.label :parking do %>
-                <i class="fa-solid fa-square-parking" style= "color: hsl(124, 27%, 80%)"></i>
-              <% end %>
-              <%= form.check_box :parking, checked: params[:parking] == "1" %>
-            </div>
-
-            <div class="ml-4 mr-0">
-              <%= form.label :pet_friendly do %>
-                <i class="fa-solid fa-paw" style= "color: hsl(124, 27%, 80%)"></i>
-              <% end %>
-              <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
-            </div>
-
-
-          <br>
-          <div class="filter-buttons"><br>
-            <%= form.submit "Filter" %>
-            <%= form.submit "Clear filters" %>
-          </div>
-
-          <div class="text-center pt-2">
-              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
-              <%= form.submit "Search", class: "btn btn-primary btn-home" %>
+            <div class="text-center justify-content-around pt-2">
+                <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market"%><br>
+                <%= form.submit "Search", class: "btn" %>
+                <%= form.submit "Filter", class: "btn" %>
+                <%= form.submit "Clear filters", class: "btn" %>
+              </div>
           </div>
         </div>
       </div>

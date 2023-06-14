@@ -17,7 +17,7 @@
   display: flex;
   background-color: $dark-green;
   color: white;
-  border-radius: 10px;
+  // border-radius: 10px;
   transition: 0.2s;
   padding: 10%;
   align-items: center;
@@ -41,7 +41,7 @@
 .show-product {
   background-color: $dark-green;
   color: white;
-  border-radius: 10px;
+  // border-radius: 10px;
   transition: 0.2s;
   padding: 0;
     &:hover {

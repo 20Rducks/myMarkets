@@ -19,29 +19,42 @@
   font-weight: bold;
 }
 
+.tab-content {
+  overflow: auto;
+}
+
+// .trip-tabs {
+//   display: flex;
+// }
+
 .home-card {
   z-index: 1;
-  min-width: 24%;
-  border-radius: 10px;
+  width: 263px;
+  margin-top: 10px;
+  // border-radius: 10px;
   border: 0.5px solid rgba(0,61,30,0.3);
-  border-top-left-radius: 5px !important;
-  border-top-right-radius: 5px !important;
+  // border-top-left-radius: 5px !important;
+  // border-top-right-radius: 5px !important;
+}
+
+.home-card-img {
+  height: 200px !important;
+  width: 263px;
+  object-fit: cover;
+  // border-top-left-radius: 5px !important;
+  // border-top-right-radius: 5px !important;
 }
 
 .home-card.card-img-top {
-  min-height: 225px;
-  max-width: 200px;
+  height: 225px;
+  width: 200px;
   object-fit: fill;
-  border-top-left-radius: 5px !important;
-  border-top-right-radius: 5px !important;
+  // border-top-left-radius: 5px !important;
+  // border-top-right-radius: 5px !important;
 }
 
-.home-card .home-card-img {
-  min-height: 330px !important;
-  min-width: 300px;
-  object-fit: cover;
-  border-top-left-radius: 5px !important;
-  border-top-right-radius: 5px !important;
+.home-card .card-body {
+  min-height: 200px !important;
 }
 
 .show-card.card-img-top {
@@ -56,13 +69,6 @@
   min-width: 30%;
   flex-flow: column !important;
 }
-
-
-.card-body#myprofile {
-  position: relative;
-  min-height: 150px !important;
-}
-
 
 
 .tab-content {

@@ -1,13 +1,13 @@
 <%# INVITATIONS TAB %>
 <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-  <div class="trip-tabs d-flex">
-    <div class="card-group flex-fill justify-content-center ">
+  <div class="trip-tabs">
+    <div class="card-group">
     <% current_user.pending_invitations.each do |invitation| %>
-      <div class="home-card home-card-img mx-2">
+      <div class="home-card mx-2">
         <%= link_to market_path(invitation.trip.market) do %>
           <%= cl_image_tag invitation.trip.market.photos.first.key, class: " home-card-img"%>
           <div class="card-body" id="myprofile">
-            <h5 class="card-title"><small>Going to</small><b> <%= invitation.trip.market.name %></b>?</h5>
+            <h5 class="card-title"><small>Invite to </small><b><br><%= invitation.trip.market.name %></b></h5>
             <h5><%= invitation.trip.date %></h5>
             <% invitation.trip.users.each do |t| %>
               <%= link_to user_path(t) do %>

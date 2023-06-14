@@ -107,9 +107,13 @@ button, input, optgroup, select, textarea {
 }
 
 .market-index {
-  display: flex;
+  display: flex!important;
+  flex-direction: row;
+//   align-content: space-around;
+  align-items: center;
+//   justify-content: space-between;
   flex-wrap: wrap;
-}
+  }
 
 .head-banner-market {
   background: rgb(0,61,30);
@@ -125,12 +129,11 @@ button, input, optgroup, select, textarea {
 
 .filter-labels {
   margin-top: 4%;
-  display: -ms-flexbox!important;
-  display: flex!important;
+  display: flex !important;
   flex-wrap: nowrap;
   flex-direction: row;
   align-content: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   input {
     margin-left: 0;

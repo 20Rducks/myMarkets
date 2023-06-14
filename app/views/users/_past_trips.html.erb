@@ -1,14 +1,14 @@
 <%# PAST TRIPS %>
-<div class="tab-pane fade justify-content-center" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-  <div class="trip-tabs d-flex">
-    <div class="card-group flex-fill justify-content-center ">
+<div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+  <div class="trip-tabs">
+    <div class="card-group">
       <% @user.trips.each do |trip| %>
         <% if trip.date < Time.now %>
-          <div class="home-card home-card-img m-2">
+          <div class="home-card m-2">
             <%= link_to market_path(trip.market) do %>
               <%= cl_image_tag trip.market.photos.first.key, class: "home-card-img"%>
               <div class="card-body" >
-                <h5 class="card-title"><small>How was</small> <b><%= trip.market.name %>?</b></h5>
+                <h5 class="card-title"><small>How was</small><br> <b><%= trip.market.name %>?</b></h5>
                 <p><%= trip.date %></p>
                 <% trip.users.each do |t| %>
                   <%= link_to user_path(t) do %>

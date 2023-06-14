@@ -64,9 +64,9 @@
       <div>
         <h2> Explore the stalls </h2>
         <%= form_with url: market_path(@market), method: :get do |f| %>
-          <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
-          <%= f.submit "Filter" %>
-          <%= f.submit "Clear filters" %>
+          <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }} %>
+          <%= f.submit "Filter", class: "btn" %>
+          <%= f.submit "Clear Filters", class: "btn" %>
         <% end %>
       </div>
     </div>

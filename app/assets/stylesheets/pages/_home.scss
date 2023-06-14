@@ -230,7 +230,7 @@ body {
 
 .centered {
   position: absolute;
-  border-radius: 10px;
+  // border-radius: 10px;
   flex-direction: column;
   width: 75%;
   height: 45%;
@@ -266,9 +266,9 @@ body {
   padding-right: 0px !important;
 }
 
-.card {
-  border-radius: 10px;
-}
+// .card {
+//   border-radius: 10px;
+// }
 
 .card {
   transition: 0.2s;
@@ -282,6 +282,7 @@ body {
 
 .card-body {
   background-color: whitesmoke;
+  min-height: 200px;
 }
 
 .card-footer-icon {
@@ -293,7 +294,7 @@ body {
 
 .index-card {
   height: 300px !important;
-  width: 225px;
+  width: 325px;
   transition: 0.2s;
   padding: 0;
 
@@ -304,28 +305,20 @@ body {
   }
 
   h5 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
   }
   p {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
 .index-card .card-img-top {
   height: 250px;
-  border-top-left-radius: 3%;
-  border-top-right-radius: 3%;
+  // border-top-left-radius: 3%;
+  // border-top-right-radius: 3%;
 }
 
 .index-card .card-body {
   height: 130px;
-}
-
-.market-index {
-display: flex!important;
-flex-direction: row;
-align-content: space-around;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
 }
