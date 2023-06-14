@@ -48,11 +48,21 @@ button, input, optgroup, select, textarea {
 //   object-fit: cover;
 // }
 
+
+
+.checks {
+  margin-top: 0;
+  display: flex!important;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .check-inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .modal-check-inputs{
   display: inline;
