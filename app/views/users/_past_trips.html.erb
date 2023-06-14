@@ -6,13 +6,13 @@
         <% if trip.date < Time.now %>
           <div class="home-card home-card-img m-2">
             <%= link_to market_path(trip.market) do %>
-              <%= cl_image_tag trip.market.photos.first.key, class: " home-card-img"%>
+              <%= cl_image_tag trip.market.photos.first.key, class: "home-card-img"%>
               <div class="card-body" >
                 <h5 class="card-title"><small>How was</small> <b><%= trip.market.name %>?</b></h5>
                 <p><%= trip.date %></p>
                 <% trip.users.each do |t| %>
                   <%= link_to user_path(t) do %>
-                    <div><small>Get ready to join</small> <em><%= t.username %></em></div>
+                    <div><small>You joined</small> <em><%= t.username %></em></div>
                   <% end %>
                 <% end %>
               </div>

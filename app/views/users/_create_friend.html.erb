@@ -1,7 +1,8 @@
 
-<div class="flex-inline mt-5 p-3 buddy-form">
-  <h5 class="align-center ml-1">Become Friends</h5>
+<div class="my-3 p-3 buddy-form">
+  <%# <h5 class="align-center ml-1">Become Friends</h5> %>
+  <%= image_tag "avatar.png" , class: 'avatar my-auto' %>
   <%= simple_form_for [@user] do |friend|%>
-    <%= friend.submit "Invite", class: "ml-4 btn btn-stall w-80 bold mt-0" %>
+    <%= friend.submit "Connect", class: "ml-3 mt-2 btn btn-stall w-80 bold mt-0" %>
   <% end %>
 </div>

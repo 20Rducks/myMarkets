@@ -30,8 +30,34 @@
           <% end %>
 
           <% if @market.parking == true %>
-          <i class="fa-solid fa-square-parking m-1"></i>
+          <i class="fa-solid fa-square-parking m-1 mr-5"></i>
           <% end %>
+
+          <!-- Facebook -->
+          <a
+            class="btn text-white btn-floating m-1 ml-5"
+            style="background-color: #3b5998;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #55acee;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <!-- Instagram -->
+          <a
+            class="btn text-white btn-floating m-1"
+            style="background-color: #ac2bac;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
         </div>
       </div>
 
@@ -120,22 +146,36 @@
               <div class="modal-dialog">
                 <%= simple_form_for [@market, @trip] do |trip_form| %>
                   <div class="modal-content">
+
+
+
                     <div class="modal-header">
                       <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <%# trip_form.label "" %>
-                      <%= trip_form.input :message, label: "Send a message"%>
                       <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-                    <div class="d-flex">
+
+                      <%= form_with url: market_path(@market), method: :get do |f| %>
+                        <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
+                        <%= f.submit "Filter" %>
+                      <% end %>
+
+
+                    <h5 class="text-center mx-auto"> Who to invite? </h5><br>
+                    <div class="checks">
                       <% @friendships.each do |friend| %>
-                        <div class="check-inputs">
+                        <div class="check-inputs"><br>
                           <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
                           <div class="modal-footer justify-content-center">
                           </div>
                         </div>
                       <% end %>
+
+
+
+                      <%= trip_form.input :message, label: "Group Notes"%>
                     </div>
                     <%= trip_form.submit class: "btn btn-primary w-80" %>
                   <% end %>
@@ -193,4 +233,4 @@
 </div>
 
 
-<%= render "shared/footer-index" %>
+<%= render "shared/footer" %>
