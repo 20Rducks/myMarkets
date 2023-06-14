@@ -2,50 +2,48 @@
 
   <div class="container-fluid">
     <div class="row">
+      <div class="head-banner-market py-2 ">
+        <div class="my-auto d-flex">
+          <div class="flex-column">
+          <h2>myMarkets, Our Markets, Your Market</h2><br>
+          <h4 class="text-white">Your Choice!</h4>
+          </div>
 
-      <div class="head-banner-market py-2 d-flex">
-        <div class="my-auto">
-          <h2>Explore Markets</h2>
-          <h4></h4>
 
+          <div class="filter-labels d-flex">
 
-
-          <div class="filter-labels">
-
-            <div class="ml-5 mr-0">
+            <div class="ml-4 mr-0">
               <%= form.label :wheelchair_access do %>
-                <i class="fa-solid fa-wheelchair" style="color: #bedac0;"></i>
+                <i class="fa-solid fa-wheelchair" style= "color: hsl(124, 27%, 80%)"></i>
               <% end %>
               <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
             </div>
 
             <div class="ml-4 mr-0">
               <%= form.label :parking do %>
-                <i class="fa-solid fa-square-parking" style="color: #bedac0;"></i>
+                <i class="fa-solid fa-square-parking" style= "color: hsl(124, 27%, 80%)"></i>
               <% end %>
               <%= form.check_box :parking, checked: params[:parking] == "1" %>
             </div>
 
             <div class="ml-4 mr-0">
               <%= form.label :pet_friendly do %>
-                <i class="fa-solid fa-paw" style="color: #bedac0;"></i>
+                <i class="fa-solid fa-paw" style= "color: hsl(124, 27%, 80%)"></i>
               <% end %>
               <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
             </div>
-          </div>
+
+
           <br>
-          <div class="filter-buttons ml-5"><br>
-            <%= form.submit "Filter", class: "btn btn-home" %>
-            <%= form.submit "Clear filters", class: "btn btn-light" %>
+          <div class="filter-buttons"><br>
+            <%= form.submit "Filter" %>
+            <%= form.submit "Clear filters" %>
           </div>
-
-
 
           <div class="text-center pt-2">
-              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "" %>
+              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
               <%= form.submit "Search", class: "btn btn-primary btn-home" %>
           </div>
-        </div>`
         </div>
       </div>
     </div>
@@ -55,6 +53,8 @@
   <div class="container-fluid pt-3">
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6  text-center ">
+
+
 
         <div class="d-flex mx-auto mt-2" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
           data-controller="map"

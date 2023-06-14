@@ -124,7 +124,14 @@ button, input, optgroup, select, textarea {
 }
 
 .filter-labels {
-  display: inline-flex;
+  margin-top: 4%;
+  display: -ms-flexbox!important;
+  display: flex!important;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: center;
   input {
     margin-left: 0;
   }
