@@ -3,7 +3,7 @@
   <div class="row">
     <div class="head-banner-stall text-white align-center">
       <div class="my-auto pt-4">
-        <h2 class="">Welcome to <%= current_user.username %>'s Profile</h2>
+        <h2 class="">Welcome to <%= @user.username %>'s Profile</h2>
 
             <div class="socials pl-4">
         <!-- Facebook -->
@@ -33,11 +33,41 @@
         ></a>
       </div>
     </div>
-    <%= render "users/create_friend" %>
+
+    <div class="d-flex">
+      <%= image_tag "avatar.png" , class: 'avatar my-auto' %>
+      <%= render "users/create_friend" %>
+    </div>
+
   </div>
 </div>
 
+<%# <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+  <div>
+
+  </div>
+</div>
+
+<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+  <div>
+
+  </div>
+</div> %>
 
 
+<div class="container-fluid py-5 px-5" style="height: 700px;">
+  <div class="row home-tabs">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upcoming Trips</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Past Trips</button>
+    </div>
+  </nav>
+    <div class="tab-content d-flex text-center my-5 pb-5" id="nav-tabContent">
+      <%= render 'upcoming_trips' %>
+      <%= render 'past_trips' %>
+    </div>
+  </div>
+</div>
 
 <%= render "shared/footer" %>

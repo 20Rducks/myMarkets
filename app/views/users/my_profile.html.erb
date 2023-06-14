@@ -32,11 +32,12 @@
 <div class="profile-calendar m-5">
   <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
   <%= date %>
-    <% trips.each do |trip| %>
+    <% trips.each_with_index do |trip, buddy| %>
       <div class="trip">
-        <p><%= trip.user.username %></p>
-        <p><%= trip.market.name %></p>
-        <p><%= trip.message %></p>
+        <p><b><%= trip.market.name %></b></p>
+        <p>With <%= trip.users[buddy].username %></p>
+        <p><em><%= trip.message.capitalize %></em></p>
+
       </div>
     <% end %>
   <% end %>
