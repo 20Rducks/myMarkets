@@ -2,13 +2,13 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="head-banner-market py-2">
-        <div class="market-index mt-5 ml-5 d-flex align-center">
-        <div>
-          <h2>myMarkets, Our Markets, Your Market</h2>
-          <h4 class="text-white">Your Choice!</h4>
-        </div>
-      ` <div>
+
+      <div class="head-banner-market py-2 d-flex">
+        <div class="my-auto">
+          <h2>Explore Markets</h2>
+          <h4></h4>
+
+
 
           <div class="filter-labels">
 
@@ -42,7 +42,7 @@
 
 
           <div class="text-center pt-2">
-              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market" %>
+              <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "" %>
               <%= form.submit "Search", class: "btn btn-primary btn-home" %>
           </div>
         </div>`
