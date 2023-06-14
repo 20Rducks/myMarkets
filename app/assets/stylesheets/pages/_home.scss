@@ -6,7 +6,7 @@ a {
   }
 }
 
-.btn {
+.btn-floating {
   display: flex;
   flex-direction: row !important;
   flex-wrap: nowrap;
@@ -14,14 +14,44 @@ a {
   justify-content: space-evenly !important;
   align-items: center;
   font-size: 16px;
+  height: 30px;
+  width: 70px;
   margin: 10px;
   text-decoration: none !important;
-  width: 114px;
   border-color: rgb(43, 6, 30) !important;
   text-decoration: none !important;
   color: white !important;
   border-radius: 10px;
-  background-color: $dark-purple !important;
+  background-color: $dark-green !important;
+  transition: 0.3s;
+  border: 1px solid black;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 5px 2px $tea-green;
+  }
+  a {
+    text-decoration: none !important;
+    color: black;
+  }
+}
+
+.btn {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-content: normal;
+  padding-bottom: 15px;
+  justify-content: space-evenly !important;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px;
+  text-decoration: none !important;
+  border-color: rgb(43, 6, 30) !important;
+  text-decoration: none !important;
+  color: white !important;
+  border-radius: 10px;
+  background-color: $dark-green !important;
   transition: 0.3s;
   border: 1px solid black;
   &:hover {
@@ -52,13 +82,13 @@ a {
   text-decoration: none !important;
   color: #BDD9BF !important;
   border-radius: 10px;
-  background-color: $dark-purple !important;
+  background-color: $dark-green !important;
   transition: 0.3s;
   border: 1px solid black;
   &:hover {
     text-decoration: none !important;
     transform: scale(1.02);
-    box-shadow: 0px 0px 5px 2px $light-purple;
+    box-shadow: 0px 0px 5px 2px $tea-green;
   }
   a {
     text-decoration: none !important;
@@ -289,4 +319,13 @@ body {
 
 .index-card .card-body {
   height: 130px;
+}
+
+.market-index {
+display: flex!important;
+flex-direction: row;
+align-content: space-around;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
 }
