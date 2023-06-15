@@ -2,13 +2,14 @@
   <% if @stall.reviews %>
     <% @stall.reviews.each do |r| %>
       <div class="show-review p-2 px-3 mx-3 my-3">
-          <h5><em><%= r.user.username %></em></h5>
-
-          <div class="review-footer">
-            <small><%= r.rating %> <i class="fa-regular fa-star pr-3 pt-1"></i></small>
-            <p><%= r.description %></p>
-          </div><br>
-          <%= link_to "Delete", review_path(r), class: "btn btn-light", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <div class="review-body">
+          <%= r.rating %><i class="fa-regular fa-star  pl-1 pr-3 pt-1 bold"></i>
+          <p><%= r.user.username %></p>
+        </div>
+        <div class="review-footer">
+          <h4><b><%= r.description %></h4></p>
+        </div><br>
+          <%= link_to "x", review_path(r), class: "review-btn", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
     <% end %>
   <% end %>

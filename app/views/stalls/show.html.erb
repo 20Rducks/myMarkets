@@ -7,11 +7,10 @@
       <h5><%= @stall.description %></h5>
       <h5><%= @stall.category %></h5>
 
-            <div class="socials">
+            <div class="socials d-flex justify-content-center">
         <!-- Facebook -->
         <a
-          class="btn btn-icon text-white btn-floating m-1"
-          style="background-color: #3b5998;"
+          class="btn-icon text-white btn-floating mt-1 mx-3"
           href="#!"
           role="button"
           ><i class="fab fa-facebook-f"></i
@@ -19,16 +18,14 @@
 
         <!-- Twitter -->
         <a
-          class="btn btn-icon text-white btn-floating m-1"
-          style="background-color: #55acee;"
+          class="btn-icon text-white btn-floating mt-1 mx-3"
           href="#!"
           role="button"
           ><i class="fab fa-twitter"></i
         ></a>
         <!-- Instagram -->
         <a
-          class="btn btn-icon text-white btn-floating m-1"
-          style="background-color: #ac2bac;"
+          class="btn-icon text-white btn-floating mt-1 mx-3"
           href="#!"
           role="button"
           ><i class="fab fa-instagram"></i
@@ -116,14 +113,14 @@
 
   <%# Review Form %>
   <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-    <div class="flex-column mt-2">
+    <div class="flex-column">
       <% if current_user.stalls.include?(@stall) %>
-      <h2 class="ml-4 text-center"> Leave a review! </h2><br>
+      <h2 class="review-head text-center"> Leave us a Review </h2><br>
       <%= render "shared/reviewsform" %>
       <% end %>
     </div>
 
-    <div class="overflow-auto" style="height: 320px; margin">
+    <div class="overflow-auto mt-5" style="height: 365px">
       <%= render "shared/reviews" %>
     </div>
 

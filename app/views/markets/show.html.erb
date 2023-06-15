@@ -12,14 +12,6 @@
         <p> <%= @market.address %></p>
 
         <div class="socials">
-          <% if @market.phone_number %>
-          <i class="fa-solid fa-phone pb-3"></i>
-            <%= @market.phone_number %>
-          <% end %>
-          <br>
-          <% if @market.website %>
-            <a class="fa-solid fa-laptop text-white m-1 mb-2" href="<%= @market.website %>"></a>
-          <% end %>
 
           <% if @market.wheelchair_access == true %>
           <i class="fa-solid fa-wheelchair m-1"></i>
@@ -32,11 +24,18 @@
           <% if @market.parking == true %>
           <i class="fa-solid fa-square-parking m-1 mr-5"></i>
           <% end %>
+          <% if @market.phone_number %>
+          <i class="fa-solid fa-phone pb-3"></i>
+            <%= @market.phone_number %>
+          <% end %>
+
+       <br>
+          </div>
+          <div class="socials d-flex">
 
           <!-- Facebook -->
           <a
-            class="btn text-white btn-floating m-1 ml-5"
-            style="background-color: #3b5998;"
+            class="text-white btn-floating mr-1"
             href="#!"
             role="button"
             ><i class="fab fa-facebook-f"></i
@@ -44,20 +43,22 @@
 
           <!-- Twitter -->
           <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #55acee;"
+            class="text-white btn-floating mr-1"
             href="#!"
             role="button"
             ><i class="fab fa-twitter"></i
           ></a>
           <!-- Instagram -->
           <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #ac2bac;"
+            class="text-white btn-floating mr-1"
             href="#!"
             role="button"
             ><i class="fab fa-instagram"></i
           ></a>
+
+          <% if @market.website %>
+            <a class="fa-solid fa-laptop text-white mr-1 mt-2 mb-2 py-1 btn-floating" role="button" href="<%= @market.website %>"></a>
+          <% end %>
         </div>
       </div>
 
@@ -86,7 +87,7 @@
       <% @stalls.each do |stall| %>
         <%= link_to stall_path(stall) do %>
           <div class="col">
-            <div class="index-card home-card-img h-100 mx-2 my-2">
+            <div class="index-card show-card-img h-100 mx-2 my-4">
               <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= stall.name %></h5>

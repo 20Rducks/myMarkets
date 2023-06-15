@@ -1,14 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
+
+
     <a class="nav-link active" aria-current="page" href="/"><%= image_tag "logo-no-background.png" , class: 'logo' %></a>
     <img class="navbar-toggler ml-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <a class="ml-5 pl-4" aria-current="page"><%= image_tag "new-logo.png" , class: 'logo-text' %></a>
     <div class="collapse navbar-collapse mr-3" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+
+
       <%# Drop down %>
-        <div class="btn-group mr-5 p-1">
-          <span id="avatar-drop" class="fa-solid fa-bars fa-2xl mr-5" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"></span>
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+        <div class="btn-group p-1">
+          <span id="avatar-drop" class="fa-solid fa-bars fa-2xl" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"></span>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-start">
             <% if !current_user %>
               <li><a class="dropdown-item" href="../users/sign_up">Sign Up</a></li> <%# Need to add proper path %>
               <li><a class="dropdown-item" href='/users/sign_in'>Log In</a></li>

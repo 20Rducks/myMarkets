@@ -1,7 +1,6 @@
-
 .simple_form.new_review {
   display: table-caption;
-  width: 180%;
+  width: 250%;
 }
 
 .review-section {
@@ -13,12 +12,45 @@
   align-items: normal;
   }
 
+.review-btn {
+  position: relative !important;
+  top: -40px !important;
+  right: -10px !important;
+  padding: 0 !important;
+  color: white !important;
+
+  transition: 0.3s;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.01);
+  }
+  a {
+    text-decoration: none !important;
+    color: black;
+  }
+}
+
+.chatroom {
+  h2 {
+    background-color: $tea-green;
+  }
+}
+.review-head {
+  background-color: $tea-green;
+  margin-top: 9px;
+}
+
+#new_review > div.mb-3.integer.required.review_rating > label {
+  padding-right: 30px !important;
+}
+
 .show-review {
+  transition: none !important;
   display: flex;
   background-color: $dark-green;
   color: white;
   // border-radius: 10px;
-  transition: 0.2s;
+
   padding: 10%;
   align-items: center;
   justify-content: space-between;
@@ -27,14 +59,16 @@
     font-size : 20px;
   }
 
+  h4 {
+    font-size: 15px;
+  }
+
   p {
-    font-size : 12px;
+    font-size : 15px;
   }
 
     &:hover {
-      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
-      transform: scale(1.01);
-      cursor: pointer;
+      transform: none !important;
   }
 }
 
@@ -97,11 +131,6 @@
 }
 
 
-.simple_form.new_review {
-  display: table-caption;
-  width: 200%;
-  margin-left: 100% !important;
-}
 
 .carousel-control-prev-icon {
   background-color: $light-purple !important;

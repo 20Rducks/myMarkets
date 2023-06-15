@@ -3,9 +3,11 @@
 }
 
 .mapboxgl-popup-content {
+  cursor: default !important;
   text-align: center;
   font-family: "Open Sans", sans-serif;
   padding: 0 !important;
+  transform: 0;
   // border-top-right-radius: 10px !important;
   // border-top-left-radius: 10px !important;
   .card-head {
@@ -17,6 +19,7 @@
 .card-footer-popup {
   background-color: rgba(0,61,30, 0.7) !important;
   color:rgba(245, 245, 245, 1);
+  display: flex;
   // border-bottom-right-radius: 10px !important;
   // border-bottom-left-radius: 10px !important;
 }

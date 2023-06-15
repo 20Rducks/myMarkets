@@ -123,7 +123,7 @@
     <% @stalls.each do |stall| %>
       <%= link_to stall_path(stall) do %>
           <div class="col">
-            <div class="index-card home-card-img h-100 mx-2 my-2">
+            <div class="index-card h-100 mx-2 my-2">
               <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= stall.name %></h5>

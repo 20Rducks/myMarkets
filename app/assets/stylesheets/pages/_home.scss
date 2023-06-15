@@ -13,18 +13,11 @@ a {
   align-content: normal;
   justify-content: space-evenly !important;
   align-items: center;
-  font-size: 16px;
-  height: 30px;
-  width: 70px;
-  margin: 10px;
-  text-decoration: none !important;
-  border-color: rgb(43, 6, 30) !important;
-  text-decoration: none !important;
-  color: white !important;
-  border-radius: 10px;
-  background-color: $dark-green !important;
-  transition: 0.3s;
-  border: 1px solid black;
+  background-color: none !important;
+  border-radius: 5px;
+  padding: 2px 12px !important;
+  border: none !important;
+
   &:hover {
     text-decoration: none !important;
     transform: scale(1.02);
@@ -65,9 +58,24 @@ a {
   }
 }
 
+.btn-icon {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-content: normal;
+  justify-content: space-evenly !important;
+  align-items: center;
+  padding: 0 !important;
+  transition: 0.3s;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 5px 2px $light-purple;
+  }
+}
+
 .btn-stall {
   display: flex;
-  justify-items: auto;
   flex-direction: row !important;
   flex-wrap: nowrap;
   align-content: normal;
@@ -77,7 +85,7 @@ a {
   font-size: 10px;
   margin: 10px;
   text-decoration: none !important;
-  width: 90px;
+  width: 115px;
   height: 40px;
   text-decoration: none !important;
   color: #BDD9BF !important;
@@ -280,14 +288,24 @@ body {
   }
 }
 
+.card-pop {
+  transition: none !important;
+  padding: 0;
+    &:hover {
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1) !important;
+      transform: none !important;
+      cursor: pointer;
+  }
+}
+
 .card-body {
   background-color: whitesmoke;
   min-height: 200px;
 }
 
 .card-footer-icon {
-  background-color: $dark-purple !important;
-  color:rgba(245, 245, 245, 1);
+  background-color: $dark-green !important;
+  color:$timberwolf !important;
 }
 
 
@@ -305,11 +323,11 @@ body {
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
   }
   p {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
@@ -321,4 +339,9 @@ body {
 
 .index-card .card-body {
   height: 130px;
+}
+
+
+.footer {
+ position: sticky;
 }
