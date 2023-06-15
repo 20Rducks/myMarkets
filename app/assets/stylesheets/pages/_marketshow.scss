@@ -154,3 +154,15 @@ button, input, optgroup, select, textarea {
 .market-show-left {
   margin-left: 0;
 }
+
+.ts-control > input {
+  flex: 1 1 auto;
+  min-width: 13.5rem !important;
+}
+
+.modal-footer {
+  background-color: $dark-green;
+  .btn {
+    width: 80%;
+  }
+}

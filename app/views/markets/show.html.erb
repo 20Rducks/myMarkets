@@ -63,11 +63,11 @@
       </div>
 
       <div>
-        <h2> Explore the stalls </h2>
+        <h2 class="text-center"> Explore the stalls </h2>
         <%= form_with url: market_path(@market), method: :get do |f| %>
           <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }} %>
-          <%= f.submit "Filter", class: "btn" %>
-          <%= f.submit "Clear Filters", class: "btn" %>
+          <%= f.submit "Filter", class: "btn btn-home" %>
+          <%= f.submit "Clear Filters", class: "btn btn-home" %>
         <% end %>
       </div>
     </div>
@@ -137,7 +137,7 @@
         <% end %>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
+        <button type="button" class="btn btn-home px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
           Pin To Calendar
         </button>
 
@@ -148,43 +148,26 @@
                 <%= simple_form_for [@market, @trip] do |trip_form| %>
                   <div class="modal-content">
 
-
-
                     <div class="modal-header">
                       <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <%# trip_form.label "" %>
+
                       <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-
-                      <%= form_with url: market_path(@market), method: :get do |f| %>
-                        <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
-                        <%= f.submit "Filter" %>
-                      <% end %>
-
-
-                    <h5 class="text-center mx-auto"> Who to invite? </h5><br>
-                    <div class="checks">
-                      <% @friendships.each do |friend| %>
-                        <div class="check-inputs"><br>
-                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
-                          <div class="modal-footer justify-content-center">
-                          </div>
-                        </div>
-                      <% end %>
-
-
-
+                      <%= trip_form.label "Buddies" %>
+                      <%= trip_form.select :user_ids, current_user.friends.map { |user| [ user.username, user.id ] }, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2 w-80"} %>
                       <%= trip_form.input :message, label: "Group Notes"%>
                     </div>
-                    <%= trip_form.submit class: "btn btn-primary w-80" %>
+                    <div class="modal-footer align-center">
+                      <%= trip_form.submit class: "text-center btn btn-home w-80 mr-5"%>
+                    </div>
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
 
       <div style="width: 80%; height: 400px; margin-bottom: 10%"
         data-controller="map"
@@ -196,7 +179,7 @@
   </div>
 </div>
 
-<div class="inline-flex justify-content-center mx-auto text-center mb-2 head-banner-market pb-4">
+<div class="inline-flex justify-content-center mx-auto text-center head-banner-market pb-4">
 <h2 class="my-2 pt-3 pb-3"> Discover more of <%= @market.name %>
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner pt-4">

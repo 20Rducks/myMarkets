@@ -73,9 +73,10 @@
 }
 
 .show-product {
-  background-color: $dark-green;
-  color: white;
+  background-color: $tea-green;
+  color: $dark-purple;
   // border-radius: 10px;
+  width: 100%;
   transition: 0.2s;
   padding: 0;
     &:hover {

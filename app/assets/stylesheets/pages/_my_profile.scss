@@ -35,6 +35,10 @@
   border: 0.5px solid rgba(0,61,30,0.3);
   // border-top-left-radius: 5px !important;
   // border-top-right-radius: 5px !important;
+  .card-footer {
+    background-color: $dark-green;
+    color: $timberwolf !important;
+  }
 }
 
 .home-card-img {

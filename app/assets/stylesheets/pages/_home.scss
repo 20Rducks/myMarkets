@@ -44,7 +44,36 @@ a {
   text-decoration: none !important;
   color: white !important;
   border-radius: 10px;
-  background-color: $dark-green !important;
+  background-color: $tea-green !important;
+  transition: 0.3s;
+  border: 1px solid black;
+  &:hover {
+    text-decoration: none !important;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 5px 2px $light-purple;
+  }
+  a {
+    text-decoration: none !important;
+    color: black;
+  }
+}
+
+.btn-profile {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-content: normal;
+  padding-bottom: 15px;
+  justify-content: space-evenly !important;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px;
+  text-decoration: none !important;
+  border-color: rgb(43, 6, 30) !important;
+  text-decoration: none !important;
+  color: white !important;
+  border-radius: 10px;
+  background-color: $tea-green !important;
   transition: 0.3s;
   border: 1px solid black;
   &:hover {
@@ -106,12 +135,15 @@ a {
 
 
 .btn-home {
-  width: 30%;
-  background-color: $dark-purple !important;
+  min-width: 100px;
+  font-weight:bolder;
+  font-size: 15px;
+  background-color: $tea-green !important;
+  color: $dark-purple !important;
   &:hover {
     text-decoration: none !important;
     transform: scale(1.02);
-    box-shadow: 0px 0px 5px 2px $light-purple;
+    box-shadow: 0px 0px 5px 2px $tea-green;
   }
 }
 
@@ -344,4 +376,14 @@ body {
 
 .footer {
  position: sticky;
+}
+
+.home-form-field {
+  display: flex;
+  justify-content: center;
+
+  .form-control {
+    width: 350px !important;
+  }
+
 }

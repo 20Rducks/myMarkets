@@ -4,8 +4,8 @@
     <div class="row">
       <div class="head-banner-market py-2 ">
         <div class="my-auto d-flex justify-content-around">
-          <div class="mt-4 ml-5">
-            <h2>myMarkets,<br> Our Markets,<br> Your Market</h2><br>
+          <div class="mt-4 ml-5 text-center">
+            <h2>Find markets near you<br> Filter your choices<br> Discover your options</h2><br>
           </div>
           <div class="market-filters justify-content-center">
 
@@ -33,9 +33,9 @@
 
             <div class="text-center justify-content-around pt-2">
                 <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market"%><br>
-                <%= form.submit "Search", class: "btn" %>
-                <%= form.submit "Filter", class: "btn" %>
-                <%= form.submit "Clear filters", class: "btn" %>
+                <%= form.submit "Search", class: "btn btn-home" %>
+                <%= form.submit "Filter", class: "btn btn-home" %>
+                <%= form.submit "Clear filters", class: "btn btn-home" %>
               </div>
           </div>
         </div>

@@ -17,7 +17,7 @@
           </div>
         <% end %>
       <div class="card-footer">
-        <small class="text-dark text-center"><em><%= invitation.trip.message %><em></small><br>
+        <small class="text-center"><em><%= invitation.trip.message %><em></small><br>
         <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch}, class: "btn btn-btn" %>
         <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"}, class: "btn btn-small" %>
       </div>
