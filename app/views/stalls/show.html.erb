@@ -46,21 +46,34 @@
   </div>
 </div>
 
-
 <%# Carousel %>
 <div class="inline-flex justify-content-center mx-auto text-center">
   <h2 class="pb-3">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner pt-4">
-    <% if @stall.photos.attached? %>
-      <div class="carousel-item active" data-bs-interval="5000">
-        <% @stall.photos.each do |p| %>
-          <%= cl_image_tag p.key, class: "carousel-img w-20"%>
-        <% end %>
-      </div>
-    <% end %>
-
+    <div class="carousel-item active" data-bs-interval="5000">
+      <%= cl_image_tag @stall.photos[0].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[1].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[2].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[3].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[4].key, class: "carousel-img w-20"%>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <%= cl_image_tag @stall.photos[0].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[1].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[2].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[3].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[4].key, class: "carousel-img w-20"%>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <%= cl_image_tag @stall.photos[0].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[1].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[2].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[3].key, class: "carousel-img w-20"%>
+      <%= cl_image_tag @stall.photos[4].key, class: "carousel-img w-20"%>
+    </div>
   </div>
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
