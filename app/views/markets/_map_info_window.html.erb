@@ -1,4 +1,4 @@
-  <div class="card">
+  <div class="card card-pop">
       <div class="card-head">
         <h5 class="card-title text-white"><%= market.name %></h5><span>
       </div>
@@ -9,19 +9,19 @@
       <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
         <%# <p>Wheelchair Access</p> %>
         <% if market.wheelchair_access == true %>
-          <i class="fa-solid fa-wheelchair"></i>
+          <i class="fa-solid fa-wheelchair fa-lg"></i>
         <% end %>
       </div>
       <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
         <%# <p>Pet Friendly</p> %>
         <% if market.pet_friendly == true %>
-        <i class="fa-solid fa-paw"></i>
+        <i class="fa-solid fa-paw fa-lg"></i>
         <% end %>
       </div>
       <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
         <%# <p>Parking</p> %>
         <% if market.parking == true %>
-          <i class="fa-solid fa-square-parking"></i>
+          <i class="fa-solid fa-square-parking fa-lg"></i>
         <% end %>
       </div>
     </div>

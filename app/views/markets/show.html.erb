@@ -1,242 +1,254 @@
-<%# Basic Hero/Jumbo/Header %>
-<div class="container-fluid home-header">
-  <div class="row">
+  <%# Basic Hero/Jumbo/Header %>
+  <div class="container-fluid home-header">
+    <div class="row">
 
-    <div class="head-banner-market market-show text-white py-3 pl-5">
-      <div class="market-show-left">
-        <h1><%= @market.name %> <span class="pl-4">
-          <% if @market.reviews.exists? %>
-          <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
-          <% end %>
-        <h4><%= @market.bio %></h4>
-        <p> <%= @market.address %></p>
+      <div class="head-banner-market market-show text-white py-3 pl-5">
+        <div class="market-show-left">
+          <h1><%= @market.name %> <span class="pl-4">
+            <% if @market.reviews.exists? %>
+            <%= @market.average_rating / @market.reviews.count %></span><span><i class="fa-regular fa-star pl-1"></i></span></h1>
+            <% end %>
+          <h4><%= @market.bio %></h4>
+          <p> <%= @market.address %></p>
 
-        <div class="socials">
-          <% if @market.phone_number %>
-          <i class="fa-solid fa-phone pb-3"></i>
-            <%= @market.phone_number %>
-          <% end %>
-          <br>
-          <% if @market.website %>
-            <a class="fa-solid fa-laptop text-white m-1 mb-2" href="<%= @market.website %>"></a>
-          <% end %>
+          <div class="socials">
 
-          <% if @market.wheelchair_access == true %>
-          <i class="fa-solid fa-wheelchair m-1"></i>
-          <% end %>
+            <% if @market.wheelchair_access == true %>
+            <i class="fa-solid fa-wheelchair m-1"></i>
+            <% end %>
 
-          <% if @market.pet_friendly == true  %>
-          <i class="fa-solid fa-paw m-1"></i>
-          <% end %>
+            <% if @market.pet_friendly == true  %>
+            <i class="fa-solid fa-paw m-1"></i>
+            <% end %>
 
-          <% if @market.parking == true %>
-          <i class="fa-solid fa-square-parking m-1 mr-5"></i>
-          <% end %>
+            <% if @market.parking == true %>
+            <i class="fa-solid fa-square-parking m-1 mr-5"></i>
+            <% end %>
+            <% if @market.phone_number %>
+            <i class="fa-solid fa-phone pb-3 ml-1"></i>
+              <%= @market.phone_number %>
+            <% end %>
 
-          <!-- Facebook -->
-          <a
-            class="btn text-white btn-floating m-1 ml-5"
-            style="background-color: #3b5998;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
+        <br>
+            </div>
+            <div class="socials d-flex">
 
-          <!-- Twitter -->
-          <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #55acee;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <!-- Instagram -->
-          <a
-            class="btn text-white btn-floating m-1"
-            style="background-color: #ac2bac;"
-            href="#!"
-            role="button"
-            ><i class="fab fa-instagram"></i
-          ></a>
+            <!-- Facebook -->
+            <a
+              class="text-white btn-floating mr-1"
+              href="#!"
+              role="button"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a
+              class="text-white btn-floating mr-1"
+              href="#!"
+              role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <!-- Instagram -->
+            <a
+              class="text-white btn-floating mr-1"
+              href="#!"
+              role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+
+            <% if @market.website %>
+              <a class="fa-solid fa-laptop text-white mr-1 mt-2 mb-2 py-1 btn-floating" role="button" href="<%= @market.website %>"></a>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <h2> Explore the stalls </h2>
-        <%= form_with url: market_path(@market), method: :get do |f| %>
-          <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
-          <%= f.submit "Filter" %>
-          <%= f.submit "Clear filters" %>
-        <% end %>
+        <div class="pl-5 market-show-right">
+          <h2 class="text-center"> Filter Your Search </h2>
+          <%= form_with url: market_path(@market), method: :get do |f| %>
+            <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }} %>
+            <%= f.submit "Filter", class: "btn btn-home" %>
+            <%= f.submit "Clear Filters", class: "btn btn-home" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div class="container-fluid pt-3">
-  <div class="row">
 
-  </div>
-</div>
+  <div class="container-fluid pt-3">
+    <div class="row mx-auto">
 
-<div class="container-fluid pt-3">
-  <div class="row mx-auto">
-    <div class="col-sm-8 col-m8-8 col-lg-8 col-xl-8 text-center market-index mx-auto mt-3">
-      <% @stalls.each do |stall| %>
-        <%= link_to stall_path(stall) do %>
-          <div class="col">
-            <div class="index-card home-card-img h-100 mx-2 my-2">
-            <% if stall.photos.attached? %>
-              <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
-            <% else %>
-            <%= image_tag "https://images.unsplash.com/photo-1535202610320-919f9b13de77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" , class: "card-img-top"%>
-            <% end %>
-              <div class="card-body">
-                <h5 class="card-title"><%= stall.name %></h5>
-                <p class="card-text"><%= stall.description %></p>
-                <p class="card-text"><%= stall.category %></p>
-              </div>
-              <div class="card-footer-icon">
-                <div class=" text-center">
-                  <i class="fa-solid fa-laptop"></i><br>
-                  <%# <p>Wheelchair Access</p> %>
-                  <% if stall.website_url %>
-                    <%= stall.website_url %>
-                  <% end %>
+      <div class="col-sm-8 col-m-8 col-lg-8 col-xl-8 text-center market-index mt-3 ">
+      <div class="text-center" style="width:80%; height: 0px;">
+        <b><h2 class="mt-3">Discover & Explore Stalls</h2></b>
+      </div>
+
+        <% @stalls.each do |stall| %>
+          <%= link_to stall_path(stall) do %>
+            <div class="col">
+              <div class="show-card mx-2 mb-2">
+                <%= cl_image_tag stall.photos.first.key, class: "show-card-img "%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= stall.name %></h5>
+                  <p class="card-text"><%= stall.description %></p>
+                </div>
+                <div class="card-footer-icon">
+                  <div class=" text-center">
+                    <div class="stalls-icon" style="display: flex; align-items: center; justify-content: space-around;">
+                      <h5 class="card-text py-2"><%= stall.category %></h5>
+
+
+                      <div>
+                        <% if stall.category == "Confectionary" %>
+                          <i class="fa-solid fa-cookie-bite fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Bakery" %>
+                          <i class="fa-solid fa-bread-slice fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Fish & Seafood" %>
+                          <i class="fa-solid fa-fish-fins fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Cured Meats" %>
+                          <i class="fa-solid fa-fish-fins fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Dry Goods" %>
+                          <i class="fa-solid fa-wheat-awn fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Antipasti" %>
+                          <i class="fa-regular fa-lemon fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Butchery" %>
+                          <i class="fa-solid fa-drumstick-bite fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Dairy" %>
+                          <i class="fa-solid fa-cheese fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Vegan" %>
+                          <i class="fa-solid fa-seedling fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Hot Street Food" %>
+                          <i class="fa-solid fa-hotdog fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Cold Street Food" %>
+                          <i class="fa-solid fa-bowl-food fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Sweet" %>
+                          <i class="fa-solid fa-cake-candles fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Savoury" %>
+                          <i class="fa-solid fa-pizza-slice fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Fruit & Veg" %>
+                          <i class="fa-solid fa-carrot fa-xl"></i>
+                        <% end %>
+                        <% if stall.category == "Drinks" %>
+                          <i class="fa-solid fa-martini-glass-citrus fa-xl"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
+      </div>
+
+      <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 split-address-header mt-2" >
+
+        <%# <div class="opening-times d-flex justify-content-center"> %>
+          <div class="text-center my-4 mb-4" style="width:80%;">
+          <b><h2>Market Opening Times</h2></b>
+
+          <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
+
+          <ul class="list-group list-group-flush d-flex justify-content-center mt-5">
+            <% days.each do |int, day| %>
+                <%if @market.days[int].open == true %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><h5><span><%= day.capitalize %></span></h5><span><%= @market.days[int].opening_time.hour %>:00 - <%= @market.days[int].closing_time.hour %>:00 </span></li>
+                <% else %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><h5><%= day.capitalize  %></h5><h5><span>Closed</span></h5></li>
+                <% end %>
+            <% end %>
+          </ul> <%#<%= @market.open%>
+
+          <% if @trip.errors.any?  %>
+    `             <script defer>
+              function showModal() {
+                new bootstrap.Modal('#tripModal').show();
+              }
+              showModal();
+            </script>
+          <% end %>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-calendar px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
+           <h4> Pin To Calendar </h4>
+          </button>
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <%= simple_form_for [@market, @trip] do |trip_form| %>
+                    <div class="modal-content">
+
+                      <div class="modal-header text-center">
+                        <h1 class="modal-title text-center" id="tripModalLabel">Book Your Trip</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <%= trip_form.label "Pick A Day" %>
+                        <%= trip_form.input :date, label: false, class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
+                        <%= trip_form.label "Invite Buddies" %>
+                        <%= trip_form.select :user_ids, current_user.friends.map { |user| [ user.username, user.id ] }, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2 w-80"} %>
+                        <%= trip_form.label "Leave A Message" %>
+                        <%= trip_form.input :message, label: false %>
+                      </div>
+                      <div class="modal-footer align-center">
+                        <%= trip_form.submit class: "text-center btn btn-calendar w-80 mr-5"%>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        <div style="width: 80%; height: 400px; margin-bottom: 10%"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="inline-flex justify-content-center mx-auto text-center head-banner-market pb-4">
+  <h2 class="my-2 pt-3 pb-3"> Discover more of <%= @market.name %>
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner pt-4">
+      <% if @market.photos.attached? %>
+        <div class="carousel-item active" data-bs-interval="10000">
+          <% @market.photos.each do |p| %>
+            <%= cl_image_tag p.key, class: "carousel-img w-20"%>
+
+          <% end %>
+        </div>
       <% end %>
     </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 split-address-header" >
-
-      <%# <div class="opening-times d-flex justify-content-center"> %>
-        <div class="text-center my-3 mb-4" style="width:80%">
-        <h2>Market Opening Times</h2>
-
-        <% days = { 0 => "mon", 1  => "tue", 2 => "wed", 3 => "thur", 4 => "fri", 5 => "sat", 6 => "sun"} %>
-
-        <ul class="list-group list-group-flush d-flex justify-content-center">
-          <% days.each do |int, day| %>
-              <%if @market.days[int].open == true %>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><span><%= day.capitalize %></span> <span><%= @market.days[int].opening_time.hour %>:00 - <%= @market.days[int].closing_time.hour %>:00 </span></li>
-              <% else %>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><%= day.capitalize  %><span>Closed</span></li>
-              <% end %>
-          <% end %>
-        </ul> <%#<%= @market.open%>
-
-        <% if @trip.errors.any?  %>
-  `             <script defer>
-            function showModal() {
-              new bootstrap.Modal('#tripModal').show();
-            }
-            showModal();
-          </script>
-        <% end %>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary px-5 mx-5 w-75" data-bs-toggle="modal" data-bs-target="#tripModal">
-          Pin To Calendar
-        </button>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="tripModal" tabindex="-1" aria-labelledby="tripModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <%= simple_form_for [@market, @trip] do |trip_form| %>
-                  <div class="modal-content">
-
-
-
-                    <div class="modal-header">
-                      <h1 class="modal-title d-flex align-center" id="tripModalLabel">Book Your Trip</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <%# trip_form.label "" %>
-                      <%= trip_form.input :date, label: "Pick a day", class: "mr-2", html5: true, as: :string, input_html: { data: { controller: "datepicker" }}%>
-
-                      <%= form_with url: market_path(@market), method: :get do |f| %>
-                        <%= f.select :categories, Stall::CATEGORIES, {}, {multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true } }, class: "mb-2"} %>
-                        <%= f.submit "Filter" %>
-                      <% end %>
-
-
-                    <h5 class="text-center mx-auto"> Who to invite? </h5><br>
-                    <div class="checks">
-                      <% @friendships.each do |friend| %>
-                        <div class="check-inputs"><br>
-                          <%= trip_form.collection_check_boxes :user_ids, User.where(id: friend.receiver_id) || User.where(id: friend.asker_id), :id, :username, include_hidden: false %>
-                          <div class="modal-footer justify-content-center">
-                          </div>
-                        </div>
-                      <% end %>
-
-
-
-                      <%= trip_form.input :message, label: "Group Notes"%>
-                    </div>
-                    <%= trip_form.submit class: "btn btn-primary w-80" %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <div style="width: 80%; height: 400px; margin-bottom: 10%"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
     </div>
   </div>
-</div>
-
-<div class="inline-flex justify-content-center mx-auto text-center mb-2 head-banner-market pb-4">
-<h2 class="my-2 pt-3 pb-3"> Discover more of <%= @market.name %>
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner pt-4">
-  <% if @market.photos.attached? %>
-      <div class="carousel-item active" data-bs-interval="10000">
-        <%= cl_image_tag @market.photos[0].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[1].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[2].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[3].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[4].key, class: "carousel-img w-20"%>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <%= cl_image_tag @market.photos[0].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[1].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[2].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[3].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[4].key, class: "carousel-img w-20"%>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <%= cl_image_tag @market.photos[0].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[1].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[2].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[3].key, class: "carousel-img w-20"%>
-        <%= cl_image_tag @market.photos[4].key, class: "carousel-img w-20"%>
-      </div>
-    </div>
-  <% end %>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-  </div>
-</div>
 
 
-<%= render "shared/footer" %>
+  <%= render "shared/footer" %>

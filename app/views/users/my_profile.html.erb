@@ -1,9 +1,12 @@
 <%# Basic Hero/Jumbo/Header %>
 <div class="container-fluid">
   <div class="row">
-    <div class="head-banner-market mt-3 d-flex text-center">
+    <div class="head-banner-market mt-3 d-flex justify-content-between align-items-center text-center">
       <div class="my-auto text-center">
-        <h2 class="ml-5"> Welcome back, <%= current_user.username %> !</h2>
+        <h1 class="ml-5 text-white"> Welcome back, <%= current_user.username %> !</h1>
+      </div>
+      <div>
+         <%= image_tag "logo-fred.png" , class: 'profile my-auto' %>
       </div>
     </div>
   </div>
@@ -19,7 +22,7 @@
       <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Invitations</button>
     </div>
   </nav>
-    <div class="tab-content d-flex text-center my-5 pb-5" id="nav-tabContent">
+    <div class="tab-content d-flex justify-content-center text-center my-5 pb-5" id="nav-tabContent">
       <%= render 'upcoming_trips' %>
       <%= render 'past_trips' %>
       <%= render 'trip_buddies' %>
@@ -31,7 +34,7 @@
 <div class="profile-calendar m-5">
   <%= month_calendar(events: @trips, start_time: :date) do |date, trips| %>
   <%= date %>
-    <% trips.each_with_index do |trip| %>
+    <% trips.each do |trip| %>
       <div class="trip">
         <p><b><%= trip.market.name %></b></p>
         <% trip.users.each do |buddy| %>
