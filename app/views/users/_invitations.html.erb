@@ -9,17 +9,18 @@
           <div class="card-body" id="myprofile">
             <h5 class="card-title"><small>Invite to </small><b><br><%= invitation.trip.market.name %></b></h5>
             <h5><%= invitation.trip.date %></h5>
+            <small>Join your friends</small>
             <% invitation.trip.users.each do |t| %>
               <%= link_to user_path(t) do %>
-                <div><small>Join</small> <em><%= t.username %></em></div>
+                <div> <em><%= t.username %></em></div>
               <% end %>
             <% end %>
           </div>
         <% end %>
       <div class="card-footer">
-        <small class="text-dark text-center"><em><%= invitation.trip.message %><em></small><br>
-        <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch}, class: "btn btn-btn" %>
-        <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"}, class: "btn btn-small" %>
+        <small class="text-center"><em><%= invitation.trip.message %><em></small><br>
+        <%= link_to "Accept", trip_buddy_path(invitation), data: {turbo_method: :patch}, class: "btn btn-small" %>
+        <%= link_to "Decline", trip_buddy_path(invitation), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to decline?"}, class: "btn btn-home" %>
       </div>
     </div>
   <% end %>

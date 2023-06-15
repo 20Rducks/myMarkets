@@ -5,9 +5,9 @@
         <h2 class="landing-text">Want to unlock London's hidden food-gems?<br><span style="font-size: 1.5rem; font-family: 'Cabin'; font-weight: 100 !important; letter-spacing: 0.5px;">Discover the capital's vibrant food markets, plan trips, <br>and indulge in culinary delights with </span><strong style="font-family: 'EB Garamond'; font-size: 2rem; margin: 0; text-align: center;">myMarkets</strong></h2>
 
       </div>
-      <%= form_with url: markets_path, method: :get, class: "text-center pt-2" do |form| %>
-        <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Enter a keyword or location..." %>
-        <%= form.submit "Explore", class: "btn btn-dark btn-home" %>
+      <%= form_with url: markets_path, method: :get, class: "text-center pt-2 home-form-field" do |form| %>
+        <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Enter a keyword or location...", style: "margin-top: 10px" %>
+        <%= form.submit "Explore", class: "btn btn-home" %>
       <% end %>
   </div>
 </div>

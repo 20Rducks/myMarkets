@@ -33,11 +33,11 @@
       </div>
     </div>
 
-      <div class="py-4 pl-4 text-center my-auto">
-        <h3> Trading at</h3>
-        <ul class="stall-list">
+      <div class="py-2 pl-4 text-center mt-4">
+        <h3>Trading At <span class="fa-solid fa-store"></span></h3>
+        <ul class="stall-list d-flex">
           <% @stall.markets.each do |market| %>
-          <li><span><%= link_to market.name, market_path(market), class: "btn-stall bold"%></li>
+          <li><span><%= link_to market.name, market_path(market), class: "btn-icons"%></li>
           <% end %>
         </ul>
       </div>
@@ -48,7 +48,7 @@
 
 
 <%# Carousel %>
-<div class="inline-flex justify-content-center mx-auto text-center mb-2 pb-4">
+<div class="inline-flex justify-content-center mx-auto text-center">
   <h2 class="pb-3">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner pt-4">
@@ -107,12 +107,50 @@
             <% end %>
           </div>
         <% end %>
+
+        <div class="container review-section text-center mt-3" style="position: absolute; bottom: 100px; left: -100px;">
+          <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2 mx-5">
+            <div class="show-product px-2 py-3 mb-2">
+              <div>
+                <h4>Llama Barbacoa<h4>
+              </div>
+              <div>
+                <p>salsa roja & lime</p>
+              </div>
+              <i class="fa-solid fa-sterling-sign" style="color: #c0c1c4;"></i><span> 9.00</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2 mx-5">
+            <div class="show-product px-2 py-3 mb-2 ">
+              <div>
+                <h4>Turtle Roja<h4>
+              </div>
+              <div>
+                <p>queso blanco & salsa arbol</p>
+              </div>
+              <i class="fa-solid fa-sterling-sign" style="color: #c0c1c4;"></i><span> 12.50</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2 mx-5">
+            <div class="show-product px-2 py-3 mb-2">
+              <div>
+                <h4>Black Cod Baja<h4>
+              </div>
+              <div>
+                <p>salsa verde & coriander</p>
+              </div>
+              <i class="fa-solid fa-sterling-sign" style="color: #c0c1c4;"></i><span> 15.00</span>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
 
   <%# Review Form %>
-  <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+  <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 mb-4">
     <div class="flex-column">
       <% if current_user.stalls.include?(@stall) %>
       <h2 class="review-head text-center"> Leave us a Review </h2><br>
@@ -120,7 +158,7 @@
       <% end %>
     </div>
 
-    <div class="overflow-auto mt-5" style="height: 365px">
+    <div class="overflow-auto my-2" style="height: 275px; mb-5;">
       <%= render "shared/reviews" %>
     </div>
 
@@ -128,50 +166,4 @@
 </div>
 
 
-<%# Products %>
-
-<div class="container review-section text-center d-flex justify-content-center mt-3">
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2 ">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4 col-md-2 col-xl-2 my-2">
-    <div class="show-product p-4 m-2">
-      <h5><em>Fine</em> appalacian llama<h5>
-      <p>Grown in the wilds of borneo</p>
-    </div>
-  </div>
-
-</div>
-
-
-
-
-
-<%= render "shared/footer" %>
+<%= render "shared/footer-stall", class: "mt-5"%>
