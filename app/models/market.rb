@@ -9,8 +9,8 @@ class Market < ApplicationRecord
   has_many_attached :photos
 
   validates :name, :address, :bio, presence: true
-  validates :bio, length: { in: 20..100 }
-  validates :name, length: { in: 5..30 }
+  validates :bio, length: { in: 20..250 }
+  validates :name, length: { in: 5..50 }
 
   def average_rating
     reviews.sum(&:rating)

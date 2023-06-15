@@ -124,7 +124,11 @@
       <%= link_to stall_path(stall) do %>
           <div class="col">
             <div class="index-card home-card-img h-100 mx-2 my-2">
+            <% if stall.photos.attached? %>
               <%= cl_image_tag stall.photos.first.key, class: "card-img-top"%>
+            <% else %>
+              <%= image_tag "https://images.unsplash.com/photo-1535202610320-919f9b13de77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" , class: "card-img-top"%>
+            <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= stall.name %></h5>
                 <p class="card-text"><%= stall.description %></p>
@@ -152,6 +156,7 @@
 <h2 class="my-2 pt-3 pb-3"> Discover more of <%= @market.name %>
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner pt-4">
+  <% if @market.photots.attached? %>
     <div class="carousel-item active" data-bs-interval="10000">
       <%= cl_image_tag @market.photos[0].key, class: "carousel-img w-20"%>
       <%= cl_image_tag @market.photos[1].key, class: "carousel-img w-20"%>
@@ -173,6 +178,7 @@
       <%= cl_image_tag @market.photos[3].key, class: "carousel-img w-20"%>
       <%= cl_image_tag @market.photos[4].key, class: "carousel-img w-20"%>
     </div>
+  <% end %>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

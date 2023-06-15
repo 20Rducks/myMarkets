@@ -72,7 +72,11 @@
       <%= link_to market_path(market) do %>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
             <div class="index-card card home-card-img h-100 mx-2 my-2">
+            <% if market.photos.attached? %>
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
+            <% else %>
+              <%= image_tag "https://images.unsplash.com/photo-1535202610320-919f9b13de77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" , class: "card-img-top"%>
+            <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5><span>
 
