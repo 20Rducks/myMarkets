@@ -1,5 +1,5 @@
 .home-tabs {
-  background-color: rgba(189, 217, 191, 0.5);
+  background-color: #DDD;
   min-height: 600px;
   margin-bottom: 200px;
   // border-top-left-radius: 20px;
@@ -12,7 +12,6 @@
 
 #navContact {
   background-color: rgba(0,61,30,1);
-
   color: rgba(43, 6, 30, 1);
 }
 
@@ -34,8 +33,9 @@
   }
 }
 
-.avatar {
-  background-image: image-url("avatar.png");
-  width: 100px;
-  height: 100px;
+.profile {
+  width: 125px;
+  height: 125px;
+  margin-right: 100px;
+  border-radius: 50%;
 }

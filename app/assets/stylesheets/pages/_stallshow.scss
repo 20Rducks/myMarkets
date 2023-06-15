@@ -14,7 +14,7 @@
 
 .review-btn {
   position: relative !important;
-  top: -40px !important;
+  top: -30px !important;
   right: -10px !important;
   padding: 0 !important;
   color: white !important;
@@ -32,11 +32,11 @@
 
 .chatroom {
   h2 {
-    background-color: $tea-green;
+    // background-color: $tea-green;
   }
 }
 .review-head {
-  background-color: $tea-green;
+  // background-color: $tea-green;
   margin-top: 9px;
 }
 
@@ -47,7 +47,7 @@
 .show-review {
   transition: none !important;
   display: flex;
-  background-color: $dark-green;
+  background-color: $dark-purple;
   color: white;
   // border-radius: 10px;
 
@@ -73,16 +73,15 @@
 }
 
 .show-product {
-  background-color: $tea-green;
-  color: $dark-purple;
+  background-color: rgba(78, 75, 81, 0.4);
+  color: $timberwolf;
   // border-radius: 10px;
-  width: 100%;
-  transition: 0.2s;
-  padding: 0;
+  z-index: 1;
+  margin-left: 3rem !important;
+  margin-right: 3rem !important;
+  width: 160%;
     &:hover {
       box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
-      transform: scale(1.02);
-      cursor: pointer;
   }
 }
 
@@ -92,22 +91,13 @@
 }
 
 
-.split-address-header {
-  align-items: center;
-  align-content: center;
-}
-
-.show-card .card-img-top {
-  max-height: 225px;
-  object-fit: cover;
-}
 
 
 .head-banner-stall {
   display: flex;
   justify-content: space-around !important;
-  background: rgb(0,61,30);
-  background: radial-gradient(circle, rgba(0,61,30,1) 0%, rgba(0,61,30,1) 50%, rgba(0,0,0,0.5327380952380952) 100%);
+  background: hsl(330, 100%, 12%);
+  background: radial-gradient(circle, hsl(330, 100%, 12%) 0%, hsl(330, 100%, 12%)50%, rgba(0,0,0,0.5327380952380952) 100%);
   min-height: 200px !important;
   p {
     color: rgba(245, 245, 245, 1);
@@ -118,8 +108,14 @@
 }
 
 .stall-list {
-  display: inline-flex;
-  list-style: none;
+  display: flex!important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 500px;
+  li {
+    list-style: none;
+  }
 
 }
 
@@ -139,4 +135,17 @@
 
 .carousel-control-next-icon {
   background-color: $light-purple !important;
+}
+
+// #trip_user_ids-ts-control {
+//   width: 287px;
+// }
+
+.ts-control > input {
+  flex: 1 1 auto;
+  min-width: 12.5rem !important;
+}
+
+textarea.form-control {
+  min-width: 12.5rem !important;
 }

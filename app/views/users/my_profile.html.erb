@@ -1,9 +1,12 @@
 <%# Basic Hero/Jumbo/Header %>
 <div class="container-fluid">
   <div class="row">
-    <div class="head-banner-market mt-3 d-flex text-center">
+    <div class="head-banner-market mt-3 d-flex justify-content-between align-items-center text-center">
       <div class="my-auto text-center">
-        <h2 class="ml-5"> Welcome back, <%= current_user.username %> !</h2>
+        <h1 class="ml-5 text-white"> Welcome back, <%= current_user.username %> !</h1>
+      </div>
+      <div>
+         <%= image_tag "logo-fred.png" , class: 'profile my-auto' %>
       </div>
     </div>
   </div>

@@ -4,12 +4,12 @@
     <div class="row">
       <div class="head-banner-market py-2 ">
         <div class="my-auto d-flex justify-content-around">
-          <div class="mt-4 ml-5 text-center">
-            <h2>Find markets near you<br> Filter your choices<br> Discover your options</h2><br>
+          <div class="mt-4 ml-5 text-center text-white">
+            <h1>Find markets near you<br> Filter your choices<br> Discover your options</h1><br>
           </div>
-          <div class="market-filters justify-content-center">
+          <div class="market-filters justify-content-center mt-4">
 
-            <div class="filter-labels d-flex mr-4">
+            <div class="filter-labels d-flex mr-4 mt-3">
 
               <div class="ml-4 mr-0">
                 <%= form.label :wheelchair_access do %>
@@ -31,9 +31,8 @@
               </div>
             </div>
 
-            <div class="text-center justify-content-around pt-2">
+            <div class="text-center justify-content-around pt-">
                 <%= form.text_field :query, value: params[:query], class: "form-control home-form", placeholder: "Find a market"%><br>
-                <%= form.submit "Search", class: "btn btn-home" %>
                 <%= form.submit "Filter", class: "btn btn-home" %>
                 <%= form.submit "Clear filters", class: "btn btn-home" %>
               </div>
@@ -50,7 +49,7 @@
 
 
 
-        <div class="d-flex mx-auto mt-2" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
+        <div class="d-flex mx-auto mt-2" style="width: 90%; height: 560px; position: sticky; top: 50px; left: 50px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -65,30 +64,30 @@
     <% @markets.each do |market| %>
       <%= link_to market_path(market) do %>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            <div class="index-card card h-100 mx-2 my-2">
+            <div class="index-card card mx-2 my-2">
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5><span>
 
                 <p class="card-text"><%= market.bio %></p>
               </div>
-              <div class="card-footer-icon d-inline-flex">
-                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
-                  <%# <p>Wheelchair Access</p> %>
-                  <% if market.wheelchair_access == true %>
-                    <i class="fa-solid fa-wheelchair"></i>
-                  <% end %>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
-                  <%# <p>Pet Friendly</p> %>
-                  <% if market.pet_friendly == true %>
-                  <i class="fa-solid fa-paw"></i>
-                  <% end %>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 market-icon text-center">
+              <div class="card-footer-icon d-inline-flex justify-content-end">
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
                   <%# <p>Parking</p> %>
                   <% if market.parking == true %>
-                    <i class="fa-solid fa-square-parking"></i>
+                    <i class="fa-solid fa-square-parking fa-xl"></i>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
+                  <%# <p>Pet Friendly</p> %>
+                  <% if market.pet_friendly == true %>
+                  <i class="fa-solid fa-paw fa-xl"></i>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
+                  <%# <p>Wheelchair Access</p> %>
+                  <% if market.wheelchair_access == true %>
+                    <i class="fa-solid fa-wheelchair fa-xl"></i>
                   <% end %>
                 </div>
               </div>

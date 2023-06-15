@@ -10,17 +10,24 @@
   }
 }
 
+
 .split-header {
   background-color: rgba(189, 217, 191, 0.5)
 }
 
+.nav-tabs .nav-link, .nav-tabs .nav-item.show .nav-link {
+  background-color: $dark-green !important;
+  margin-top: 10px;
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background-color: $light-purple !important;
-  font-weight: bold;
+  margin-top: 10px;
 }
 
 .tab-content {
   overflow: auto;
+  height: 525px;
 }
 
 // .trip-tabs {
@@ -30,7 +37,7 @@
 .home-card {
   z-index: 1;
   width: 263px;
-  margin-top: 10px;
+  // margin-top: 10px;
   // border-radius: 10px;
   border: 0.5px solid rgba(0,61,30,0.3);
   // border-top-left-radius: 5px !important;
@@ -43,19 +50,12 @@
 
 .home-card-img {
   height: 200px !important;
-  width: 263px;
+  width: 262px;
   object-fit: cover;
   // border-top-left-radius: 5px !important;
   // border-top-right-radius: 5px !important;
 }
 
-.show-card-img {
-  height: 200px !important;
-  width: 300px;
-  object-fit: cover;
-  // border-top-left-radius: 5px !important;
-  // border-top-right-radius: 5px !important;
-}
 
 .home-card.card-img-top {
   height: 225px;
@@ -65,17 +65,51 @@
   // border-top-right-radius: 5px !important;
 }
 
+
+
 .home-card .card-body {
-  min-height: 200px !important;
+  min-height: 225px !important;
 }
 
-.show-card.card-img-top {
-  min-height: 225px;
-}
 
 .show-card {
   max-height: 400px;
+  width: 260px;
+  transition: 0.3s;
+
+  .card-img-top {
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    height: 130px;
+  }
+
+  .show-card-img {
+    height: 200px !important;
+    width: 260px;
+    object-fit: cover;
+    // border-top-left-radius: 5px !important;
+    // border-top-right-radius: 5px !important;
+  }
+
+  h5 {
+    font-size: 25px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  &:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    cursor: pointer;
+  }
 }
+
+
 
 #nav-profile {
   min-width: 30%;
@@ -93,4 +127,8 @@
   align-content: center;
   align-items: center;
   justify-content: space-around;
+}
+
+.fa-laptop {
+  padding: 0 10px !important;
 }

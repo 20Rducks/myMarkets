@@ -30,6 +30,9 @@
   flex-flow: column;
   flex-wrap: wrap;
   width: 150%;
+  // background-color: $tea-green;
+  align-items: center;
+  align-content: center;
 }
 
 
@@ -75,20 +78,42 @@ button, input, optgroup, select, textarea {
 }
 
 .modal-header {
-  background-color: rgb(0,61,30); ;
-  color:rgba(245, 245, 245, 1); ;
+  background-color: $tea-green;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: center !important;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+  border-bottom: 0 !important;
 }
 
+
 .modal-body {
-  background-color: rgba(189, 217, 191, 0.5);
+  background-color: $tea-green;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: stretch;
   justify-content: flex-start;
   align-items: center;
-
+  border: 0 !important;
 }
+
+.modal-footer {
+  border-top: 0 !important;
+  background-color: $tea-green;
+  .btn {
+    width: 80%;
+  }
+}
+
+
+
 
 .collection_check_boxes {
   margin-left: 5px;
@@ -110,7 +135,7 @@ button, input, optgroup, select, textarea {
   display: flex!important;
   flex-direction: row;
   // align-content: space-around;
-  align-items: center;
+  // align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
   }
@@ -155,14 +180,25 @@ button, input, optgroup, select, textarea {
   margin-left: 0;
 }
 
-.ts-control > input {
-  flex: 1 1 auto;
-  min-width: 13.5rem !important;
+.market-show-right {
+  margin-left: 60px !important;
 }
 
-.modal-footer {
-  background-color: $dark-green;
-  .btn {
-    width: 80%;
-  }
+.stall-icons {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-close {
+  box-sizing: content-box;
+  width: 1em;
+  position: absolute;
+  right: 10px;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  color: #000;
+  border: 0;
+  border-radius: 2px;
+  opacity: 0.5;
 }

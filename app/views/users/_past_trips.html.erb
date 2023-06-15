@@ -10,9 +10,10 @@
               <div class="card-body" >
                 <h5 class="card-title"><small>How was</small><br> <b><%= trip.market.name %>?</b></h5>
                 <p><%= trip.date %></p>
+                <small>You joined</small>
                 <% trip.users.each do |t| %>
                   <%= link_to user_path(t) do %>
-                    <div><small>You joined</small> <em><%= t.username %></em></div>
+                    <div><em><%= t.username %></em></div>
                   <% end %>
                 <% end %>
               </div>

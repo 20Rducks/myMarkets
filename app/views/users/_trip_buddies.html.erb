@@ -1,8 +1,9 @@
 <%# TRIP-BUDDDDDDDIES %>
-<div class="tab-pane fade text-dark mt-1" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-  <% current_user.friends.each do |friend| %>
+<div class="tab-pane fade text-dark mt-1 justify-content-start" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+  <%# avatars = "wilma-logo.png", "betty-logo.png", "barney-logo.png", "bambam-logo.png" %>
+  <% current_user.friends.each do |friend, avatar| %>
   <div class="friends mb-4">
-    <%= image_tag "avatar.png" , class: 'avatar' %>
+    <%= image_tag "wilma-logo.png" , class: 'avatar-large' %>
     <h5 class="pl-3 pr-5"><%= link_to friend.username, user_path(friend) %></h5>
     <p class="mt-2">You have been friends for<br> <%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil %> day<%= ((Time.now - friend.created_at) / 60 / 60 / 24 ).ceil == 1 ? "" : "s" %></p>
   </div>

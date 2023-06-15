@@ -2,6 +2,6 @@
   <%= simple_form_for [@stall, @review] do |f| %>
     <%= f.input :description, class: "pl-5" %>
     <%= f.input :rating, input_html: { minimum: 0, maximum: 5 }%>
-    <%= f.submit "Submit", class: "btn btn-home" %>
+    <%= f.submit "Submit", class: "btn btn-small" %>
   <% end %>
 </div>
