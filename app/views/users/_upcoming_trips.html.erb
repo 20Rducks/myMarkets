@@ -6,7 +6,11 @@
         <% if trip.date > Time.now %>
           <div class="home-card m-2">
             <%= link_to market_path(trip.market) do %>
+            <% if trip.market.photos.attached? %>
               <%= cl_image_tag trip.market.photos.first.key, class: "home-card-img"%>
+            <% else %>
+              <%= image_tag "https://images.unsplash.com/photo-1535202610320-919f9b13de77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" , class: "card-img-top"%>
+            <% end %>
               <div class="card-body" >
                 <h5 class="card-title"><small>Upcoming trip to</small><br> <b><%= trip.market.name %></b></h5>
                 <p><%= trip.date %></p>

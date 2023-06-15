@@ -12,7 +12,7 @@ class Stall < ApplicationRecord
   validates :name, :category, :description, presence: true
   validates :name, length: { in: 5..30 }
   validates :name, uniqueness: true
-  validates :description, length: { in: 10..50 }
+  validates :description, length: { in: 10..60 }
   validates :category, inclusion: { in: CATEGORIES }
 end
 

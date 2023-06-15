@@ -1,3 +1,4 @@
+require 'open-uri'
 class MarketsController < ApplicationController
   before_action :set_market, only: %i[show new]
 
@@ -34,15 +35,14 @@ class MarketsController < ApplicationController
       # @market = Market.find(params[:id])
       # @stalls = @market.stalls
     end
-
-    @markets = @markets.sort_by(&:created_at).reverse
+    @markets = @markets.sort_by(&:created_at).reverse.sort_by {|market| market.photos.attached? ? 0 : 1 }
     @market = Market.new
     # @markets.days = days
   end
 
   def show
     # The `geocoded` scope filters only flats with coordinates
-    @markets = Market.all
+    # @markets = Market.all.sort_by {|market| market.photos.attached? ? 0 : 1}
     @market = Market.find(params[:id])
     @stalls = @market.stalls
     @reviews = Review.all
