@@ -400,7 +400,7 @@ body {
 // }
 
 .index-card {
-  height: 450px !important;
+  height: 520x !important;
   width: 320px;
   transition: 0.2s;
   padding: 0;
@@ -463,17 +463,28 @@ body {
   //   }
   //   background-color: $tea-green;
   // }
-
-  input[type=checkbox] {
-    display: none;
-  }
-  .label {
-
-    background: url("unchecked.png") no-repeat left center;
-    /* padding-left: 15px; */
-  }
-  input[type=checkbox]:checked + .label {
+  .filter-labels {
+    input[type=checkbox] {
+      display: none;
+    }
 
 
-    /* background-image: url("checked.png"); */
+    .check-filter + label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0.25rem;
+      width: 2rem;
+      height: 2rem;
+
+      /* background-image: url("checked.png"); */
+    }
+
+    .check-filter:checked + label {
+      border: solid 2px $tea-green;
+      border-radius: 2px;
+      /* background-image: url("checked.png"); */
+    }
+
   }

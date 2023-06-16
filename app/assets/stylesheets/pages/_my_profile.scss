@@ -73,7 +73,7 @@
 
 
 .show-card {
-  max-height: 400px;
+  max-height: 375px;
   width: 280px;
   transition: 0.3s;
 
@@ -88,14 +88,15 @@
 
   .show-card-img {
     height: 200px !important;
-    width: 260px;
+    width: 280px;
     object-fit: cover;
     // border-top-left-radius: 5px !important;
     // border-top-right-radius: 5px !important;
   }
 
   h5 {
-    font-size: 25px;
+    font-size: 28px;
+    font-weight: bold;
   }
 
   p {

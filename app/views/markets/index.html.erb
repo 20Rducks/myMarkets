@@ -8,26 +8,25 @@
             <h1>Find markets near you<br> Filter your choices<br> Discover your options</h1><br>
           </div>
           <div class="market-filters justify-content-center mt-4">
-
             <div class="filter-labels d-flex mr-4 mt-3">
 
               <div class="ml-4 mr-0">
+                <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1", class: "check-filter" %>
                 <%= form.label :wheelchair_access do %>
-                  <i class="fa-solid fa-wheelchair mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                  <i class="fa-solid fa-wheelchair" style= "color: hsl(124, 27%, 80%)"></i>
                 <% end %>
-                <%= form.check_box :wheelchair_access, checked: params[:wheelchair_access] == "1" %>
               </div>
               <div class="ml-4 mr-0">
+                <%= form.check_box :parking, checked: params[:parking] == "1", class: "check-filter" %>
                 <%= form.label :parking do %>
-                  <i class="fa-solid fa-square-parking mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                  <i class="fa-solid fa-square-parking" style= "color: hsl(124, 27%, 80%)"></i>
                 <% end %>
-                <%= form.check_box :parking, checked: params[:parking] == "1" %>
               </div>
               <div class="ml-4 mr-0">
+                <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1", class: "check-filter" %>
                 <%= form.label :pet_friendly do %>
-                  <i class="fa-solid fa-paw mt-2" style= "color: hsl(124, 27%, 80%)"></i>
+                  <i class="fa-solid fa-paw" style= "color: hsl(124, 27%, 80%)"></i>
                 <% end %>
-                <%= form.check_box :pet_friendly, checked: params[:pet_friendly] == "1" %>
               </div>
             </div>
 
@@ -42,14 +41,13 @@
     </div>
   </div>
 
-
   <div class="container-fluid pt-3">
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6  text-center ">
 
 
 
-        <div class="d-flex mx-auto mt-2" style="width: 90%; height: 560px; position: sticky; top: 50px; left: 50px;"
+        <div class="d-flex mx-auto mt-2" style="width: 90%; height: 500px; position: sticky; top: 50px; left: 50px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -64,12 +62,8 @@
     <% @markets.each do |market| %>
       <%= link_to market_path(market) do %>
           <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            <div class="index-card card h-100 mx-2 my-2">
-            <% if market.photos.attached? %>
+            <div class="index-card card mx-2 my-2">
               <%= cl_image_tag market.photos.first.key, class: "card-img-top"%>
-            <% else %>
-              <%= image_tag "https://images.unsplash.com/photo-1535202610320-919f9b13de77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZCUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" , class: "card-img-top"%>
-            <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= market.name %></h5><span>
 
@@ -83,15 +77,15 @@
                   <% end %>
                 </div>
                 <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
-                  <%# <p>Pet Friendly</p> %>
-                  <% if market.pet_friendly == true %>
-                  <i class="fa-solid fa-paw fa-xl"></i>
-                  <% end %>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
                   <%# <p>Wheelchair Access</p> %>
                   <% if market.wheelchair_access == true %>
                     <i class="fa-solid fa-wheelchair fa-xl"></i>
+                  <% end %>
+                </div>
+                <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 py-2 market-icon text-center">
+                  <%# <p>Pet Friendly</p> %>
+                  <% if market.pet_friendly == true %>
+                  <i class="fa-solid fa-paw fa-xl"></i>
                   <% end %>
                 </div>
               </div>
