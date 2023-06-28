@@ -7,11 +7,11 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
-
+  
   // Connects to data-controller="map"
   connect() {
-    mapboxgl.accessToken = this.apiKeyValue
 
+    mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
